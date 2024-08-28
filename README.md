@@ -1,5 +1,5 @@
 # THIS IS A TEST BRANCH
-## Meant for testing only: They're separated in folders
+## Meant for testing only: Functions are separated in folders
 - Public Folder
  Holds the files that will be published to localhost
  - Firestore Folder
