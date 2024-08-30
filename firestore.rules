@@ -1,0 +1,22 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Public directory rules
+    match /users/{uid} {
+      // Allow all to read, but only write if uid is the same
+      allow read; 
+      allow create: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // Need to correct this rule
+    // match /books/{uid} {
+    // Allow CRUD if uid is the same as the user's uid
+    // }
+
+    // Admin directory rules
+    // match /{document=**} {
+      // Allow all operations (read, write, update, delete) for admin users
+      // allow read, write: if request.auth != null && request.auth.token.admin == true;
+    // }
+  }
+}
