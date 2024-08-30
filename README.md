@@ -1,9 +1,9 @@
 # THIS IS DEV BRANCH FOR AUTH
 ## SUBJECT TO CHANGE
 - Public Folder
- Holds the files that will be published to localhost.
+-- Holds the files that will be published to localhost.
  - userAuthEntry Folder 
- For authentication logic(sign in, sign up, sign out, etc.) adds data to the firestore as well.
+ -- For authentication logic(sign in, sign up, sign out, etc.) adds data to the firestore as well.
 
 # Akaru: Enlightenment Through Reading
 What is Akaru?
