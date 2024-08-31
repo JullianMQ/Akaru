@@ -4,14 +4,16 @@ service cloud.firestore {
     // Public directory rules
     match /users/{uid} {
       // Allow all to read, but only write if uid is the same
-      allow read; 
-      allow create: if request.auth != null && request.auth.uid == uid;
+      allow read if request.query.limit <= 1; 
+      isAuthenticated(request);
     }
 
     // Need to correct this rule
-    // match /books/{uid} {
+    match /books/{any} {
     // Allow CRUD if uid is the same as the user's uid
-    // }
+    allow read;
+    isAdmin(request);
+    }
 
     // Admin directory rules
     // match /{document=**} {
@@ -19,4 +21,12 @@ service cloud.firestore {
       // allow read, write: if request.auth != null && request.auth.token.admin == true;
     // }
   }
+}
+
+function isAuthenticated(request) {
+  allow write: if request.auth != null && request.auth.uid == uid;
+}
+
+function isAdmin(request) {
+  allow write: if request.auth!= null && request.auth.token.admin == true;
 }
