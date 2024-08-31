@@ -5,7 +5,7 @@ service cloud.firestore {
     match /users/{uid} {
       // Allow all to read, but only write if uid is the same
       allow read if request.query.limit <= 1; 
-      isAuthenticated(request);
+      isAuthenticated(request, uid);
     }
 
     // Need to correct this rule
@@ -23,7 +23,7 @@ service cloud.firestore {
   }
 }
 
-function isAuthenticated(request) {
+function isAuthenticated(request, uid) {
   allow write: if request.auth != null && request.auth.uid == uid;
 }
 
