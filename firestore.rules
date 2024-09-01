@@ -10,9 +10,9 @@ service cloud.firestore {
 
     // Need to correct this rule
     match /books/{any} {
-    // Allow CRUD if uid is the same as the user's uid
+    // Allow CRUD if user is Admin
     allow read;
-    isAdmin(request);
+        isAdmin(request);
     }
 
     // Admin directory rules

@@ -27,7 +27,6 @@ const db = getFirestore(app);
 // Query from HTML
 // Sign Up
 const userName = document.querySelector("#userName");
-const userAge = document.querySelector("#userAge");
 const userPhone = document.querySelector("#userPhone");
 const userEmail = document.querySelector("#userEmail");
 const userPass = document.querySelector("#userPass");
@@ -58,7 +57,7 @@ const signUp = async (auth, userEmail, userPass) => {
 
         // userEmail/Pass is already set in the parent function so no need to use .value
         // This will return into undefined if you do
-        await addToUserCollection(user.uid, userName.value, userAge.value, userPhone.value, userEmail, userPass);
+        await addToUserCollection(user.uid, userName.value, userPhone.value, userEmail, userPass);
 
     } catch (error) {
         console.error(`Error code: ${error.code}`)
@@ -67,12 +66,11 @@ const signUp = async (auth, userEmail, userPass) => {
 };
 
 // Get Personal Details Firestore Firebase
-const addToUserCollection = async (uid, username, age, phone, email, password) => {
+const addToUserCollection = async (uid, username, phone, email, password) => {
     try {
         const docRef = doc(db, "users", uid);
         await setDoc(docRef, {
             userName: username,
-            age: age,
             phone: phone,
             email: email,
             password: password,
