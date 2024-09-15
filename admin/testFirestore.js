@@ -34,6 +34,7 @@ const getBooks = async () => {
     const getBooks = await getDocs(booksCollection);
     getBooks.forEach(async (doc) => {
         const docData = doc.data();
+        // console.log(docData);
         // console.log(docData.bookName);
         await appendToContainer(doc.id, docData.bookName, docData.bookCategory, docData.authors, "Available", docData.imagePath);
     })
@@ -49,7 +50,7 @@ const appendToContainer = async (productID, productName, productCategory, produc
     const availability = row.querySelector("[data-book-availability]");
     const image = row.querySelector("[data-book-image]");
     const authorsList = await productAuthors;
-    console.log(Object.values(authorsList));
+    // console.log(Object.values(authorsList));
     // console.log(productAuthors.value.split(","));
     
     id.textContent = productID;
