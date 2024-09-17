@@ -1,6 +1,6 @@
 # TOC
-[how to deploy?](#deployment)
-[Know the project](#this-is-dev-branch-for-database) 
+- [how to deploy?](#deployment)
+- [Know the project](#this-is-dev-branch-for-database) 
 
 # THIS IS DEV BRANCH FOR Database
 ## SUBJECT TO CHANGE
