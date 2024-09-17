@@ -39,72 +39,84 @@
 
   <!-- Add Functionality here to show Add/Update/Remove Books Section -->
   <!-- For FrontEnd -->
-  <button id="addBookBtn" type="button">Add Book</button>
-  <button id="updateBookBtn" type="button">Update Book</button>
-  <button id="removeBookBtn" type="button">Remove Book</button>
+  <button id="addBookFormBtn" type="button">Add Book</button>
+  <button id="updateBookFormBtn" type="button">Update Book</button>
+  <button id="removeBookFormBtn" type="button">Remove Book</button>
 
-  <form id="addBookForm">
+  <form id="addBookForm" action="admin_book_page.html" class="hidden">
     <h3>Add Book</h3>
 
     <div>
       <label for="prodName">Product Name</label>
-      <input type="text" name="prodName" placeholder="product">
+      <input type="text" name="prodName" placeholder="product" required>
 
     </div>
 
     <div>
       <label for="prodCategory">Category<span>(divide by commas)</span></label>
-      <input type="text" name="prodCategory" placeholder="category1, category2...">
+      <input type="text" name="prodCategory" placeholder="category1, category2..." required>
     </div>
 
     <div>
       <label for="prodAuthors">Authors <span>(divide by commas)</span></label>
-      <input type="text" name="prodName" placeholder="author1, author2...">
+      <input type="text" name="prodAuthors" placeholder="author1, author2..." required>
     </div>
 
 
     <div>
       <label for="prodImage">Choose Image</label>
-      <input type="file" name="prodImage" accept="image/*">
+      <input type="file" name="prodImage" accept="image/*" required>
     </div>
     <label for="addBook">Add Book</label>
     <button id="addBook" name="addBook" type="button">Submit</button>
   </form>
 
 
-  <form id="updateBookForm">
+  <form id="updateBookForm" class="hidden">
     <h3>Update Book</h3>
     <div>
       <label for="prodId">Product ID</label>
-      <input type="text" name="prodId" placeholder="product id">
+      <input type="text" name="prodId" placeholder="product id" required>
 
     </div>
 
     <div>
       <label for="prodName">Product Name</label>
-      <input type="text" name="prodName" placeholder="product">
+      <input type="text" name="prodName" placeholder="product" required>
 
     </div>
 
     <div>
-      <label for="prodCategory">Category</label>
-      <input type="text" name="prodCategory" placeholder="category">
+      <label for="prodAuthors">Authors <span>(divide by commas)</span></label>
+      <input type="text" name="prodAuthors" placeholder="author1, author2..." required>
+    </div>
+
+    <div>
+      <label for="prodCategory">Category<span>(divide by commas)</span></label>
+      <input type="text" name="prodCategory" placeholder="category1, category2..." required>
     </div>
 
     <div>
       <label for="prodImage">Choose Image</label>
-      <input type="file" name="prodImage" accept="image/*">
+      <input type="file" name="prodImage" accept="image/*" required>
     </div>
 
     <label for="updateBook">Update Book</label>
     <button id="updateBook" name="updateBook" type="button">Submit</button>
   </form>
 
-  <form id="removeBookForm">
+  <form id="removeBookForm" class="hidden">
     <h3>Remove Book</h3>
+
     <div>
       <label for="prodId">Product ID</label>
-      <input type="text" name="prodId" placeholder="product id">
+      <input type="text" name="prodId" placeholder="product id" required>
+
+    </div>
+
+    <div>
+      <label for="prodName">Product Name</label>
+      <input type="text" name="prodName" placeholder="product">
 
     </div>
 
