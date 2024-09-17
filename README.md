@@ -1,4 +1,4 @@
-# TOC
+# Table of Contents
 - [how to deploy?](#deployment)
 - [Know the project](#this-is-dev-branch-for-database) 
 
