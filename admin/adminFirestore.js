@@ -114,8 +114,8 @@ const addNewBook = async () => {
 
     // Katangahan sa javascript
     // console.log(idArray);
-    idArray.sort((a, b) => a - b);
-    idArray.sort((a, b) => b - a);
+    // idArray.sort((a, b) => a - b);
+    // idArray.sort((a, b) => b - a);
     // // for (inc = 0; inc < idArray.length; inc++) {
     // //     console.log(inc)
     // //     if (idArray.includes(inc.toString())) {
