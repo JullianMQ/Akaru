@@ -20,6 +20,7 @@ import { app } from "../public/init.js"
 const auth = getAuth(app);
 const db = getFirestore(app);
 let idArray = [];
+let authorsMap = {};
 
 // DOM Variables
 const addBookFormBtn = document.querySelector("#addBookFormBtn");
@@ -45,6 +46,9 @@ const getBooks = async () => {
     getBooks.forEach(async (doc) => {
         const docData = doc.data();
         idArray.push(parseInt(doc.id));
+
+        // Show authors
+        // console.log(Array.isArray(docData.authors));
         await appendToContainer(doc.id, docData.bookName, docData.bookCategory, docData.authors, "Available", docData.imagePath);
     })
 
@@ -110,7 +114,8 @@ const addNewBook = async () => {
 
     // Katangahan sa javascript
     // console.log(idArray);
-    // idArray.sort((a, b) => a - b);
+    idArray.sort((a, b) => a - b);
+    idArray.sort((a, b) => b - a);
     // // for (inc = 0; inc < idArray.length; inc++) {
     // //     console.log(inc)
     // //     if (idArray.includes(inc.toString())) {
@@ -127,11 +132,17 @@ const addNewBook = async () => {
     const prodCategory = productCategoryInput[0].value.split(",").map(x => x.trim()).filter(x => x !== "");
     const prodAuthors = productAuthorInput[0].value.split(",").map(x => x.trim()).filter(x => x !== "");
 
+    authorsMap = {};
+    for (let i = 0; i < prodAuthors.length; i++) {
+        let author = `Author${i + 1}`;
+        authorsMap[author] = prodAuthors[i];
+    }
+
     try {
         await setDoc(doc(db, "book", inc.toString()), {
             bookName: prodName,
             bookCategory: prodCategory,
-            authors: prodAuthors
+            authors: authorsMap
         })
         await getBooks();
     } catch (error) {
@@ -166,6 +177,13 @@ const updateBook = async () => {
     toBePushed.set("bookCategory", prodCategory);
     toBePushed.set("authors", prodAuthors);
 
+    authorsMap = {};
+    for (let i = 0; i < prodAuthors.length; i++) {
+        let author = `Author${i + 1}`;
+        authorsMap[author] = prodAuthors[i];
+    }
+
+
     try {
         if (toBePushed.get("bookName") != "") {
             await updateDoc(doc(db, "book", prodId), {
@@ -179,7 +197,7 @@ const updateBook = async () => {
         }
         if (toBePushed.get("authors").length != 0) {
             await updateDoc(doc(db, "book", prodId), {
-                authors: prodAuthors
+                authors: authorsMap
             })
         }
         await getBooks();
