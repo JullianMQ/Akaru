@@ -1,130 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Akaru | Admin Page</title>
   <!-- Add CSS FILE HERE -->
+  <link rel="stylesheet" href="admin_book_page.css">
   <link rel="stylesheet" type="text/css" href="hidden.css">
 </head>
-
-<body>
-
-  <h2>AKARU</h2>
-  <h1>Managing Books</h1>
-  <table id="bookTable" style="border: 1px solid black;">
-    <thead>
-      <th>ID</th>
-      <th>Product Name</th>
-      <th>Category</th>
-      <th>Author/s</th>
-      <th>Availability</th>
-      <th>User ID</th>
-      <th>Image</th>
-    </thead>
-    <tbody data-book-container>
-      <template data-book-row>
-        <tr>
-          <td data-book-id>Product ID</td>
-          <td data-book-name>Product</td>
-          <td data-book-category>Product Category</td>
-          <td data-book-authors>Product Authors</td>
-          <td data-book-availability>Product Availability</td>
-          <td><img data-book-image src="something" alt=""></td>
-        </tr>
-      </template>
-    </tbody>
-  </table>
-
-  <!-- Add Functionality here to show Add/Update/Remove Books Section -->
-  <!-- For FrontEnd -->
-  <button id="addBookFormBtn" type="button">Add Book</button>
-  <button id="updateBookFormBtn" type="button">Update Book</button>
-  <button id="removeBookFormBtn" type="button">Remove Book</button>
-
-  <form id="addBookForm" action="admin_book_page.html" class="hidden">
-    <h3>Add Book</h3>
-
-    <div>
-      <label for="prodName">Product Name</label>
-      <input type="text" name="prodName" placeholder="product" required>
-
-    </div>
-
-    <div>
-      <label for="prodCategory">Category<span>(divide by commas)</span></label>
-      <input type="text" name="prodCategory" placeholder="category1, category2..." required>
-    </div>
-
-    <div>
-      <label for="prodAuthors">Authors <span>(divide by commas)</span></label>
-      <input type="text" name="prodAuthors" placeholder="author1, author2..." required>
-    </div>
-
-
-    <div>
-      <label for="prodImage">Choose Image</label>
-      <input type="file" name="prodImage" accept="image/*" required>
-    </div>
-    <label for="addBook">Add Book</label>
-    <button id="addBook" name="addBook" type="button">Submit</button>
-  </form>
-
-
-  <form id="updateBookForm" class="hidden">
-    <h3>Update Book</h3>
-    <div>
-      <label for="prodId">Product ID</label>
-      <input type="text" name="prodId" placeholder="product id" required>
-
-    </div>
-
-    <div>
-      <label for="prodName">Product Name</label>
-      <input type="text" name="prodName" placeholder="product" required>
-
-    </div>
-
-    <div>
-      <label for="prodAuthors">Authors <span>(divide by commas)</span></label>
-      <input type="text" name="prodAuthors" placeholder="author1, author2..." required>
-    </div>
-
-    <div>
-      <label for="prodCategory">Category<span>(divide by commas)</span></label>
-      <input type="text" name="prodCategory" placeholder="category1, category2..." required>
-    </div>
-
-    <div>
-      <label for="prodImage">Choose Image</label>
-      <input type="file" name="prodImage" accept="image/*" required>
-    </div>
-
-    <label for="updateBook">Update Book</label>
-    <button id="updateBook" name="updateBook" type="button">Submit</button>
-  </form>
-
-  <form id="removeBookForm" class="hidden">
-    <h3>Remove Book</h3>
-
-    <div>
-      <label for="prodId">Product ID</label>
-      <input type="text" name="prodId" placeholder="product id" required>
-
-    </div>
-
-    <div>
-      <label for="prodName">Product Name</label>
-      <input type="text" name="prodName" placeholder="product">
-
-    </div>
-
-    <label for="removeBook">Remove Book</label>
-    <button id="removeBook" name="removeBook" type="button">Submit</button>
-  </form>
-
-  <script type="module" src="bundled_files.js"> </script>
-</body>
-
+  <body>
+    <main>
+      <h2>AKARU</h2>
+      <div class="container">
+        <h1 class="title">Managing Books</h1>
+        <table class="table" id="bookTable" style="border: 1px solid black;">
+          <thead class="thead__container">
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Author/s</th>
+            <!-- delete this --> <th>Availability</th>
+            <th>Image</th>
+          </thead>
+          <tbody data-book-container>
+            <template data-book-row>
+              <tr>
+                <td data-book-id>Product ID</td>
+                <td data-book-name>Product</td>
+                <td data-book-category>Product Category</td>
+                <td data-book-authors>Product Authors</td>
+                <!-- delete this --> <td data-book-availability>Product Availability</td> 
+                <td><img data-book-image src="something" alt=""></td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Add Functionality here to show Add/Update/Remove Books Section -->
+      <!-- For FrontEnd -->
+      <button id="addBookFormBtn" type="button">Add Book</button>
+      <button id="updateBookFormBtn" type="button">Update Book</button>
+      <button id="removeBookFormBtn" type="button">Remove Book</button>
+      
+      <form id="addBookForm" action="admin_book_page.html" class="hidden">
+        <h3>Add Book</h3>
+        <div>
+          <label for="prodName">Product Name</label>
+          <input type="text" name="prodName" placeholder="product" required>
+        </div>
+        <div>
+          <label for="prodCategory">Category<span>(divide by commas)</span></label>
+          <input type="text" name="prodCategory" placeholder="category1, category2..." required>
+        </div>
+        <div>
+          <label for="prodAuthors">Authors <span>(divide by commas)</span></label>
+          <input type="text" name="prodAuthors" placeholder="author1, author2..." required>
+        </div>
+        <div>
+          <label for="prodImage">Choose Image</label>
+          <input type="file" name="prodImage" accept="image/*" required>
+        </div>
+        <label for="addBook">Add Book</label>
+        <button id="addBook" name="addBook" type="button">Submit</button>
+      </form>
+      
+      <form id="updateBookForm" class="hidden">
+        <h3>Update Book</h3>
+        <div>
+          <label for="prodId">Product ID</label>
+          <input type="text" name="prodId" placeholder="product id" required>
+        </div>
+        <div>
+          <label for="prodName">Product Name</label>
+          <input type="text" name="prodName" placeholder="product" required>
+        </div>
+        <div>
+          <label for="prodAuthors">Authors <span>(divide by commas)</span></label>
+          <input type="text" name="prodAuthors" placeholder="author1, author2..." required>
+        </div>
+        <div>
+          <label for="prodCategory">Category<span>(divide by commas)</span></label>
+          <input type="text" name="prodCategory" placeholder="category1, category2..." required>
+        </div>
+        <div>
+          <label for="prodImage">Choose Image</label>
+          <input type="file" name="prodImage" accept="image/*" required>
+        </div>
+        <label for="updateBook">Update Book</label>
+        <button id="updateBook" name="updateBook" type="button">Submit</button>
+      </form>
+      
+      <form id="removeBookForm" class="hidden">
+        <h3>Remove Book</h3>
+        <div>
+          <label for="prodId">Product ID</label>
+          <input type="text" name="prodId" placeholder="product id" required>
+        </div>
+        <div>
+          <label for="prodName">Product Name</label>
+          <input type="text" name="prodName" placeholder="product">
+        </div>
+        <label for="removeBook">Remove Book</label>
+        <button id="removeBook" name="removeBook" type="button">Submit</button>
+      </form>
+    </main>
+      
+    <script type="module" src="bundled_files.js"> </script>
+  </body>
 </html>

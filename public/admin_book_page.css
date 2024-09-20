@@ -1,0 +1,123 @@
+/*=============== FONTS ===============*/
+@font-face {
+    font-family: 'ITC Avant Garde';
+    src: url('./fonts/ITC\ Avant\ Garde\ Gothic\ LT\ Bold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Neue Montreal';
+    src: url('./fonts/NeueMontreal-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+    --header-height: 3.5rem;
+    
+    /*========== Background/Text Color ==========*/
+    --primary-color: #1D1D1B;
+    --secondary-color: #F0F2F1;
+    --tertiary-color: #D9D9D9;
+    --hue: 14;
+
+    /*========== Font and Typography ==========*/
+    --title-font: 'ITC Avant Garde', sans-serif;
+    --body-font: 'Neue Montreal', sans-serif;
+    --biggest-font-size: 2rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+
+    /*========== Font Weight ==========*/
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    --font-black: 900;
+
+    /*========== Margenes Bottom ==========*/
+    --mb-0-25: .25rem;
+    --mb-0-5: .5rem;
+    --mb-0-75: .75rem;
+    --mb-1: 1rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+    --mb-2-5: 2.5rem;
+
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+/*=============== BASE ===============*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--body-font);
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button {
+    cursor: pointer;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.title {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: var(--title-font);
+    letter-spacing: -2px;
+}
+
+.table {
+    border-collapse: collapse;
+    
+}
+
+.thead__container {
+    background-color: var(--primary-color);
+}
+
+th {
+    color: var(--secondary-color);
+    text-transform: uppercase;
+}
+
+tbody {
+    text-align: center;
+    background-color: var(--tertiary-color);
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: var(--smaller-font-size);
+    }
+
+    .container {
+        width: 95%;
+    }
+}
