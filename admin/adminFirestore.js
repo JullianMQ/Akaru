@@ -49,19 +49,18 @@ const getBooks = async () => {
 
         // Show authors
         // console.log(Array.isArray(docData.authors));
-        await appendToContainer(doc.id, docData.bookName, docData.bookCategory, docData.authors, "Available", docData.imagePath);
+        await appendToContainer(doc.id, docData.bookName, docData.bookCategory, docData.authors, docData.imagePath);
     })
 
     return idArray;
 }
 
-const appendToContainer = async (productID, productName, productCategory, productAuthors, productAvailability, productImage) => {
+const appendToContainer = async (productID, productName, productCategory, productAuthors, productImage) => {
     const row = rowTemplate.content.cloneNode(true).children[0];
     const id = row.querySelector("[data-book-id]");
     const name = row.querySelector("[data-book-name]");
     const category = row.querySelector("[data-book-category]");
     const authors = row.querySelector("[data-book-authors]");
-    const availability = row.querySelector("[data-book-availability]");
     const image = row.querySelector("[data-book-image]");
     let authorsList = await productAuthors;
     authorsList = Object.values(authorsList);
@@ -70,7 +69,6 @@ const appendToContainer = async (productID, productName, productCategory, produc
     name.textContent = productName;
     category.innerHTML = productCategory.join("<br>");
     authors.innerHTML = Object.values(authorsList).join("<br>");
-    availability.textContent = productAvailability;
     image.src = productImage;
     bookContainer.append(row);
 
