@@ -109,21 +109,22 @@ logInBtn.addEventListener("click", () => {
 
 // Log In End
 
+// TODO: MOVE TO INDEX HTML
 // Log Out Start
-const userLogOut = async () => {
-    console.log("Log Out")
-    signOut(auth)
-        .then(() => {
-            alert("Signed Out!")
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-}
+// const userLogOut = async () => {
+//     console.log("Log Out")
+//     signOut(auth)
+//         .then(() => {
+//             alert("Signed Out!")
+//         })
+//         .catch((error) => {
+//             console.log(error);
+//         });
+// }
 
-logOutBtn.addEventListener("click", () => {
-    userLogOut();
-});
+// logOutBtn.addEventListener("click", () => {
+//     userLogOut();
+// });
 // Log Out End
 
 // Monitoring Auth State
