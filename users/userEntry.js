@@ -91,7 +91,7 @@ signUpBtn.addEventListener("click", () => {
 // Log In Start
 
 const logIn = async (auth, email, password) => {
-    console.log("Log In")
+    // console.log("Log In")
     try {
         const loggedInCredential = await signInWithEmailAndPassword(auth, email, password);
         // console.log(loggedInCredential);

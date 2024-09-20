@@ -6,7 +6,8 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "webpack serve"
+        "build": "webpack serve",
+        "start": "webpack && webpack serve"
     },
     "keywords": [],
     "author": "",
