@@ -14,11 +14,12 @@ import {
     getFirestore
 } from "firebase/firestore";
 import { app } from "../public/init.js"
-
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 // Firestore Variables
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
 let idArray = [];
 let authorsMap = {};
 
@@ -62,16 +63,23 @@ const appendToContainer = async (productID, productName, productCategory, produc
     const category = row.querySelector("[data-book-category]");
     const authors = row.querySelector("[data-book-authors]");
     const image = row.querySelector("[data-book-image]");
-    let authorsList = await productAuthors;
-    authorsList = Object.values(authorsList);
+
+    let authorsList = Object.values(productAuthors || {});
 
     id.textContent = productID;
     name.textContent = productName;
     category.innerHTML = productCategory.join("<br>");
-    authors.innerHTML = Object.values(authorsList).join("<br>");
-    image.src = productImage;
-    bookContainer.append(row);
+    authors.innerHTML = authorsList.join("<br>");
 
+    if (productImage) {
+        image.src = productImage;
+    } else {
+        image.src = "path/to/default/image.png";
+    }
+
+    console.log(`Setting image for Book ID ${productID}: ${image.src}`);
+
+    bookContainer.append(row);
 }
 // appendToContainer();
 // console.log(bookContainer);
@@ -94,22 +102,17 @@ const addNewBook = async () => {
     const productNameInput = document.querySelectorAll("[name=prodName]");
     const productCategoryInput = document.querySelectorAll("[name=prodCategory]");
     const productAuthorInput = document.querySelectorAll("[name=prodAuthors]");
+    const productImageInput = addBookForm.querySelector("[name=prodImage]");
+    const productImage = productImageInput.files[0];
     // get list of id in firestore
     await getBooks();
 
 
     // get id to be used for book
-    let inc = 1;
-    for (let index = 1; index < idArray.length + 1; index++) {
-        if (index != idArray[index - 1]) {
-            inc = index;
-            break;
-        } else {
-            inc++
-        }
-
+    let newId = 1;
+    while (idArray.includes(newId)) {
+        newId++;
     }
-
     // Katangahan sa javascript
     // console.log(idArray);
     // idArray.sort((a, b) => a - b);
@@ -137,16 +140,43 @@ const addNewBook = async () => {
     }
 
     try {
-        await setDoc(doc(db, "book", inc.toString()), {
+        let imagePath = "";
+        if (productImage) {
+            const imageRef = ref(storage, `book_images/${Date.now()}_${productImage.name}`);
+            const uploadTask = uploadBytesResumable(imageRef, productImage);
+
+            // Await the upload completion
+            await new Promise((resolve, reject) => {
+                uploadTask.on(
+                    'state_changed',
+                    null,
+                    (error) => {
+                        console.error("Image upload failed:", error);
+                        reject(error);
+                    },
+                    async () => {
+                        imagePath = await getDownloadURL(uploadTask.snapshot.ref);
+                        console.log("Image uploaded successfully:", imagePath);
+                        resolve();
+                    }
+                );
+            });
+        }
+        await setDoc(doc(db, "book", newId.toString()), {
             bookName: prodName,
             bookCategory: prodCategory,
-            authors: authorsMap
-        })
+            authors: authorsMap,
+            imagePath: imagePath
+        });
+
+        console.log("Book added successfully with ID:", newId);
         await getBooks();
+        addBookForm.reset();
+        addBookForm.classList.add("hidden");
     } catch (error) {
-        console.error(error.message);
+        console.error("Error adding book:", error.message);
     }
-}
+};
 
 addBookBtn.addEventListener("click", addNewBook);
 // End Adding New Books
@@ -157,53 +187,73 @@ updateBookFormBtn.addEventListener("click", () => {
 })
 
 const updateBook = async () => {
-    const productId = document.querySelectorAll("[name=prodId]")
-    const productNameInput = document.querySelectorAll("[name=prodName]");
-    const productCategoryInput = document.querySelectorAll("[name=prodCategory]");
-    const productAuthorInput = document.querySelectorAll("[name=prodAuthors]");
-    // get size of firestore
+    const productIdInput = updateBookForm.querySelector("[name=prodId]");
+    const productNameInput = updateBookForm.querySelector("[name=prodName]");
+    const productCategoryInput = updateBookForm.querySelector("[name=prodCategory]");
+    const productAuthorInput = updateBookForm.querySelector("[name=prodAuthors]");
+    const prodImageInput = updateBookForm.querySelector("[name=prodImage]");
+    const prodImage = prodImageInput.files[0];
 
-    // FireStorage: ADD IMAGE SUPPORT HERE
+    const prodId = productIdInput.value.trim();
+    const prodName = productNameInput.value.trim();
+    const prodCategory = productCategoryInput.value.split(",").map(x => x.trim()).filter(x => x !== "");
+    const prodAuthors = productAuthorInput.value.split(",").map(x => x.trim()).filter(x => x !== "");
 
-    const prodId = productId[0].value.trim();
-    const prodName = productNameInput[1].value.trim();
-    const prodCategory = productCategoryInput[1].value.split(",").map(x => x.trim()).filter(x => x !== "");
-    const prodAuthors = productAuthorInput[1].value.split(",").map(x => x.trim()).filter(x => x !== "");
+    const updateData = {};
 
-    const toBePushed = new Map();
-    toBePushed.set("bookName", prodName);
-    toBePushed.set("bookCategory", prodCategory);
-    toBePushed.set("authors", prodAuthors);
-
-    authorsMap = {};
-    for (let i = 0; i < prodAuthors.length; i++) {
-        let author = `Author${i + 1}`;
-        authorsMap[author] = prodAuthors[i];
+    if (prodName !== "") {
+        updateData.bookName = prodName;
     }
 
+    if (prodCategory.length > 0) {
+        updateData.bookCategory = prodCategory;
+    }
+
+    if (prodAuthors.length > 0) {
+        const updatedAuthorsMap = {};
+        prodAuthors.forEach((author, index) => {
+            updatedAuthorsMap[`Author${index + 1}`] = author;
+        });
+        updateData.authors = updatedAuthorsMap;
+    }
 
     try {
-        if (toBePushed.get("bookName") != "") {
-            await updateDoc(doc(db, "book", prodId), {
-                bookName: prodName
-            })
-        }
-        if (toBePushed.get("bookCategory").length != 0) {
-            await updateDoc(doc(db, "book", prodId), {
-                bookCategory: prodCategory
-            })
-        }
-        if (toBePushed.get("authors").length != 0) {
-            await updateDoc(doc(db, "book", prodId), {
-                authors: authorsMap
-            })
-        }
-        await getBooks();
-    } catch (error) {
-        console.error(error.message);
-    }
+        if (prodImage) {
+            const imageRef = ref(storage, `book_images/${Date.now()}_${prodImage.name}`);
+            const uploadTask = uploadBytesResumable(imageRef, prodImage);
 
-}
+            await new Promise((resolve, reject) => {
+                uploadTask.on(
+                    'state_changed',
+                    null,
+                    (error) => {
+                        console.error("Image upload failed:", error);
+                        reject(error);
+                    },
+                    async () => {
+                        const imagePath = await getDownloadURL(uploadTask.snapshot.ref);
+                        updateData.imagePath = imagePath;
+                        console.log("Image uploaded successfully:", imagePath);
+                        resolve();
+                    }
+                );
+            });
+        }
+
+        if (Object.keys(updateData).length > 0) {
+            await updateDoc(doc(db, "book", prodId), updateData);
+            console.log("Book updated successfully.");
+        } else {
+            console.log("No updates provided.");
+        }
+
+        await getBooks();
+        updateBookForm.reset();
+        updateBookForm.classList.add("hidden");
+    } catch (error) {
+        console.error("Error updating book:", error.message);
+    }
+};
 
 updateBookBtn.addEventListener("click", updateBook);
 // End Updating Books
