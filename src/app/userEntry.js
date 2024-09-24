@@ -18,7 +18,7 @@ import {
     updateDoc,
     getFirestore
 } from "firebase/firestore";
-import { app } from "../public/init.js";
+import { app } from "./init.js";
 
 
 const auth = getAuth(app);

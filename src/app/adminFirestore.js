@@ -13,7 +13,7 @@ import {
     updateDoc,
     getFirestore
 } from "firebase/firestore";
-import { app } from "../public/init.js"
+import { app } from "./init.js"
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 // Firestore Variables
@@ -77,15 +77,13 @@ const appendToContainer = async (productID, productName, productCategory, produc
         image.src = "path/to/default/image.png";
     }
 
-    console.log(`Setting image for Book ID ${productID}: ${image.src}`);
+    // console.log(`Setting image for Book ID ${productID}: ${image.src}`);
 
     bookContainer.append(row);
 }
-// appendToContainer();
-// console.log(bookContainer);
 
 
-// For searching
+// TODO: For searching
 const getBook = async () => {
 }
 // End Get Books
@@ -114,15 +112,16 @@ const addNewBook = async () => {
         newId++;
     }
     // Katangahan sa javascript
+    // Use a better sorting algo, JS way sucks
     // console.log(idArray);
     // idArray.sort((a, b) => a - b);
     // idArray.sort((a, b) => b - a);
-    // // for (inc = 0; inc < idArray.length; inc++) {
-    // //     console.log(inc)
-    // //     if (idArray.includes(inc.toString())) {
-    // //         console.log(true)
-    // //     }
-    // // }
+    // for (inc = 0; inc < idArray.length; inc++) {
+    //     console.log(inc)
+    //     if (idArray.includes(inc.toString())) {
+    //         console.log(true)
+    //     }
+    // }
     // while (idArray.includes(inc.toString())) {
     //     inc++;
     // }

@@ -1,14 +1,14 @@
 /*=============== FONTS ===============*/
 @font-face {
     font-family: 'ITC Avant Garde';
-    src: url('./fonts/ITC\ Avant\ Garde\ Gothic\ LT\ Bold.otf') format('opentype');
+    src: url('../public/fonts/ITC\ Avant\ Garde\ Gothic\ LT\ Bold.otf') format('opentype');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Neue Montreal';
-    src: url('./fonts/NeueMontreal-Regular.otf') format('opentype');
+    src: url('../public/fonts/NeueMontreal-Regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
