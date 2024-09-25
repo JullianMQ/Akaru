@@ -3,64 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Akaru | Admin Page</title>
+  <title>Akaru | Admin | Manage Books</title>
   <link rel="stylesheet" type="text/css" href="styles/admin_book_page.css">
-  <link rel="stylesheet" type="text/css" href="styles/hidden.css">
 </head>
-  <body>
-    <main>
-      <h2>AKARU</h2>
-      <!-- TABLE -->
-      <section class="container">
-        <h1 class="title">Managing Books</h1>
-        <table class="table" id="bookTable" style="border: 1px solid black;">
-          <thead class="thead__container">
+<body>
+  <main>
+    <!-- <h2>AKARU</h2> -->
+    <!-- TABLE -->
+    <section class="container">
+      <h1 class="title">Managing Books</h1>
+      <table class="table" id="bookTable" style="border: 1px solid black;">
+        <thead class="thead__container">
+          <tr>
             <th>ID</th>
-            <th>Product Name</th>
+            <th>Book Name</th>
             <th>Category</th>
             <th>Author/s</th>
             <th>Image</th>
-          </thead>
-          <tbody data-book-container>
-            <template data-book-row>
-              <tr>
-                <td class="content" data-book-id>Product ID</td>
-                <td class="content" data-book-name>Product</td>
-                <td class="content" data-book-category>Product Category</td>
-                <td class="content" data-book-authors>Product Authors</td>
-                <td><img data-book-image src="something" alt=""></td>
-              </tr>
-            </template>
-          </tbody>
-        </table>
-      </section>
+          </tr>
+        </thead>
+        <tbody data-book-container>
+          <template data-book-row>
+            <tr>
+              <td class="content" data-book-id>Product ID</td>
+              <td class="content" data-book-name>Product</td>
+              <td class="content" data-book-category>Product Category</td>
+              <td class="content" data-book-authors>Product Authors</td>
+              <td class="content__image"><img data-book-image src="something" alt=""></td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </section>
+  </main>
 
-      <!-- Add Functionality here to show Add/Update/Remove Books Section -->
-      <section class="button__container">
-        <button class="button" id="addBookFormBtn" type="button">Add Book</button>
-        <button class="button" id="updateBookFormBtn" type="button">Update Book</button>
-        <button class="button" id="removeBookFormBtn" type="button">Remove Book</button>
-      </section>
-        
+  <div class="fix__bottom">
+    <!-- Add Functionality here to show Add/Update/Remove Books Section -->
+    <section class="button__container">
+      <button class="button" id="addBookFormBtn" type="button">Add Book</button>
+      <button class="button" id="updateBookFormBtn" type="button">Update Book</button>
+      <button class="button" id="removeBookFormBtn" type="button">Remove Book</button>
+    </section>
+    
+    <div id="formsContainer">
       <!-- ADD -->
       <form id="addBookForm" action="admin_book_page.html" class="hidden fixed">
         <h3 class="second__title">Add Book</h3><hr>
         <div class="hidden__container">
           <div class="width">
-            <label class="label__name" for="prodName">Product Name</label>
-            <input type="text" name="prodName" placeholder="product" required>
+            <label class="label__name" for="prodName">Book Name</label>
+            <input class="input__value" type="text" name="prodName" placeholder="product" required>
           </div>
           <div class="width">
             <label class="label__name" for="prodCategory">Category</label>
-            <input type="text" name="prodCategory" placeholder="category1, category2..." required>
+            <input class="input__value" type="text" name="prodCategory" placeholder="category1, category2..." required>
           </div>
           <div class="width">
             <label class="label__name" for="prodAuthors">Authors</label>
-            <input type="text" name="prodAuthors" placeholder="author1, author2..." required>
+            <input class="input__value" type="text" name="prodAuthors" placeholder="author1, author2..." required>
           </div>
           <div class="width">
             <label class="label__name" for="prodImage">Choose Image</label>
-            <input type="file" name="prodImage" accept="image/*" required>
+            <input class="image__value" type="file" name="prodImage" accept="image/*" required>
           </div>
           <div>
             <button class="button second__button" id="addBook" name="addBook" type="button">Add</button>
@@ -74,23 +78,23 @@
         <div class="hidden__container">
           <div class="width">
             <label class="label__name" for="prodId">Product ID</label>
-            <input type="text" name="prodId" placeholder="product id" required>
+            <input class="input__value" type="text" name="prodId" placeholder="product id" required>
           </div>
           <div class="width">
             <label class="label__name" for="prodName">Product Name</label>
-            <input type="text" name="prodName" placeholder="product" required>
+            <input class="input__value" type="text" name="prodName" placeholder="product" required>
           </div>
           <div class="width">
             <label class="label__name" for="prodAuthors">Authors</label>
-            <input type="text" name="prodAuthors" placeholder="author1, author2..." required>
+            <input class="input__value" type="text" name="prodAuthors" placeholder="author1, author2..." required>
           </div>
           <div class="width">
             <label class="label__name" for="prodCategory">Category</label>
-            <input type="text" name="prodCategory" placeholder="category1, category2..." required>
+            <input class="input__value" type="text" name="prodCategory" placeholder="category1, category2..." required>
           </div>
           <div class="width">
             <label class="label__name" for="prodImage">Choose Image</label>
-            <input type="file" name="prodImage" accept="image/*" required>
+            <input class="image__value" type="file" name="prodImage" accept="image/*" required>
           </div>
           <div>
             <button class="button second__button" id="updateBook" name="updateBook" type="button">Update</button>
@@ -104,19 +108,68 @@
         <div class="hidden__container">
           <div class="width">
             <label class="label__name" for="prodId">Product ID</label>
-            <input type="text" name="prodId" placeholder="product id" required>
+            <input class="input__value" type="text" name="prodId" placeholder="product id" required>
           </div>
           <div class="width">
             <label class="label__name" for="prodName">Product Name</label>
-            <input type="text" name="prodName" placeholder="product">
+            <input class="input__value" type="text" name="prodName" placeholder="product">
           </div>
           <div>
             <button class="button second__button" id="removeBook" name="removeBook" type="button">Delete</button>
           </div>
         </div>
       </form>
-    </main>
-    
-    <script type="module" src="bundled_files.js"> </script>
-  </body>
+    </div>
+  </div>
+  
+  <!-- <script type="module" src="bundled_files.js"></script> -->
+  <script>
+
+    const addBookFormBtn = document.getElementById('addBookFormBtn');
+    const updateBookFormBtn = document.getElementById('updateBookFormBtn');
+    const removeBookFormBtn = document.getElementById('removeBookFormBtn');
+
+    const addBookForm = document.getElementById('addBookForm');
+    const updateBookForm = document.getElementById('updateBookForm');
+    const removeBookForm = document.getElementById('removeBookForm');
+
+    const formsContainer = document.getElementById('formsContainer');
+
+    console.log('Buttons:', addBookFormBtn, updateBookFormBtn, removeBookFormBtn);
+    console.log('Forms:', addBookForm, updateBookForm, removeBookForm);
+    console.log('Forms Container:', formsContainer);
+
+    function showForm(formToShow) {
+      addBookForm.classList.add('hidden');
+      updateBookForm.classList.add('hidden');
+      removeBookForm.classList.add('hidden');
+
+      formToShow.classList.remove('hidden');
+
+      formsContainer.style.display = 'block';
+    }
+
+    addBookFormBtn.addEventListener('click', function() {
+      console.log('Add Book button clicked');
+      showForm(addBookForm);
+    });
+
+    updateBookFormBtn.addEventListener('click', function() {
+      console.log('Update Book button clicked');
+      showForm(updateBookForm);
+    });
+
+    removeBookFormBtn.addEventListener('click', function() {
+      console.log('Remove Book button clicked');
+      showForm(removeBookForm);
+    });
+
+    document.addEventListener('click', function(event) {
+      if (formsContainer && !formsContainer.contains(event.target) && !event.target.matches('.button')) {
+        console.log('Clicking outside, hiding forms');
+        formsContainer.style.display = 'none';
+      }
+    });
+  </script>
+</body>
 </html>

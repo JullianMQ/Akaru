@@ -136,10 +136,35 @@ td {
     margin: auto;
 }
 
-.fixed {
-    position: absolute;
+.content__image {
+    width: 50px;
+    height: auto;
+}
+
+.fixed-bottom {
+    position: fixed;
     bottom: 0;
-    width: 100%;
+    left: 0;
+    right: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+#formsContainer {
+    display: none;
+}
+
+.input__value {
+    border-bottom: 2px solid #1D1D1D;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+.input__value, .image__value {
+    padding: 15px 0 5px 0;
 }
 
 @media screen and (max-width: 768px) {
