@@ -61,6 +61,7 @@
 
 body {
     font-family: var(--body-font);
+    background-color: var(--secondary-color);
 }
 
 a {
@@ -161,10 +162,16 @@ td {
     border-top: none;
     border-right: none;
     border-left: none;
+    background-color: #F0F2F1;
 }
 
-.input__value, .image__value {
-    padding: 15px 0 5px 0;
+.second__button {
+    margin-top: 15px;
+}
+
+.width {
+    display: flex;
+
 }
 
 @media screen and (max-width: 768px) {
@@ -192,7 +199,19 @@ td {
     .hidden__container {
         flex-direction: column;
         padding: 30px;
-        
+    }
+
+    .width {
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+
+    .label__name {
+        font-size: var(--normal-font-size);
+    }
+
+    .input__value, .image__value {
+        padding: 10px 0 5px 0;
     }
 
 }
@@ -221,8 +240,17 @@ td {
         padding: 30px;
     }
 
-    .second__title {
-        font-size: var(--big-font-size);
+    .width {
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+
+    .label__name {
+        font-size: var(--medium-font-size);
+    }
+
+    .input__value, .image__value {
+        padding: 10px 0 5px 0;
     }
 }
 
@@ -247,6 +275,23 @@ td {
 
     .second__title {
         font-size: var(--big-font-size);
+    }
+
+    .width {
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+
+    .label__name {
+        font-size: var(--big-font-size);
+    }
+
+    .input__value, .image__value {
+        padding: 10px 0 5px 0;
+    }
+
+    .input__value {
+        font-size: var(--small-font-size);
     }
 }
 
@@ -273,7 +318,15 @@ td {
         font-size: var(--biggest-font-size);
     }
 
+    .label__name {
+        font-size: var(--medium-font-size);
+    }
+
     .width {
         width: 150px;
+    }
+
+    .input__value {
+        font-size: var(--smaller-font-size);
     }
 }

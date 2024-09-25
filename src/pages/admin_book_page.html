@@ -52,7 +52,7 @@
         <div class="hidden__container">
           <div class="width">
             <label class="label__name" for="prodName">Book Name</label>
-            <input class="input__value" type="text" name="prodName" placeholder="product" required>
+            <input class="input__value" type="text" name="prodName" placeholder="book name" required>
           </div>
           <div class="width">
             <label class="label__name" for="prodCategory">Category</label>
@@ -77,12 +77,12 @@
         <h3 class="second__title">Update Book</h3><hr>
         <div class="hidden__container">
           <div class="width">
-            <label class="label__name" for="prodId">Product ID</label>
-            <input class="input__value" type="text" name="prodId" placeholder="product id" required>
+            <label class="label__name" for="prodId">Book ID</label>
+            <input class="input__value" type="text" name="prodId" placeholder="book id" required>
           </div>
           <div class="width">
-            <label class="label__name" for="prodName">Product Name</label>
-            <input class="input__value" type="text" name="prodName" placeholder="product" required>
+            <label class="label__name" for="prodName">Book Name</label>
+            <input class="input__value" type="text" name="prodName" placeholder="book name" required>
           </div>
           <div class="width">
             <label class="label__name" for="prodAuthors">Authors</label>
@@ -107,12 +107,12 @@
         <h3 class="second__title">Remove Book</h3><hr>
         <div class="hidden__container">
           <div class="width">
-            <label class="label__name" for="prodId">Product ID</label>
-            <input class="input__value" type="text" name="prodId" placeholder="product id" required>
+            <label class="label__name" for="prodId">Book ID</label>
+            <input class="input__value" type="text" name="prodId" placeholder="book id" required>
           </div>
           <div class="width">
-            <label class="label__name" for="prodName">Product Name</label>
-            <input class="input__value" type="text" name="prodName" placeholder="product">
+            <label class="label__name" for="prodName">Book Name</label>
+            <input class="input__value" type="text" name="prodName" placeholder="book name">
           </div>
           <div>
             <button class="button second__button" id="removeBook" name="removeBook" type="button">Delete</button>
@@ -125,7 +125,6 @@
   <!-- <script type="module" src="bundled_files.js"></script> -->
   <script>
 
-    const addBookFormBtn = document.getElementById('addBookFormBtn');
     const updateBookFormBtn = document.getElementById('updateBookFormBtn');
     const removeBookFormBtn = document.getElementById('removeBookFormBtn');
 
@@ -150,17 +149,14 @@
     }
 
     addBookFormBtn.addEventListener('click', function() {
-      console.log('Add Book button clicked');
       showForm(addBookForm);
     });
 
     updateBookFormBtn.addEventListener('click', function() {
-      console.log('Update Book button clicked');
       showForm(updateBookForm);
     });
 
     removeBookFormBtn.addEventListener('click', function() {
-      console.log('Remove Book button clicked');
       showForm(removeBookForm);
     });
 
