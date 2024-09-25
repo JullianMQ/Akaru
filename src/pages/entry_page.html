@@ -2,65 +2,66 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="styles/style.css">
-    <title>Akaru</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <title>Akaru</title>
 </head>
 
-<body> 
-    <div class="container" id="container">
-        <!-- Log in -->
-        <form class="form-container logInForm" id="logInForm">
-            <h1>Already have an account?</h1>
-            <h5>Log in now and continue managing your library with ease.</h5>
-            <label for="email">Email</label>
-            <input id="logInEmail" type="email" name="email" placeholder="youremail@example.com" autocomplete="off">
-            <label for="password">Password</label>
-            <input id="logInPass" type="password" name="password" placeholder="********">
-            <section class="button-area">
-                <button type="button" class="active" id="logInBtn">Log In</button> <!-- submit login form -->
-                <button type="button" class="" id="register">Sign Up</button> <!-- toggle to sign-up form -->
-            </section>
-        </form>
+<body>
+  <div class="container" id="container">
+    <!-- Log in -->
+    <form class="form-container logInForm" id="logInForm">
+      <h1>Already have an account?</h1>
+      <h5>Log in now and continue managing your library with ease.</h5>
+      <label for="email">Email</label>
+      <input id="logInEmail" type="email" name="email" placeholder="youremail@example.com" autocomplete="off">
+      <label for="password">Password</label>
+      <input id="logInPass" type="password" name="password" placeholder="********">
+      <section class="button-area">
+        <button type="button" class="active" id="logInBtn">Log In</button> <!-- submit login form -->
+        <button type="button" class="" id="register">Sign Up</button> <!-- toggle to sign-up form -->
+      </section>
+    </form>
 
-        <!-- Sign up -->
-        <form class="form-container signUpForm" id="signUpForm">
-            <h1>New to our system?</h1>
-            <h5>Sign up today and take the first step towards efficient library management.</h5>
-            <section class="form-card">
-                <div class="item1">
-                    <label for="username">Name</label>
-                    <input  id="userName" type="text" name="username" placeholder="Bryan Santiago" autocomplete="off">
-                </div>
-                <div class="item2">
-                    <label for="phoneNum">Phone Number</label>
-                    <input id="userPhone" type="tel" name="phoneNum" placeholder="+639123456789" autocomplete="off">
-                </div>
-                <div class="item3">
-                    <label for="email">Email</label>
-                    <input  id="userEmail" type="email" name="email" placeholder="youremail@example.com" autocomplete="off">
-                </div>
-                
-                <div class="item4">
-                    <label for="password">Password</label>
-                    <input id="userPass" type="password" name="password" placeholder="********">
-                </div>
-            </section>
-            <section class="button-area">
-                <button type="button" class="active" id="signUpBtn">Sign Up</button> <!-- submit sign-up form -->
-                <button type="button" class="" id="login">Log In</button> <!-- toggle to login form -->
-            </section>
-        </form>
-
-        <!-- image panel -->
-        <div class="toggle-container">
-            <img src="public/images/book.jpg" class="toggle" alt="">
-            </div>
+    <!-- Sign up -->
+    <form class="form-container signUpForm" id="signUpForm">
+      <h1>New to our system?</h1>
+      <h5>Sign up today and take the first step towards efficient library management.</h5>
+      <section class="form-card">
+        <div class="item1">
+          <label for="username">Name</label>
+          <input id="userName" type="text" name="username" placeholder="Bryan Santiago" autocomplete="off">
+        </div>
+        <div class="item2">
+          <label for="phoneNum">Phone Number</label>
+          <input id="userPhone" type="tel" name="phoneNum" placeholder="+639123456789" autocomplete="off">
+        </div>
+        <div class="item3">
+          <label for="email">Email</label>
+          <input id="userEmail" type="email" name="email" placeholder="youremail@example.com" autocomplete="off">
         </div>
 
-    <script src="app/script.js"></script>
-    <script type="module" src="bundled_files.js" alt="Open book"> </script>
+        <div class="item4">
+          <label for="password">Password</label>
+          <input id="userPass" type="password" name="password" placeholder="********">
+        </div>
+      </section>
+      <section class="button-area">
+        <button type="button" class="active" id="signUpBtn">Sign Up</button> <!-- submit sign-up form -->
+        <button type="button" class="" id="login">Log In</button> <!-- toggle to login form -->
+      </section>
+    </form>
+
+    <!-- image panel -->
+    <div class="toggle-container">
+      <img src="public/images/book.jpg" class="toggle" alt="Open Book">
+    </div>
+  </div>
+
+  <script src="app/script.js"></script>
+  <script type="module" src="bundled_files.js"> </script>
 </body>
+
 </html>

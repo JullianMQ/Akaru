@@ -1,5 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+
 const firebaseConfig = {
   apiKey: "AIzaSyB0CO9PloCBIieVifCPi5ptBibNTRj4fZk",
   authDomain: "test-lms-addbase.firebaseapp.com",
@@ -12,5 +15,20 @@ const firebaseConfig = {
 
 // Firebase stuff
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-export { app };
+// Monitoring Auth State
+const checkAuthState = () => {
+    onAuthStateChanged(auth, user => {
+        if (user) {
+            // console.log("You are logged in!");
+            return true;
+        } else {
+            // console.log("You are logged out!");
+            return false;
+        }
+    });
+};
+
+export { app, auth, db, checkAuthState };

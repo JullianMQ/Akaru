@@ -1,12 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Akaru | Home</title>
-    <link href="styles/index.css" rel="stylesheet">
-  </head>
-  <body>
-  
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Akaru | Home</title>
+  <link href="styles/index.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header>
+    <section>
+      <h1>DISCOVER THE FUTURE OF READING</h1>
+      <p>Elevate your library management with effortless organization, instant access to a vast collection, and
+        round-the-clock support. It's digital book management, redefined.</p>
+    </section>
+
+    <section>
+      <input type="search" name="search-bar" value="" placeholder="Search Books...">
+      <button type="button">Search</button>
+    </section>
+
+      <button id="logOutBtn" type="button">Log Out</button>
+  </header>
+
+  <!-- to be deleted -->
+  <hr>
+
+  <main>
+    <section id="book_nav">
+      <ul style="list-style: none; display: flex; gap: 10px;">
+        <li><a href="">All Books</a></li>
+        <li><a href="">Romance</a></li>
+        <li><a href="">Mystery</a></li>
+        <li><a href="">Horror</a></li>
+        <li><a href="">Fantasy</a></li>
+        <li><a href="">Historical</a></li>
+        <li><a href="">Biography</a></li>
+        <li><a href="">Graphic Novel</a></li>
+        <li><a href="">Classics</a></li>
+        <li><a href="">Poetry</a></li>
+      </ul>
+    </section>
+
+    <!-- to be deleted -->
+    <hr>
+
+    <section id="book_section">
+
+      <!-- <template class="book_template"> -->
+        <div class="book_card">
+          <div class="book_img">
+            <img src="public/images/book.jpg" width="200" alt="">
+          </div>
+          <div class="book_info">
+            <p data-book-genre>Romance</p>
+            <p data-book-name>Harry Potter</p>
+            <button data-book-borrow-btn type="button">Borrow</button>
+          </div>
+
+        </div>
+      <!-- </template> -->
+
+    </section>
+  </main>
+
+  <script type="module" src="bundled_files.js"> </script>
+</body>
+
 </html>

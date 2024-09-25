@@ -20,7 +20,6 @@ import {
 } from "firebase/firestore";
 import { app } from "./init.js";
 
-
 const auth = getAuth(app);
 const db = getFirestore(app);
 
@@ -109,26 +108,8 @@ logInBtn.addEventListener("click", () => {
 
 // Log In End
 
-// TODO: MOVE TO INDEX HTML
-// Log Out Start
-// const userLogOut = async () => {
-//     console.log("Log Out")
-//     signOut(auth)
-//         .then(() => {
-//             alert("Signed Out!")
-//         })
-//         .catch((error) => {
-//             console.log(error);
-//         });
-// }
-
-// logOutBtn.addEventListener("click", () => {
-//     userLogOut();
-// });
-// Log Out End
-
 // Monitoring Auth State
-const checkAuthState = async () => {
+const checkAuthState = () => {
     onAuthStateChanged(auth, user => {
         if (user) {
             console.log("You are logged in!");
@@ -137,6 +118,5 @@ const checkAuthState = async () => {
         }
     });
 };
-checkAuthState();
 
-// export { checkAuthState };
+checkAuthState();
