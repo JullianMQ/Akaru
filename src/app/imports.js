@@ -12,5 +12,7 @@ if (window.location.pathname.includes('index1.html')) {
 }
 if (window.location.pathname.includes('admin_user.html')) {
     import('./admin_user.js').then(module => {});
+    import('./admin_user_page.js').then(module => {});
 }
+
 // import '../users/firestore.js';
