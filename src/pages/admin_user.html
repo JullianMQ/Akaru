@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Akaru | Admin Page</title>
+  <link rel="stylesheet" type="text/css" href="styles/hidden.css">
+</head>
+
+<body>
+  <main>
+    <h2>AKARU</h2>
+    <section>
+      <h1>Managing Users</h1>
+      <table class="table" id="userTable" style="border: 1px solid black;">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody data-user-container>
+          <template data-user-row>
+            <tr>
+              <td data-user-id>User ID</td>
+              <td data-user-username>Username</td>
+              <td data-user-email>Email</td>
+              <td data-user-role>Role</td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <button id="addUserFormBtn" type="button">Add User</button>
+      <button id="updateUserFormBtn" type="button">Update User</button>
+      <button id="removeUserFormBtn" type="button">Remove User</button>
+    </section>
+
+    <form id="addUserForm" action="admin_user_page.html">
+      <h3>Add User</h3>
+      <hr>
+      <div>
+        <div>
+          <label for="username">Username</label>
+          <input type="text" name="username" placeholder="username" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" name="email" placeholder="email" required>
+        </div>
+        <div>
+          <label for="role">Role</label>
+          <select name="role">
+            <option value="Select a role">Select a role</option>
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+        <div>
+          <button id="addUser" name="addUser" type="button">Add</button>
+        </div>
+      </div>
+    </form>
+
+    <form id="updateUserForm">
+      <h3>Update User</h3>
+      <hr>
+      <div>
+        <div>
+          <label for="userId">User ID</label>
+          <input type="text" name="userId" placeholder="user id" required>
+        </div>
+        <div>
+          <label for="username">Username</label>
+          <input type="text" name="username" placeholder="username">
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" name="email" placeholder="email">
+        </div>
+        <div>
+          <label for="role">Role</label>
+          <select name="role">
+            <option value="Select a role">Select a role</option>
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+        <div>
+          <button id="updateUser" name="updateUser" type="button">Update</button>
+        </div>
+      </div>
+    </form>
+
+    <form id="removeUserForm">
+      <h3>Remove User</h3>
+      <hr>
+      <div>
+        <div>
+          <label for="userId">User ID</label>
+          <input type="text" name="userId" placeholder="user id" required>
+
+          <label for="userEmail">User Email</label>
+          <input type="text" name="userEmail" placeholder="email@example.com" required>
+        </div>
+        <div>
+          <button id="removeUser" name="removeUser" type="button">Delete</button>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <script type="module" src="bundled_files.js"></script>
+</body>
+
+</html>

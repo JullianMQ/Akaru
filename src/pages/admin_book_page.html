@@ -122,50 +122,7 @@
     </div>
   </div>
   
-  <!-- <script type="module" src="bundled_files.js"></script> -->
-  <script>
+  <script type="module" src="bundled_files.js"></script>
 
-    const updateBookFormBtn = document.getElementById('updateBookFormBtn');
-    const removeBookFormBtn = document.getElementById('removeBookFormBtn');
-
-    const addBookForm = document.getElementById('addBookForm');
-    const updateBookForm = document.getElementById('updateBookForm');
-    const removeBookForm = document.getElementById('removeBookForm');
-
-    const formsContainer = document.getElementById('formsContainer');
-
-    console.log('Buttons:', addBookFormBtn, updateBookFormBtn, removeBookFormBtn);
-    console.log('Forms:', addBookForm, updateBookForm, removeBookForm);
-    console.log('Forms Container:', formsContainer);
-
-    function showForm(formToShow) {
-      addBookForm.classList.add('hidden');
-      updateBookForm.classList.add('hidden');
-      removeBookForm.classList.add('hidden');
-
-      formToShow.classList.remove('hidden');
-
-      formsContainer.style.display = 'block';
-    }
-
-    addBookFormBtn.addEventListener('click', function() {
-      showForm(addBookForm);
-    });
-
-    updateBookFormBtn.addEventListener('click', function() {
-      showForm(updateBookForm);
-    });
-
-    removeBookFormBtn.addEventListener('click', function() {
-      showForm(removeBookForm);
-    });
-
-    document.addEventListener('click', function(event) {
-      if (formsContainer && !formsContainer.contains(event.target) && !event.target.matches('.button')) {
-        console.log('Clicking outside, hiding forms');
-        formsContainer.style.display = 'none';
-      }
-    });
-  </script>
 </body>
 </html>

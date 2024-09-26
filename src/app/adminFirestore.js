@@ -13,20 +13,14 @@ import {
     updateDoc,
     getFirestore
 } from "firebase/firestore";
-import { app } from "./init.js"
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { auth, db, storage } from "./init.js"
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 // Firestore Variables
-const auth = getAuth(app);
-const db = getFirestore(app);
-const storage = getStorage(app);
 let idArray = [];
 let authorsMap = {};
 
 // DOM Variables
-const addBookFormBtn = document.querySelector("#addBookFormBtn");
-const updateBookFormBtn = document.querySelector("#updateBookFormBtn");
-const removeBookFormBtn = document.querySelector("#removeBookFormBtn");
 const addBookForm = document.querySelector("#addBookForm");
 const updateBookForm = document.querySelector("#updateBookForm");
 const removeBookForm = document.querySelector("#removeBookForm");
@@ -92,10 +86,6 @@ const getBook = async () => {
 window.onload = getBooks();
 
 // Adding New Books
-addBookFormBtn.addEventListener("click", () => {
-    addBookForm.classList.toggle("hidden");
-})
-
 const addNewBook = async () => {
     const productNameInput = document.querySelectorAll("[name=prodName]");
     const productCategoryInput = document.querySelectorAll("[name=prodCategory]");
@@ -168,10 +158,10 @@ const addNewBook = async () => {
             imagePath: imagePath
         });
 
-        console.log("Book added successfully with ID:", newId);
+        // console.log("Book added successfully with ID:", newId);
         await getBooks();
         addBookForm.reset();
-        addBookForm.classList.add("hidden");
+        // addBookForm.classList.add("hidden");
     } catch (error) {
         console.error("Error adding book:", error.message);
     }
@@ -181,10 +171,6 @@ addBookBtn.addEventListener("click", addNewBook);
 // End Adding New Books
 
 // Updating Books
-updateBookFormBtn.addEventListener("click", () => {
-    updateBookForm.classList.toggle("hidden");
-})
-
 const updateBook = async () => {
     const productIdInput = updateBookForm.querySelector("[name=prodId]");
     const productNameInput = updateBookForm.querySelector("[name=prodName]");
@@ -241,14 +227,14 @@ const updateBook = async () => {
 
         if (Object.keys(updateData).length > 0) {
             await updateDoc(doc(db, "book", prodId), updateData);
-            console.log("Book updated successfully.");
+            // console.log("Book updated successfully.");
         } else {
             console.log("No updates provided.");
         }
 
         await getBooks();
         updateBookForm.reset();
-        updateBookForm.classList.add("hidden");
+        // updateBookForm.classList.add("hidden");
     } catch (error) {
         console.error("Error updating book:", error.message);
     }
@@ -258,10 +244,6 @@ updateBookBtn.addEventListener("click", updateBook);
 // End Updating Books
 
 // Deleting Books
-removeBookFormBtn.addEventListener("click", () => {
-    removeBookForm.classList.toggle("hidden");
-})
-
 const deleteBook = async () => {
     const productId = document.querySelectorAll("[name=prodId]")
     const productNameInput = document.querySelectorAll("[name=prodName]");
@@ -273,6 +255,7 @@ const deleteBook = async () => {
     try {
         await deleteDoc(doc(db, "book", prodId));
         await getBooks();
+        removeBookForm.reset();
     } catch (error) {
         console.error(error.message);
     }
