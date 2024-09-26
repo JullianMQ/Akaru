@@ -23,9 +23,6 @@ const db = getFirestore(app);
 let userIDs = [];  // Storing the id or like array to
 
 //mga buttons from the html
-const addUserFormBtn = document.querySelector("#addUserFormBtn");
-const updateUserFormBtn = document.querySelector("#updateUserFormBtn");
-const removeUserFormBtn = document.querySelector("#removeUserFormBtn");
 const addUserForm = document.querySelector("#addUserForm");
 const updateUserForm = document.querySelector("#updateUserForm");
 const removeUserForm = document.querySelector("#removeUserForm");
@@ -71,10 +68,6 @@ const appendUserToContainer = async (usersID, userName, userEmail, userRole) => 
 window.addEventListener("load", getUsers);
 
 //toggle add user form
-addUserFormBtn.addEventListener('click', () => {
-    addUserForm.classList.toggle("hidden");
-});
-
 //add new user
 const addNewUser = async () => {
     const userNameInput = addUserForm.querySelector("[name=username]");
@@ -113,7 +106,6 @@ const addNewUser = async () => {
         // console.log("User added successfully with the ID:", user.uid); // notify website kung nakapag add ng uid 
         await getUsers();
         addUserForm.reset();
-        addUserForm.classList.add("hidden");
     } catch (error) {
         console.error("Error adding the user: ", error.message);
     }
@@ -141,10 +133,6 @@ addUserBtn.addEventListener("click", addNewUser);
 
 
 //toggle update user form
-updateUserFormBtn.addEventListener('click', () => {
-    updateUserForm.classList.toggle("hidden");
-});
-
 //update user
 const updateUser = async () => {
     const userIdInput = updateUserForm.querySelector("[name=userId]");
@@ -179,7 +167,6 @@ const updateUser = async () => {
         }
         await getUsers();
         updateUserForm.reset();
-        updateUserForm.classList.add("hidden");
     } catch (error) {
         console.error("Error updating the user: ", error.message);
     }
@@ -188,10 +175,6 @@ const updateUser = async () => {
 updateUserBtn.addEventListener("click", updateUser);
 
 //toggle remove user form
-removeUserFormBtn.addEventListener('click', () => {
-    removeUserForm.classList.toggle("hidden");
-});
-
 //remove user
 const removeUser = async () => {
     const userIdInput = removeUserForm.querySelector("[name=userId]");
@@ -205,7 +188,6 @@ const removeUser = async () => {
 
         await getUsers();
         removeUserForm.reset();
-        removeUserForm.classList.add("hidden");
     } catch (error) {
         console.error("Error removing the user: ", error.message);
     }
