@@ -16,19 +16,27 @@ module.exports = {
             },
             {
                 directory: path.join(__dirname, '/src/app'),
-                publicPath: '/app'
+                publicPath: '/app',
             },
             {
                 directory: path.join(__dirname, '/src/styles'),
-                publicPath: '/styles'
+                publicPath: '/styles',
             },
             {
                 directory: path.join(__dirname, '/public'),
-                publicPath: '/public'
-            }
+                publicPath: '/public',
+            },
+        ],
+        port: 8080,
+        proxy: [
+            {
+                context: ['/api'], 
+                target: 'http://localhost:3000',
+                changeOrigin: true,
+                pathRewrite: { '^/api': '' },
+            },
         ],
         compress: true,
-        port: 8080,
         hot: true, // Hot reloading
     },
     module: {

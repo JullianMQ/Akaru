@@ -75,32 +75,32 @@ const addNewUser = async () => {
     const userRoleInput = addUserForm.querySelector("[name=role]");
     await getUsers();
 
-    let newID = 1;
-    while (userIDs.includes(newID)) {
-        newID++;// Ito ung gagamtin na id para kunin ung mga inputed id para magamit sa database
-    }
-
     const userName = userNameInput.value.trim();
     const userEmail = userEmailInput.value.trim();
     const userRole = userRoleInput.value.trim();
+    const userPass = "test123"; //default pass ginamit namen since nag eeror sya if walang defaultPassword and userPass sa line nato 
+    const objToSend = { displayName: userName, email: userEmail, password: userPass };
+    let userID;
 
     try {
         //create user in Firebase Authentication
-        const userPass = "defaultPassword"; //default pass ginamit namen since nag eeror sya if walang defaultPassword and userPass sa line nato 
-        const userCredential = await createUserWithEmailAndPassword(auth, userEmail, userPass); // since nag defaultPassword kame need den i call out baka mag error
-        const user = userCredential.user;
+        // METHOD TO ADD USER IN AUTHENTICATION WITH API
+        await fetch("/api/users/create", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", },
+            body: JSON.stringify(objToSend),
+        })
+            .then(res => res.json())
+            .then(data => {
+                userID = data.user
+            })
+            .catch(err => console.error(err))
 
-        //update user profile
-        await updateProfile(user, {
-            displayName: userName
-        });
-
-        //Dito nag store ung user details in Firestore with the user's UID
-        await setDoc(doc(db, "users", user.uid), {
+        await setDoc(doc(db, "users", userID), {
             userName: userName,
             email: userEmail,
             userRole: userRole,
-            customID: newID //dito nagstore custom id na ginamit namen is customID since pede pala syang any var name
+            userPass: userPass
         });
 
         // console.log("User added successfully with the ID:", user.uid); // notify website kung nakapag add ng uid 
@@ -110,26 +110,8 @@ const addNewUser = async () => {
         console.error("Error adding the user: ", error.message);
     }
 };
-
-//get personal details Firebase
-const addToUserCollection = async (newID, username, email, userRole) => {
-    try {
-        const docRef = doc(db, "users", newID);
-        await setDoc(docRef, {
-            userName: username,
-            email: email,
-            userRole: userRole
-        });
-        // console.log(`Added to document with ID: ${docRef.id}!`);
-
-    } catch (error) {
-        console.error(`Error adding document: ${error.message}`);
-    }
-};
-
-// console.log(addToUserCollection)
-
 addUserBtn.addEventListener("click", addNewUser);
+// end add new user
 
 
 //toggle update user form
@@ -158,7 +140,24 @@ const updateUser = async () => {
         updateData.userRole = userRole;
     }
 
+
     try {
+        await fetch(`api/users/change`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json", },
+            body: JSON.stringify({
+                uid: userID,
+                displayName: userName,
+                email: email
+                // add password
+                // password:
+
+            })
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.error(err))
+
         if (Object.keys(updateData).length > 0) {
             await updateDoc(doc(db, "users", userID), updateData);
             // console.log("User updated successfully with the ID:", userID);
@@ -181,11 +180,8 @@ const removeUser = async () => {
     const userID = userIdInput.value.trim();
 
     try {
-        // await deleteDoc(doc(db, "users", userID));
-        // await deleteUser(userID);
-        // console.log("User removed successfully with the ID:", userID);
-
-
+        await fetch(`api/users/${userID}`);
+        await deleteDoc(doc(db, "users", userID));
         await getUsers();
         removeUserForm.reset();
     } catch (error) {
