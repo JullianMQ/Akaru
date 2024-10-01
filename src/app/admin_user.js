@@ -1,25 +1,14 @@
 import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    updateProfile,
-    deleteUser,
-} from "firebase/auth";
-import {
     doc,
     collection,
     setDoc,
-    getDoc,
     getDocs,
-    addDoc,
     updateDoc,
     deleteDoc,
-    getFirestore
 } from "firebase/firestore";
-import { app } from "./init.js";
+import { db } from "./init.js";
 
 //variables na ginamit for the id
-const auth = getAuth(app);
-const db = getFirestore(app);
 let userIDs = [];  // Storing the id or like array to
 
 //mga buttons from the html

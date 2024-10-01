@@ -1,19 +1,12 @@
 import {
-    getAuth,
-    onAuthStateChanged
-} from "firebase/auth";
-import {
     doc,
     collection,
     setDoc,
-    getDoc,
     getDocs,
-    addDoc,
     deleteDoc,
     updateDoc,
-    getFirestore
 } from "firebase/firestore";
-import { auth, db, storage } from "./init.js";
+import { db, storage } from "./init.js"
 import { ref, uploadBytesResumable, getDownloadURL, listAll } from "firebase/storage";
 
 // Firestore Variables
@@ -40,6 +33,7 @@ const getBooks = async () => {
     getBooks.forEach(async (doc) => {
         const docData = doc.data();
         idArray.push(parseInt(doc.id));
+        // Show authors
         await appendToContainer(doc.id, docData.bookName, docData.bookCategory, docData.authors, docData.imagePath);
     });
     return idArray;
