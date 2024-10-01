@@ -25,19 +25,42 @@ const bookContainer = document.querySelector("[data-book-container]");
 const rowTemplate = document.querySelector("[data-book-row]");
 
 // Start Get Books
+
 const getBooks = async () => {
     const booksCollection = collection(db, "book");
     const getBooks = await getDocs(booksCollection);
     idArray = [];
     bookContainer.innerHTML = "";
+
+    const booksData = [];
+
     getBooks.forEach(async (doc) => {
         const docData = doc.data();
         idArray.push(parseInt(doc.id));
-        // Show authors
-        await appendToContainer(doc.id, docData.bookName, docData.bookCategory, docData.authors, docData.imagePath);
+        booksData.push({
+            id: parseInt(doc.id),
+            data: docData
+        });
     });
+
+    idArray.sort((a, b) => a - b);
+
+    for (let i = 0; i < idArray.length; i++) {
+        const book = booksData.find(book => book.id === idArray[i]);
+        if (book) {
+            await appendToContainer(
+                book.id,
+                book.data.bookName,
+                book.data.bookCategory,
+                book.data.authors,
+                book.data.imagePath
+            );
+        }
+    }
+
     return idArray;
 }
+
 
 const appendToContainer = async (productID, productName, productCategory, productAuthors, productImage) => {
     const row = rowTemplate.content.cloneNode(true).children[0];
@@ -83,10 +106,6 @@ const addNewBook = async () => {
     await getBooks();
 
     let newId = 1;
-    while (idArray.includes(newId)) {
-        newId++;
-    }
-
     const prodName = productNameInput[0].value.trim();
     const prodCategory = productCategoryInput[0].value.split(",").map(x => x.trim()).filter(x => x !== "");
     const prodAuthors = productAuthorInput[0].value.split(",").map(x => x.trim()).filter(x => x !== "");
@@ -96,22 +115,14 @@ const addNewBook = async () => {
         let author = `Author${i + 1}`;
         authorsMap[author] = prodAuthors[i];
     }
-        // Katangahan sa javascript
-    // Use a better sorting algo, JS way sucks
-    // console.log(idArray);
+
     // idArray.sort((a, b) => a - b);
     // idArray.sort((a, b) => b - a);
-    // for (inc = 0; inc < idArray.length; inc++) {
-    //     console.log(inc)
-    //     if (idArray.includes(inc.toString())) {
-    //         console.log(true)
-    //     }
-    // }
-    // while (idArray.includes(inc.toString())) {
-    //     inc++;
-    // }
+    for (newId; newId <= idArray.length; newId++) {
+        if (idArray.includes(newId)) {}
+        else {break}
+    }
 
-    // FireStorage: ADD IMAGE SUPPORT HERE
     try {
         let imagePath = "";
         if (productImage) {
@@ -119,7 +130,7 @@ const addNewBook = async () => {
 
             if (fileExists) {
                 alert("This file name is already taken and uploaded, try another.");
-                return; 
+                return;
             }
 
             const imageRef = ref(storage, `book_images/${productImage.name}`);
