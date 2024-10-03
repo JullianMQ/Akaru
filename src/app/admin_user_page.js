@@ -35,6 +35,3 @@ removeUserFormBtn.addEventListener('click', function () {
     removeUserForm.classList.remove('hidden');
     formsContainer.style.display = 'block'; 
 });
-
-
-

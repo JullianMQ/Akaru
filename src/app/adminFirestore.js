@@ -69,7 +69,6 @@ const appendToContainer = async (productID, productName, productCategory, produc
     const category = row.querySelector("[data-book-category]");
     const authors = row.querySelector("[data-book-authors]");
     const image = row.querySelector("[data-book-image]");
-
     let authorsList = Object.values(productAuthors || {});
 
     id.textContent = productID;
@@ -110,6 +109,7 @@ const addNewBook = async () => {
     const prodCategory = productCategoryInput[0].value.split(",").map(x => x.trim()).filter(x => x !== "");
     const prodAuthors = productAuthorInput[0].value.split(",").map(x => x.trim()).filter(x => x !== "");
 
+    // Appending number incase of multiple authors
     authorsMap = {};
     for (let i = 0; i < prodAuthors.length; i++) {
         let author = `Author${i + 1}`;
@@ -118,6 +118,7 @@ const addNewBook = async () => {
 
     // idArray.sort((a, b) => a - b);
     // idArray.sort((a, b) => b - a);
+    // Getting ID for books
     for (newId; newId <= idArray.length; newId++) {
         if (idArray.includes(newId)) {}
         else {break}

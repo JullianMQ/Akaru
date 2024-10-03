@@ -19,10 +19,23 @@
 
     <section>
       <input type="search" name="search-bar" value="" placeholder="Search Books...">
-      <button type="button">Search</button>
+      <button id="searchBtn" type="button">Search</button>
     </section>
 
-      <button id="logOutBtn" type="button">Log Out</button>
+      <!-- TO BE CHANGED BY FRONTEND -->
+    <section>
+      <div>
+        <!-- BURGER MENU -->
+        <i>USER ICON PLACEHOLDER</i>
+        <div>
+          <a href="#">Change Password</a>
+          <a href="#">See Books</a>
+          <button id="logOutBtn" type="button">Log Out</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- <button id="addBook" type="button">Add Book</button> -->
   </header>
 
   <!-- to be deleted -->
@@ -47,21 +60,22 @@
     <!-- to be deleted -->
     <hr>
 
-    <section id="book_section">
+    <section id="book_section" style="display: flex; flex-wrap: wrap;">
 
-      <!-- <template class="book_template"> -->
+      <template id="book_template">
         <div class="book_card">
-          <div class="book_img">
-            <img src="public/images/book.jpg" width="200" alt="">
+          <div>
+            <img data-book-img src="public/images/book.jpg" width="200" alt="">
           </div>
           <div class="book_info">
-            <p data-book-genre>Romance</p>
             <p data-book-name>Harry Potter</p>
+            <p data-book-category>Romance</p>
+            <p data-book-authors>HIDE ME</p>
             <button data-book-borrow-btn type="button">Borrow</button>
           </div>
 
         </div>
-      <!-- </template> -->
+      </template>
 
     </section>
   </main>
