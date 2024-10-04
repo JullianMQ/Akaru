@@ -89,6 +89,10 @@ header nav {
     align-items: center;
 }
 
+.hidden {
+    display: none;
+}
+
 .hamburger .icon {
     background-color: transparent;
     color: #D9D9D9;

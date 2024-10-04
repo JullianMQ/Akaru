@@ -139,12 +139,12 @@ const addNewBook = async () => {
                     'state_changed',
                     null,
                     (error) => {
-                        console.error("Image upload failed:", error);
+                        // console.error("Image upload failed:", error);
                         reject(error);
                     },
                     async () => {
                         imagePath = await getDownloadURL(uploadTask.snapshot.ref);
-                        console.log("Image uploaded successfully:", imagePath);
+                        // console.log("Image uploaded successfully:", imagePath);
                         resolve();
                     }
                 );
@@ -161,6 +161,7 @@ const addNewBook = async () => {
         await getBooks();
         addBookForm.reset();
     } catch (error) {
+        alert("Error deleting book: Check logs in dev tools");
         console.error("Error adding book:", error.message);
     }
 };
@@ -216,12 +217,13 @@ const updateBook = async () => {
                     null,
                     (error) => {
                         console.error("Image upload failed:", error);
+                        alert("Error deleting book: Check logs in dev tools");
                         reject(error);
                     },
                     async () => {
                         const imagePath = await getDownloadURL(uploadTask.snapshot.ref);
                         updateData.imagePath = imagePath;
-                        console.log("Image uploaded successfully:", imagePath);
+                        // console.log("Image uploaded successfully:", imagePath);
                         resolve();
                     }
                 );
@@ -231,13 +233,14 @@ const updateBook = async () => {
         if (Object.keys(updateData).length > 0) {
             await updateDoc(doc(db, "book", prodId), updateData);
         } else {
-            console.log("No updates provided.");
+            // console.log("No updates provided.");
         }
 
         await getBooks();
         updateBookForm.reset();
     } catch (error) {
         console.error("Error updating book:", error.message);
+        alert("Error deleting book: Check logs in dev tools");
     }
 };
 
@@ -263,18 +266,19 @@ const deleteBook = async () => {
         if (imagePath) {
             const imageRef = ref(storage, imagePath);
             await deleteObject(imageRef);
-            console.log("Image deleted from storage:", imagePath);
+            // console.log("Image deleted from storage:", imagePath);
         } else {
-            console.log("No image to delete for this book.");
+            // console.log("No image to delete for this book.");
         }
 
         await deleteDoc(bookDoc);
-        console.log("Book document deleted from Firestore");
+        // console.log("Book document deleted from Firestore");
 
         await getBooks();
         removeBookForm.reset();
     } catch (error) {
         console.error("Error deleting book:", error.message);
+        alert("Error deleting book: Check logs in dev tools");
     }
 };
 

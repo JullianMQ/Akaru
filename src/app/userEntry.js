@@ -112,9 +112,9 @@ logInBtn.addEventListener("click", () => {
 const checkAuthState = () => {
     onAuthStateChanged(auth, user => {
         if (user) {
-            console.log("You are logged in!");
+            // console.log("You are logged in!");
         } else {
-            console.log("You are logged out!");
+            // console.log("You are logged out!");
         }
     });
 };

@@ -24,7 +24,7 @@ const rowTemplate = document.querySelector("[data-user-row]");
 
 //get the users
 const getUsers = async () => {
-    const usersCollection = collection(db, "users"); //This part sets the users varriable in the database
+    const usersCollection = collection(db, "users");
     const getUsers = await getDocs(usersCollection);
 
     userIDs = [];
@@ -32,9 +32,7 @@ const getUsers = async () => {
     getUsers.forEach(async (doc) => {
         const docData = doc.data();
         userIDs.push(parseInt(doc.id));
-        await appendUserToContainer(doc.id, docData.userName, docData.email, docData.userRole); //console log values
-        // console.log("Doc.id= ", doc.id, "Username= ", docData.userName);
-        // console.log("DocData: ", docData);
+        await appendUserToContainer(doc.id, docData.userName, docData.email, docData.userRole); 
     });
     return userIDs;
 };
@@ -92,7 +90,6 @@ const addNewUser = async () => {
             userPass: userPass
         });
 
-        // console.log("User added successfully with the ID:", user.uid); // notify website kung nakapag add ng uid 
         await getUsers();
         addUserForm.reset();
     } catch (error) {
@@ -144,12 +141,14 @@ const updateUser = async () => {
             })
         })
             .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(err => console.error(err))
+            .then(data => data)
+            .catch(err => () => {
+                alert("Error updating data: Check logs")
+                console.error(err)
+            })
 
         if (Object.keys(updateData).length > 0) {
             await updateDoc(doc(db, "users", userID), updateData);
-            // console.log("User updated successfully with the ID:", userID);
         } else {
             console.error("No fields to update.");
         }
@@ -169,7 +168,7 @@ const removeUser = async () => {
     const userID = userIdInput.value.trim();
 
     try {
-        await fetch(`api/users/${userID}`);
+        await fetch(`api/users/${userID}`, { method: "DELETE" });
         await deleteDoc(doc(db, "users", userID));
         await getUsers();
         removeUserForm.reset();

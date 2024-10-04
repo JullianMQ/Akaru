@@ -1,14 +1,13 @@
 import { auth, db, storage, checkAuthState } from "./init.js"
 import { doc, collection, addDoc, getDocs, setDoc } from "firebase/firestore";
-import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { signOut } from "firebase/auth";
 
 // DOM VARIABLES
 const logOutBtn = document.querySelector("#logOutBtn");
-const searchBtn = document.querySelector("#searchBtn");
+const searchInput = document.querySelector("#search-input");
 const bookContainer = document.querySelector("#book_section");
 const bookTemplate = document.querySelector("#book_template");
-const borrowBtnCard = document.querySelector("[data-book-borrow-btn]")
+const bookDataArr = [];
 
 // Testing purposes only
 // const addBookBtn = document.querySelector("#addBook");
@@ -25,8 +24,8 @@ const getBooks = async () => {
         let bookImage = doc.data().imagePath;
         appendToContainer(bookName, bookCategory, bookAuthors, bookImage);
     })
+    addSearchFilter();
 };
-// searchBtn.addEventListener("click", getBooks);
 
 const appendToContainer = (bookName, bookCategory, bookAuthors, bookImage) => {
     const bookTemp = bookTemplate.content.cloneNode(true).children[0];
@@ -34,17 +33,50 @@ const appendToContainer = (bookName, bookCategory, bookAuthors, bookImage) => {
     const name = bookTemp.querySelector("[data-book-name]");
     const category = bookTemp.querySelector("[data-book-category]");
     const authors = bookTemp.querySelector("[data-book-authors]");
+    const borrowBtn = bookTemp.querySelector("[data-book-borrow-btn]");
     let authorsList = Object.values(bookAuthors || {});
 
     img.src = bookImage;
     name.textContent = bookName;
     category.innerHTML = bookCategory.join(", ");
     authors.innerHTML = authorsList.join(", ");
+
     bookContainer.append(bookTemp);
+
+    bookDataArr.push({
+        name: bookName,
+        category: bookCategory,
+        authors: authorsList.map(name => name.toLowerCase()),
+        borrowBtn: borrowBtn,
+        card: bookTemp
+    });
 };
 
-// TODO: ADD FILTERING AND SEARCHING
+// Search Function || Search Filter
+const addSearchFilter = () => {
+    searchInput.addEventListener("input", queryInput => {
+        let query = queryInput.target.value.toLowerCase();
+        bookDataArr.forEach(book => {
+            // If name or author in search query
+            const isBookName = book.name.toLowerCase().includes(query);
+            const isAuthorName = book.authors.some(author => author.includes(query));
+            const isVisible = isBookName || isAuthorName;
+            book.card.classList.toggle("hidden", !isVisible);
+        })
+        window.location.hash = "";
+    })
+}
 
+// Category Filtering
+const navSearch = document.querySelectorAll(".category");
+window.addEventListener('hashchange', () => {
+    const hash = window.location.hash.slice(1);
+    bookDataArr.forEach(book => {
+        // look if genre inside array
+        const isVisible = book.category.some(genre => genre.toLowerCase().includes(hash))
+        book.card.classList.toggle("hidden", !isVisible);
+    })
+})
 
 // TODO: ADD BORROWING BOOKS
 const borrowBook = async () => {
@@ -122,19 +154,19 @@ const borrowBook = async () => {
 
 // Log Out Start
 const userLogOut = async () => {
-    // console.log("Log Out")
     signOut(auth)
         .then(() => {
             alert("Signed Out!")
         })
         .catch((error) => {
-            console.log(error);
+            alert("Something went wrong: Check the logs");
+            console.log(error.message);
         });
 };
 
 // check if logged in, 
 // TODO: if not then push them into login
-window.onload = console.log(checkAuthState());
+window.onload = checkAuthState();
 window.onload = getBooks();
 
 logOutBtn.addEventListener("click", () => {

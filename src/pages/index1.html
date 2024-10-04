@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Akaru | Home</title>
-  <link href="../styles/index.css" rel="stylesheet">
+  <link href="styles/index.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -16,7 +16,7 @@
   <header>
     <section class="background">
       <video class="background-video" id="background-video" autoplay loop muted>
-        <source src="././public/videos/book_landing.mp4" type="video/mp4">
+        <source src="public/videos/book_landing.mp4" type="video/mp4">
       </video>
     </section>
 
@@ -24,7 +24,7 @@
       <nav>
         <h3>Akaru</h3>
         <div class="hamburger" id="hamburger">
-          <img class="icon" id="icon" src="./public/images/user-profile.png">
+          <img class="icon" id="icon" src="public/images/user-profile.png">
         </div>
       </nav>
       <section class="menu" id="menu">
@@ -51,38 +51,25 @@
       </div>
 
       <div>
-        <input class="search" type="search" name="search-bar" value="" placeholder="Search a Book">
-        <!-- keep or not???
-        <button type="button">Search</button> -->
+        <input id="search-input" class="search" type="search" name="search-bar" value="" placeholder="Search a Book">
       </div>
     </section>
-    <!-- <section>
-      <div>
-        <i>USER ICON PLACEHOLDER</i>
-        <div>
-          <a href="#">Change Password</a>
-          <a href="#">See Books</a>
-          <button id="logOutBtn" type="button">Log Out</button>
-        </div>
-      </div>
-    </section> -->
-
 
   </header>
 
   <main>
     <section class="category-list" id="book_nav">
       <ul class="content">
-        <li><a href="">All</a></li>
-        <li><a href="">Romance</a></li>
-        <li><a href="">Mystery</a></li>
-        <li><a href="">Horror</a></li>
-        <li><a href="">Fantasy</a></li>
-        <li><a href="">Historical</a></li>
-        <li><a href="">Biography</a></li>
-        <li><a href="">Graphic Novel</a></li>
-        <li><a href="">Classics</a></li>
-        <li><a href="">Poetry</a></li>
+        <li><a class="category " href="#">All</a></li>
+        <li><a class="category " href="#romance">Romance</a></li>
+        <li><a class="category " href="#mystery">Mystery</a></li>
+        <li><a class="category " href="#horror">Horror</a></li>
+        <li><a class="category " href="#fantasy">Fantasy</a></li>
+        <li><a class="category " href="#historical">Historical</a></li>
+        <li><a class="category " href="#science">Science</a></li>
+        <li><a class="category " href="#novel">Novel</a></li>
+        <li><a class="category " href="#classics">Classics</a></li>
+        <li><a class="category " href="#poetry">Poetry</a></li>
       </ul>
     </section>
 
@@ -149,23 +136,6 @@
     </div>
     <hr>
   </footer>
-  <script>
-    var hamburger = document.getElementById('hamburger');
-    var trigger = document.getElementById('header');
-    var icon = document.getElementById('icon');
-
-    hamburger.onclick = function () {
-      hamburger.classList.toggle('open');
-      trigger.classList.toggle('open');
-      document.body.classList.toggle('menu-open');
-      if (icon.getAttribute("src") === "../public/images/user-profile-dark.png") {
-        icon.setAttribute("src", "../public/images/user-profile.png");
-      } else {
-        icon.setAttribute("src", "../public/images/user-profile-dark.png");
-      }
-    }
-
-  </script>
   <script type="module" src="bundled_files.js"> </script>
 </body>
 
