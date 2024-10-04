@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Akaru | Home</title>
   <link href="../styles/index.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -17,7 +19,7 @@
         <source src="././public/videos/book_landing.mp4" type="video/mp4">
       </video>
     </section>
-    
+
     <section class="header" id="header">
       <nav>
         <h3>Akaru</h3>
@@ -53,7 +55,7 @@
         <!-- keep or not???
         <button type="button">Search</button> -->
       </div>
-
+    </section>
     <!-- <section>
       <div>
         <i>USER ICON PLACEHOLDER</i>
@@ -65,24 +67,24 @@
       </div>
     </section> -->
 
-   
+
   </header>
 
   <main>
     <section class="category-list" id="book_nav">
-        <ul class="content">
-          <li><a href="">All</a></li>
-          <li><a href="">Romance</a></li>
-          <li><a href="">Mystery</a></li>
-          <li><a href="">Horror</a></li>
-          <li><a href="">Fantasy</a></li>
-          <li><a href="">Historical</a></li>
-          <li><a href="">Biography</a></li>
-          <li><a href="">Graphic Novel</a></li>
-          <li><a href="">Classics</a></li>
-          <li><a href="">Poetry</a></li>
-        </ul>
-    </section> 
+      <ul class="content">
+        <li><a href="">All</a></li>
+        <li><a href="">Romance</a></li>
+        <li><a href="">Mystery</a></li>
+        <li><a href="">Horror</a></li>
+        <li><a href="">Fantasy</a></li>
+        <li><a href="">Historical</a></li>
+        <li><a href="">Biography</a></li>
+        <li><a href="">Graphic Novel</a></li>
+        <li><a href="">Classics</a></li>
+        <li><a href="">Poetry</a></li>
+      </ul>
+    </section>
 
     <section id="book_section" class="book_section">
 
@@ -94,7 +96,7 @@
           <div class="book_info">
             <p data-book-category class="genre">Romance</p>
             <p data-book-name class="book_title">Harry Potter</p>
-            <p data-book-authors>HIDE ME</p>
+            <p data-book-authors style="display:none;">HIDE ME</p>
             <button data-book-borrow-btn class="borrow" type="button">Borrow</button>
           </div>
 
@@ -119,11 +121,11 @@
   <footer>
     <hr class="pc">
     <!-- row 1 col 1 -->
-    <div class="r1 c1"> 
+    <div class="r1 c1">
       <p>Akaru Books</p>
       <p>#1 Holy Angel St. Angeles</p>
       <p>2009 Pampanga</p>
-      <p>Made by group1</p> 
+      <p>Made by group1</p>
     </div>
 
     <!-- row 1 col 2 -->
@@ -133,7 +135,7 @@
     </div>
     <hr class="pc">
     <!-- row 2 col 1 -->
-    <div class="r2 c1"> 
+    <div class="r2 c1">
       <a href="">Instagram</a>
       <a href="">LinkedIn</a>
       <a href="">Twitter</a>
@@ -146,13 +148,13 @@
       <p>Akaru&copy;2024</p>
     </div>
     <hr>
-  </footer> 
+  </footer>
   <script>
     var hamburger = document.getElementById('hamburger');
     var trigger = document.getElementById('header');
     var icon = document.getElementById('icon');
 
-    hamburger.onclick = function(){
+    hamburger.onclick = function () {
       hamburger.classList.toggle('open');
       trigger.classList.toggle('open');
       document.body.classList.toggle('menu-open');
