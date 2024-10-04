@@ -5,15 +5,16 @@ import {
     getDocs,
     deleteDoc,
     updateDoc,
+    getDoc
 } from "firebase/firestore";
 import { db, storage } from "./init.js"
-import { ref, uploadBytesResumable, getDownloadURL, listAll } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL, listAll, deleteObject } from "firebase/storage";
 
-// Firestore Variables
+
 let idArray = [];
 let authorsMap = [];
 
-// DOM Variables
+
 const addBookForm = document.querySelector("#addBookForm");
 const updateBookForm = document.querySelector("#updateBookForm");
 const removeBookForm = document.querySelector("#removeBookForm");
@@ -25,7 +26,6 @@ const bookContainer = document.querySelector("[data-book-container]");
 const rowTemplate = document.querySelector("[data-book-row]");
 
 // Start Get Books
-
 const getBooks = async () => {
     const booksCollection = collection(db, "book");
     const getBooks = await getDocs(booksCollection);
@@ -61,7 +61,6 @@ const getBooks = async () => {
     return idArray;
 }
 
-
 const appendToContainer = async (productID, productName, productCategory, productAuthors, productImage) => {
     const row = rowTemplate.content.cloneNode(true).children[0];
     const id = row.querySelector("[data-book-id]");
@@ -85,10 +84,9 @@ const appendToContainer = async (productID, productName, productCategory, produc
     bookContainer.append(row);
 }
 
-// Load All books on page load
+
 window.onload = getBooks();
 
-// Check for existing file name in storage
 const checkFileExists = async (fileName) => {
     const listRef = ref(storage, 'book_images/');
     const result = await listAll(listRef);
@@ -252,11 +250,31 @@ const deleteBook = async () => {
     idArray = [];
 
     try {
-        await deleteDoc(doc(db, "book", prodId));
+        const bookDoc = doc(db, "book", prodId);
+        const bookSnapshot = await getDoc(bookDoc);
+        const bookData = bookSnapshot.data();
+        
+        if (!bookData) {
+            throw new Error("No book found with the provided ID");
+        }
+
+        const imagePath = bookData.imagePath;
+
+        if (imagePath) {
+            const imageRef = ref(storage, imagePath);
+            await deleteObject(imageRef);
+            console.log("Image deleted from storage:", imagePath);
+        } else {
+            console.log("No image to delete for this book.");
+        }
+
+        await deleteDoc(bookDoc);
+        console.log("Book document deleted from Firestore");
+
         await getBooks();
         removeBookForm.reset();
     } catch (error) {
-        console.error(error.message);
+        console.error("Error deleting book:", error.message);
     }
 };
 
