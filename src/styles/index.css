@@ -302,6 +302,9 @@ footer *{
     flex-direction: column;
 }
 @media screen and (min-width: 1025px){
+    header .background::after {
+        background: linear-gradient(rgba(0, 0, 0, 0.1), #222220 90%);
+    }
     .category-list{
         justify-content: center;
     }
@@ -315,7 +318,7 @@ footer *{
         font-size: 36px;
     }
     header .background{
-        height: 32.75rem;
+        height: 38rem;
     }
     header .header{
         padding: 2.75rem 5rem 2rem;
@@ -385,6 +388,9 @@ footer *{
     }
 }
 @media screen and (max-width: 1024px){
+    header .background::after {
+        background: linear-gradient(rgba(0, 0, 0, 0.08), #222220 90%);
+    }
     .category-list{
     justify-content: start;
     }
@@ -476,6 +482,9 @@ footer *{
     }
 }
 @media screen and (max-width: 767px){
+    header .background::after {
+        background: linear-gradient(rgba(0, 0, 0, 0.08), #222220 80%);
+    }
     .category-list ul li a{
         font-size: 14px;
     }
