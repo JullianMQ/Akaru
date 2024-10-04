@@ -24,8 +24,14 @@ pids
 
 # admin sdk
 test-lms-addbase-firebase-adminsdk*.json
+test.json
+# books.json
 
-
+# Images (to be deleted)
+# public/images
+public/Goods
+# public/json
+command list-panes: too many arguments (need at most 0)
 # lock files
 package-lock.json
 pnpm-lock.yaml

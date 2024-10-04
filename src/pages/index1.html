@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Akaru | Home</title>
   <link href="../styles/index.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -13,7 +14,7 @@
   <header>
     <section class="background">
       <video class="background-video" id="background-video" autoplay loop muted>
-        <source src="../../public/videos/book_landing.mp4" type="video/mp4">
+        <source src="././public/videos/book_landing.mp4" type="video/mp4">
       </video>
     </section>
     
@@ -21,29 +22,25 @@
       <nav>
         <h3>Akaru</h3>
         <div class="hamburger" id="hamburger">
-          <div>
-            <span class="line-1"></span>
-            <span class="line-2"></span>
-            <span class="line-3"></span>
-          </div>
+          <img class="icon" id="icon" src="./public/images/user-profile.png">
         </div>
       </nav>
-
-      <div class="menu" id="menu">
+      <section class="menu" id="menu">
         <div class="container">
           <ul class="options">
             <li><a href="">Home</a></li>
-            <li><a href="">Books</a></li>
+            <li><a href="#">Books</a></li>
+            <!-- <button id="addBook" type="button">Add Book</button> -->
             <!-- admin -->
             <!-- <li><a href="">Admin</a></li> -->
           </ul>
           <div class="account">
             <a href="" class="username">Name</a>
-            <a href="" class="password">Change Password</a>
+            <a href="#" class="password">Change Password</a>
             <button id="logOutBtn" type="button" class="logout">Log Out</button>
           </div>
         </div>
-      </div>
+      </section>
 
       <div class="content">
         <h1>DISCOVER THE FUTURE OF READING</h1>
@@ -56,7 +53,19 @@
         <!-- keep or not???
         <button type="button">Search</button> -->
       </div>
-    </section> 
+
+    <!-- <section>
+      <div>
+        <i>USER ICON PLACEHOLDER</i>
+        <div>
+          <a href="#">Change Password</a>
+          <a href="#">See Books</a>
+          <button id="logOutBtn" type="button">Log Out</button>
+        </div>
+      </div>
+    </section> -->
+
+   
   </header>
 
   <main>
@@ -75,97 +84,38 @@
         </ul>
     </section> 
 
-    <section class="book_section" id="book_section">
-        <!-- book 1 -->
+    <section id="book_section" class="book_section">
+
+      <template id="book_template">
         <div class="book_card">
           <div class="book_img">
-            <img src="../../public/images/book.jpg" width="200" alt="">
+            <img data-book-img src="public/images/book.jpg" alt="">
           </div>
           <div class="book_info">
-            <p data-book-genre class="genre">Mystery</p>
-            <p data-book-name class="book_title">Tom & Jerry</p>
-            <button data-book-borrow-btn class="borrow" type="button">Borrow</button>
-          </div>
-        </div>
-        <!-- book 2 -->
-        <div class="book_card">
-          <div class="book_img">
-            <img src="../../public/images/book.jpg" width="200" alt="">
-          </div>
-          <div class="book_info">
-            <p data-book-genre class="genre">Graphic Novel</p>
+            <p data-book-category class="genre">Romance</p>
             <p data-book-name class="book_title">Harry Potter</p>
+            <p data-book-authors>HIDE ME</p>
             <button data-book-borrow-btn class="borrow" type="button">Borrow</button>
           </div>
+
         </div>
-        <!-- book 1 -->
-        <div class="book_card">
-          <div class="book_img">
-            <img src="../../public/images/book.jpg" width="200" alt="">
-          </div>
-          <div class="book_info">
-            <p data-book-genre class="genre">Mystery</p>
-            <p data-book-name class="book_title">Tom & Jerry</p>
-            <button data-book-borrow-btn class="borrow" type="button">Borrow</button>
-          </div>
-        </div>
-        <!-- book 2 -->
-        <div class="book_card">
-          <div class="book_img">
-            <img src="../../public/images/book.jpg" width="200" alt="">
-          </div>
-          <div class="book_info">
-            <p data-book-genre class="genre">Graphic Novel</p>
-            <p data-book-name class="book_title">Harry Potter</p>
-            <button data-book-borrow-btn class="borrow" type="button">Borrow</button>
-          </div>
-        </div>
-        <!-- book 1 -->
-        <div class="book_card">
-          <div class="book_img">
-            <img src="../../public/images/book.jpg" width="200" alt="">
-          </div>
-          <div class="book_info">
-            <p data-book-genre class="genre">Mystery</p>
-            <p data-book-name class="book_title">Tom & Jerry</p>
-            <button data-book-borrow-btn class="borrow" type="button">Borrow</button>
-          </div>
-        </div>
-        <!-- book 2 -->
-        <div class="book_card">
-          <div class="book_img">
-            <img src="../../public/images/book.jpg" width="200" alt="">
-          </div>
-          <div class="book_info">
-            <p data-book-genre class="genre">Graphic Novel</p>
-            <p data-book-name class="book_title">Harry Potter</p>
-            <button data-book-borrow-btn class="borrow" type="button">Borrow</button>
-          </div>
-        </div>
-        <!-- book 1 -->
-        <div class="book_card">
-          <div class="book_img">
-            <img src="../../public/images/book.jpg" width="200" alt="">
-          </div>
-          <div class="book_info">
-            <p data-book-genre class="genre">Mystery</p>
-            <p data-book-name class="book_title">Tom & Jerry</p>
-            <button data-book-borrow-btn class="borrow" type="button">Borrow</button>
-          </div>
-        </div>
-        <!-- book 2 -->
-        <div class="book_card">
-          <div class="book_img">
-            <img src="../../public/images/book.jpg" width="200" alt="">
-          </div>
-          <div class="book_info">
-            <p data-book-genre class="genre">Graphic Novel</p>
-            <p data-book-name class="book_title">Harry Potter</p>
-            <button data-book-borrow-btn class="borrow" type="button">Borrow</button>
-          </div>
-        </div>
+      </template>
+
     </section>
-    </main>
+
+    <!-- <section class="book_section" id="book_section">
+        <div class="book_card">
+          <div class="book_img">
+            <img src="../../public/images/book.jpg" width="200" alt="">
+          </div>
+          <div class="book_info">
+            <p data-book-genre class="genre">Mystery</p>
+            <p data-book-name class="book_title">Tom & Jerry</p>
+            <button data-book-borrow-btn class="borrow" type="button">Borrow</button>
+          </div>
+        </div>
+    </section> -->
+  </main>
   <footer>
     <hr class="pc">
     <!-- row 1 col 1 -->
@@ -196,17 +146,23 @@
       <p>Akaru&copy;2024</p>
     </div>
     <hr>
-  </footer>
-  <script src="../app/index.js"></script>
+  </footer> 
   <script>
     var hamburger = document.getElementById('hamburger');
     var trigger = document.getElementById('header');
+    var icon = document.getElementById('icon');
 
     hamburger.onclick = function(){
       hamburger.classList.toggle('open');
       trigger.classList.toggle('open');
       document.body.classList.toggle('menu-open');
+      if (icon.getAttribute("src") === "../public/images/user-profile-dark.png") {
+        icon.setAttribute("src", "../public/images/user-profile.png");
+      } else {
+        icon.setAttribute("src", "../public/images/user-profile-dark.png");
+      }
     }
+
   </script>
   <script type="module" src="bundled_files.js"> </script>
 </body>
