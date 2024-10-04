@@ -321,6 +321,7 @@ main {
     width: 100%;
     flex-direction: row;
     text-transform: uppercase;
+    text-align: start;
     text-wrap: none;
     font-size: 14px;
 }
