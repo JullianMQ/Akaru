@@ -52,7 +52,7 @@ const appendUserToContainer = async (usersID, userName, userEmail, userRole) => 
 };
 
 //load all users on window load
-window.addEventListener("load", getUsers);
+window.onload = getUsers();
 
 //toggle add user form
 //add new user
@@ -125,7 +125,6 @@ const updateUser = async () => {
     if (userRole !== "") {
         updateData.userRole = userRole;
     }
-
 
     try {
         await fetch(`api/users/change`, {

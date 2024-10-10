@@ -128,7 +128,7 @@ const addNewBook = async () => {
             const fileExists = await checkFileExists(productImage.name);
 
             if (fileExists) {
-                alert("This file name is already taken and uploaded, try another.");
+                alert("This file name is already taken and uploaded, try another file name.");
                 return;
             }
 
@@ -205,7 +205,7 @@ const updateBook = async () => {
             const fileExists = await checkFileExists(prodImage.name);
 
             if (fileExists) {
-                alert("This file name is already taken and uploaded, try another.");
+                alert("This file name is already taken and uploaded, try another file name.");
             }
 
             const imageRef = ref(storage, `book_images/${prodImage.name}`);
