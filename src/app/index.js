@@ -83,7 +83,12 @@ const bookDataArr = [];
 // Set username
 const setUsername = () => {
     const userName = document.querySelector("#userName");
-    userName.textContent = isUser.displayName;
+    if(userName) {
+        userName.textContent = isUser.displayName;
+        return 0;
+    }
+    userName.textContent = "Guest";
+    return 0;
 }
 // End Set username
 
@@ -220,6 +225,8 @@ const addToUserBorrowedBooks = async (userId, bookId) => {
     }
     return 1;
 }
+
+// TODO: ADD TO BOOKS COLLECTION THE USER THAT ADDED THEM
 // End Borrowing book
 
 // TODO: Sending back books
