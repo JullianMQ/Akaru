@@ -22,15 +22,22 @@ const storage = getStorage(app);
 
 // Monitoring Auth State
 const checkAuthState = () => {
-    onAuthStateChanged(auth, user => {
-        if (user) {
-            // console.log("You are logged in!");
-            return true;
-        } else {
-            // console.log("You are logged out!");
-            return false;
-        }
-    });
+    return new Promise((res, rej) => {
+        onAuthStateChanged(auth, user => {
+            if (user) {
+                res(user);
+            } else {
+                res("false");
+            }
+        });
+    })
 };
 
-export { app, auth, db, storage, checkAuthState };
+const getUser = async () => {
+    const isUser = await checkAuthState();
+    return isUser;
+}
+
+const isUser = await getUser();
+
+export { app, auth, db, storage, isUser, checkAuthState };

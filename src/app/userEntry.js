@@ -1,27 +1,13 @@
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    signOut,
-    getAuth,
-    onAuthStateChanged,
-    checkActionCode,
     updateProfile,
 } from "firebase/auth";
 import {
     doc,
     setDoc,
-    collection,
-    addDoc,
-    getDoc,
-    getDocs,
-    deleteDoc,
-    updateDoc,
-    getFirestore
 } from "firebase/firestore";
-import { app } from "./init.js";
-
-const auth = getAuth(app);
-const db = getFirestore(app);
+import { isUser, auth, db, checkAuthState } from "./init.js";
 
 // Query from HTML
 // Sign Up
@@ -34,29 +20,25 @@ const signUpBtn = document.querySelector("#signUpBtn");
 const logInBtn = document.querySelector("#logInBtn");
 const logInEmail = document.querySelector("#logInEmail");
 const logInPass = document.querySelector("#logInPass");
-// Sign Out
-const logOutBtn = document.querySelector("#logOutBtn");
+
+// Check if user is already logged in
+// End Check if user is already logged in
 
 // Sign Up Start
 // Get Credentials Auth Firebase
 const signUp = async (auth, userEmail, userPass) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, userEmail, userPass);
-        // console.log(userCredential);
         const user = userCredential.user;
-        // console.log(user);
-
 
         await updateProfile(auth.currentUser, {
             displayName: userName.value,
         });
 
-        // console.log(`User signed up with id: ${user.uid}!`);
-        // console.log(`User signed up with username: ${userName.value}!`);
-
         // userEmail/Pass is already set in the parent function so no need to use .value
         // This will return into undefined if you do
         await addToUserCollection(user.uid, userName.value, userPhone.value, userEmail, userPass);
+        alert("Successfully signed up. Please log in now.")
 
     } catch (error) {
         console.error(`Error code: ${error.code}`)
@@ -73,6 +55,7 @@ const addToUserCollection = async (uid, username, phone, email, password) => {
             phone: phone,
             email: email,
             password: password,
+            userRole: "User",
         });
         // console.log(`Added to document with ID: ${docRef.id}!`);
 
@@ -90,33 +73,32 @@ signUpBtn.addEventListener("click", () => {
 // Log In Start
 
 const logIn = async (auth, email, password) => {
-    // console.log("Log In")
     try {
         const loggedInCredential = await signInWithEmailAndPassword(auth, email, password);
-        // console.log(loggedInCredential);
-        // console.log(loggedInCredential.user);
+        // redirect back to index page
+        checkAuthState();
         alert("You have signed in!");
+        window.location.href = "index1.html";
     } catch (error) {
-        console.error(`Error code: ${error.code}`)
-        console.error(`Error message: ${error.message}`)
+        if (error.code === "auth/invalid-credential") {
+            alert("No user with that account or wrong password");
+        }
+        if (error.code === "auth/invalid-email") {
+            alert("Incorrect email");
+        }
     }
 };
 
 logInBtn.addEventListener("click", () => {
     logIn(auth, logInEmail.value, logInPass.value);
 });
-
 // Log In End
 
-// Monitoring Auth State
-const checkAuthState = () => {
-    onAuthStateChanged(auth, user => {
-        if (user) {
-            // console.log("You are logged in!");
-        } else {
-            // console.log("You are logged out!");
-        }
-    });
-};
+window.onload = checkAuthState();
 
-checkAuthState();
+if (isUser !== "false") {
+    window.location.href = "index1.html";
+} else {
+    console.log("Not logged in");
+}
+// export { user };
