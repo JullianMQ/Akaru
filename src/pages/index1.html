@@ -32,12 +32,14 @@
           <ul class="options">
             <li><a href="">Home</a></li>
             <li><a href="#">Books</a></li>
+
+            <!-- testing purposes only -->
             <!-- <button id="addBook" type="button">Add Book</button> -->
             <!-- admin -->
             <!-- <li><a href="">Admin</a></li> -->
           </ul>
           <div class="account">
-            <a href="" class="username">Name</a>
+            <a id="userName" href="" class="username">Guest</a>
             <a href="#" class="password">Change Password</a>
             <button id="logOutBtn" type="button" class="logout">Log Out</button>
           </div>
@@ -81,6 +83,7 @@
             <img data-book-img src="public/images/book.jpg" alt="">
           </div>
           <div class="book_info">
+            <p data-book-id style="display:none;"></p>
             <p data-book-category class="genre">Romance</p>
             <p data-book-name class="book_title">Harry Potter</p>
             <p data-book-authors style="display:none;">HIDE ME</p>
