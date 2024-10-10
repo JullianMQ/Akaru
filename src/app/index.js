@@ -83,7 +83,8 @@ const bookDataArr = [];
 // Set username
 const setUsername = () => {
     const userName = document.querySelector("#userName");
-    if(userName) {
+    if(isUser !== "false") {
+        console.log(isUser);
         userName.textContent = isUser.displayName;
         return 0;
     }
