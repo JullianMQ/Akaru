@@ -16,7 +16,7 @@ const bookDataArr = [];
 // const addBook = async () => {
 //     try {
 //         // Fetch the JSON data
-//         const response = await fetch('../public/json/test.json');
+//         const response = await fetch('../public/json/books.json');
 //         const books = await response.json();
 
 //         // Get all documents in the "book" collection to determine the highest ID
@@ -84,7 +84,6 @@ const bookDataArr = [];
 const setUsername = () => {
     const userName = document.querySelector("#userName");
     if(isUser !== "false") {
-        console.log(isUser);
         userName.textContent = isUser.displayName;
         return 0;
     }
@@ -156,7 +155,6 @@ const addSearchFilter = () => {
 }
 
 // Category Filtering
-const navSearch = document.querySelectorAll(".category");
 window.addEventListener('hashchange', () => {
     const hash = window.location.hash.slice(1);
     bookDataArr.forEach(book => {
@@ -168,6 +166,7 @@ window.addEventListener('hashchange', () => {
 // End Category Filtering
 
 // Borrowing book
+// OPTIONAL TODO: MAKE ERROR HANDLING BETTER
 const addBorrowFunction = () => {
     bookDataArr.forEach((bookData) => {
         { bookData.borrowBtn.addEventListener("click", borrowBook); }
@@ -183,8 +182,15 @@ const borrowBook = async function () {
         const result = await addToUserBorrowedBooks(userId, idToAdd);
 
         if (result === 1) {
-            alert("Can't add anymore books, you have reached the limit");
+            alert("Error: Book already borrowed");
             return;
+        }
+        if (result === 2) {
+            alert("Error: Book limit reached");
+            return;
+        }
+        if (result === -1) {
+            alert("Error: Database error, please try again later");
         }
         alert("Successfully added book");
         return;
@@ -194,40 +200,66 @@ const borrowBook = async function () {
     }
 };
 
-const getBorrowedBooks = async (userId) => {
+const getBorrowedBooks = async (userId, bookId) => {
     const docRef = doc(db, "users", userId);
     const userDoc = await getDoc(docRef);
-    const userBorrowed = userDoc.data().borrowedBooks;
+    const userBorrowed = userDoc.data().borrowedBooks || [];
 
-    if (userBorrowed.length === 5) {
+    if(userBorrowed.includes(bookId)){
         return 1;
     }
+    if (userBorrowed.length === 5) {
+        return 2;
+    }
+
     return userBorrowed;
 }
 
 const addToUserBorrowedBooks = async (userId, bookId) => {
-    const isPossible = await getBorrowedBooks(userId);
+    const isPossible = await getBorrowedBooks(userId, bookId);
     const docRef = doc(db, "users", userId);
     const updateBooks = isPossible;
 
-    if (isPossible !== 1) {
+    if (typeof isPossible != 'number') {
         try {
             updateBooks.push(bookId);
             await updateDoc(docRef, {
                 borrowedBooks: updateBooks
             })
+            await addToBookUsers(userId, bookId);
         } catch (error) {
             alert("There was an error in adding your book");
             console.error(error.code);
             console.error(error.message);
-            return;
+            return -1;
         }
         return 0;
     }
-    return 1;
+    return isPossible;
 }
 
-// TODO: ADD TO BOOKS COLLECTION THE USER THAT ADDED THEM
+const getBookUsers = async (docRef) => {
+    const bookDoc = await getDoc(docRef);
+    const bookUsers = bookDoc.userId;
+    return bookUsers;
+}
+
+const addToBookUsers = async (userId, bookId) => {
+    const docRef = doc(db, "book", bookId);
+    const bookUsers = await getBookUsers(docRef) || [];
+
+    try {
+        bookUsers.push(userId);
+        updateDoc(docRef, {
+            userId: bookUsers
+        })
+    } catch (error) {
+        console.error(error.code);
+        console.error(error.message);
+        return -1;
+    }
+    return 0;
+}
 // End Borrowing book
 
 // TODO: Sending back books
