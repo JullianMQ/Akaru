@@ -240,7 +240,7 @@ const addToUserBorrowedBooks = async (userId, bookId) => {
 
 const getBookUsers = async (docRef) => {
     const bookDoc = await getDoc(docRef);
-    const bookUsers = bookDoc.userId;
+    const bookUsers = bookDoc.data().userId || [];
     return bookUsers;
 }
 
