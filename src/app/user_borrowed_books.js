@@ -93,8 +93,59 @@ const readBook = () => {
 }
 
 // TODO: Add return function
-const returnBook = () => {
-    alert("Feature not yet implemented");
+const returnBook = async function (){
+    const bookId = this.parentElement.querySelector("[data-book-id]").getAttribute("data-book-id");
+
+    if(isUser !== "false") {
+        const userId = isUser.uid;
+        await removeUserFromBookUsers(userId, bookId);
+        await removeBookFromUserBorrowedBooks(userId, bookId);
+        alert("You have successfully returned the book!");
+    }else{
+        alert("Unable to return book.");
+    }
+}
+
+//Remove user from book's userId(array)
+const removeUserFromBookUsers = async (userId, bookId) =>{
+    const bookDocRef = doc(db, "book", bookId);
+    const bookDoc = await getDoc(bookDocRef);
+    const bookUsers = bookDoc.data().userId || [];
+    const updatedUsers = bookUsers.filter(id => id !== userId);
+
+    if(!bookDoc.exists()){
+        console.error("Book doesn't exist.");
+        return; 
+    }
+
+    try {
+        await updateDoc(bookDocRef, {
+            userId: updatedUsers
+        });
+    }catch(error){
+        console.error("Error on updating book users:", error);
+    }
+}
+
+//Remove book from the borrowedBooks(array)
+const removeBookFromUserBorrowedBooks = async (userId, bookId) => {
+    const userDocRef = doc(db, "users", userId);
+    const userDoc = await getDoc(userDocRef);
+    const borrowedBooks = userDoc.data().borrowedBooks || [];
+    const updatedBooks = borrowedBooks.filter(id => id !== bookId);
+
+    if (!userDoc.exists()){
+        console.error("User document does not exist.");
+        return; 
+    }
+
+    try{
+        await updateDoc(userDocRef, {
+            borrowedBooks: updatedBooks
+        });
+    }catch(error){
+        console.error("Error on updating user's borrowed books:", error);
+    }
 }
 
 window.onload = getBooks();
