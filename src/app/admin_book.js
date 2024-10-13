@@ -299,6 +299,6 @@ const deleteBook = async () => {
 };
 
 // Uncomment after adding styles FRONTEND
-// window.onload = getBooks();
+window.onload = getBooks();
 // window.onload = isAdmin();
 delBookBtn.addEventListener("click", deleteBook);

@@ -297,7 +297,7 @@ const userLogOut = async () => {
     return 0;
 };
 
-// window.onload = getBooks();
+window.onload = getBooks();
 window.onload = setUserState();
 
 logOutBtn.addEventListener("click", () => {
