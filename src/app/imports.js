@@ -18,5 +18,8 @@ if (window.location.pathname.includes('admin_user.html')) {
 if (window.location.pathname.includes('borrowed_books.html')) {
     import('./user_borrowed_books.js').then(module => {});
 }
+if (window.location.pathname.includes('admin_index.html')) {
+    import('./admin_index.js').then(module => {});
+}
 
 // import '../users/firestore.js';

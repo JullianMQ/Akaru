@@ -5,10 +5,13 @@ import { signOut } from "firebase/auth";
 
 // DOM VARIABLES
 const logOutBtn = document.querySelector("#logOutBtn");
+const userName = document.querySelector("#userName");
 const searchInput = document.querySelector("#search-input");
 const bookContainer = document.querySelector("#book_section");
 const bookTemplate = document.querySelector("#book_template");
+const isAdminElement = document.querySelector("[data-is-admin]");
 const bookDataArr = [];
+
 
 // // Testing purposes only
 // const addBookBtn = document.querySelector("#addBook");
@@ -80,14 +83,27 @@ const bookDataArr = [];
 // });
 // // Testing purposes only
 
+// Get userRole
+const getUserRole = async () => {
+    const docRef = doc(db, "users", isUser.uid);
+    const getUserDoc = await getDoc(docRef);
+    const userRole = getUserDoc.data().userRole;
+    return userRole;
+}
+// End Get userRole
+
 // Set username
-const setUsername = () => {
-    const userName = document.querySelector("#userName");
-    if(isUser !== "false") {
+const setUserState = async () => {
+    if (isUser !== "false") {
+        const isAdmin = await getUserRole();
         userName.textContent = isUser.displayName;
+        if (isAdmin === "Admin") {
+            isAdminElement.style.display = "flex";
+        }
         return 0;
     }
     userName.textContent = "Guest";
+    logOutBtn.innerHTML = "Log In";
     return 0;
 }
 // End Set username
@@ -205,7 +221,7 @@ const getBorrowedBooks = async (userId, bookId) => {
     const userDoc = await getDoc(docRef);
     const userBorrowed = userDoc.data().borrowedBooks || [];
 
-    if(userBorrowed.includes(bookId)){
+    if (userBorrowed.includes(bookId)) {
         return 1;
     }
     if (userBorrowed.length === 5) {
@@ -262,26 +278,27 @@ const addToBookUsers = async (userId, bookId) => {
 }
 // End Borrowing book
 
-// TODO: Sending back books
-
-// End Sending back books
-
-
 // Log Out Start
 const userLogOut = async () => {
-    try {
-        await signOut(auth);
-        alert("Signed Out!");
-        // full reload to not read from cache
-        window.location.reload(true);
-    } catch (error) {
-        alert("Something went wrong: Please check the logs if you are an advanced user.");
-        console.log(error.message);
+    if (isUser !== "false") {
+        try {
+            await signOut(auth);
+            alert("Signed Out!");
+            // full reload to not read from cache
+            window.location.reload(true);
+            return 0;
+        } catch (error) {
+            alert("Something went wrong: Please check the logs if you are an advanced user.");
+            console.log(error.message);
+            return 0;
+        }
     }
+    window.location.href = "entry_page.html";
+    return 0;
 };
 
 window.onload = getBooks();
-window.onload = setUsername();
+window.onload = setUserState();
 
 logOutBtn.addEventListener("click", () => {
     userLogOut();

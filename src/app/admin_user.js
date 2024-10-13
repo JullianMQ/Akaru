@@ -12,6 +12,9 @@ import { db } from "./init.js";
 let userIDs = [];  // Storing the id or like array to
 
 //mga buttons from the html
+const logOutBtn = document.querySelector("#logOutBtn");
+const userName = document.querySelector("#userName");
+const isAdminElement = document.querySelector("[data-is-admin]");
 const addUserForm = document.querySelector("#addUserForm");
 const updateUserForm = document.querySelector("#updateUserForm");
 const removeUserForm = document.querySelector("#removeUserForm");
@@ -21,6 +24,27 @@ const updateUserBtn = document.querySelector("#updateUser");
 const delUserBtn = document.querySelector("#removeUser");
 const userContainer = document.querySelector("[data-user-container]");
 const rowTemplate = document.querySelector("[data-user-row]");
+
+// Uncomment after adding styles FRONTEND
+// const getUserRole = async () => {
+//     const userDocRef = doc(db, "users", isUser.uid);
+//     const userDoc = await getDoc(userDocRef);
+//     const userRole = userDoc.data().userRole;
+//     return userRole;
+// }
+
+// const isAdmin = () => {
+//     if (isUser !== false) {
+//         const userRole = getUserRole();
+//         if (userRole !== "Admin") {
+//             userName.textContent = isUser.displayName;
+//             isAdminElement.style.display = "block";
+//             return 0;
+//         }
+//     }
+//     window.location.href = "index1.html";
+//     return 1;
+// }
 
 //get the users
 const getUsers = async () => {
@@ -175,14 +199,7 @@ const removeUser = async () => {
         console.error("Error removing the user: ", error.message);
     }
 };
-
 delUserBtn.addEventListener("click", removeUser);
 
-// // Authentication State Listener
-// onAuthStateChanged(auth, (user) => {
-//     if (user) {
-//         console.log("User is authenticated");
-//     } else {
-//         window.location.href = "../entry_page.html";
-//     }
-// });
+// Uncomment after adding styles FRONTEND
+// window.onload = isAdmin();

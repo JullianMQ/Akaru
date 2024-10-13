@@ -5,23 +5,46 @@ import { doc, collection, getDoc, getDocs, setDoc, updateDoc } from "firebase/fi
 const userId = isUser.uid;
 
 // DOM VARIABLES
-// const logOutBtn = document.querySelector("#logOutBtn");
+const logOutBtn = document.querySelector("#logOutBtn");
 const bookContainer = document.querySelector("#book_section");
 const bookTemplate = document.querySelector("#book_template");
+const isAdminElement = document.querySelector("[data-is-admin]");
 const bookDataArr = [];
 
-// Uncomment after adding sidebar FRONTEND
+// uncomment after adding sidebar FRONTEND
+// // Get userRole
+// const getUserRole = async () => {
+//     const docRef = doc(db, "users", isUser.uid);
+//     const getUserDoc = await getDoc(docRef);
+//     const userRole = getUserDoc.data().userRole;
+//     return userRole;
+// }
+// // End Get userRole
+
 // // Set username
-// const setUsername = () => {
+// const setUserState = async () => {
 //     const userName = document.querySelector("#userName");
-//     if(isUser !== "false") {
+//     if (isUser !== "false") {
+//         const isAdmin = await getUserRole();
 //         userName.textContent = isUser.displayName;
+//         if (isAdmin === "Admin") {
+//             console.log(isAdminElement.style.display = "block");
+//         }
 //         return 0;
 //     }
 //     userName.textContent = "Guest";
+//     logOutBtn.innerHTML = "Log In";
 //     return 0;
 // }
 // // End Set username
+
+const isLoggedIn = () => {
+    if (isUser === "false") {
+        window.location.href = "entry_page.html";
+        return 0;
+    }
+    return 0;
+}
 
 const getBooks = async () => {
     const booksCollection = collection(db, "book");
@@ -149,6 +172,7 @@ const removeBookFromUserBorrowedBooks = async (userId, bookId) => {
 }
 
 window.onload = getBooks();
+<<<<<<< HEAD
 
 var hamburger = document.getElementById('hamburger');
 var trigger = document.getElementById('header');
@@ -159,3 +183,6 @@ hamburger.onclick = function () {
     trigger.classList.toggle('open');
     document.body.classList.toggle('menu-open');
 }
+=======
+window.onload = isLoggedIn();
+>>>>>>> 66932661f5822927cdc0f9d33f3c6003c6972563
