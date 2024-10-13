@@ -1,11 +1,4 @@
 @font-face {
-    font-family: 'ITC Avant Garde';
-    src: url('../public/fonts/ITC\ Avant\ Garde\ Gothic\ LT\ Bold.otf') format('opentype');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
     font-family: 'Neue Montreal';
     src: url('../public/fonts/NeueMontreal-Regular.otf') format('opentype');
     font-weight: normal;
@@ -419,9 +412,6 @@ footer * {
     .book_section {
         grid-template-columns: repeat(2, 48%);
         row-gap: 1rem;
-    }
-    .book_card{
-        
     }
     .book_img img{
         width: 100%;
