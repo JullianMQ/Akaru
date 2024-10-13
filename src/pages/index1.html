@@ -31,7 +31,8 @@
         <div class="container">
           <ul class="options">
             <li><a href="#">Home</a></li>
-            <li><a href="borrowed_books.html">Books</a></li>
+            <li data-book><a href="borrowed_books.html">Books</a></li>
+            <li data-is-admin style="display:none;"><a href="admin_index.html">Admin</a></li>
 
             <!-- testing purposes only -->
             <!-- <button id="addBook" type="button">Add Book</button> -->
@@ -40,7 +41,7 @@
           </ul>
           <div class="account">
             <a id="userName" href="#" class="username">Guest</a>
-            <a href="#" class="password">Change Password</a>
+            <p href="#" class="password"></p>
             <button id="logOutBtn" type="button" class="logout">Log Out</button>
           </div>
         </div>
