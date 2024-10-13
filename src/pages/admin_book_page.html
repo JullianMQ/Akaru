@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Akaru | Manage Books</title>
+  <link rel="stylesheet" type="text/css" href="styles/admin_book_page.css">
+</head>
+<body>
+  <main>
+    <!-- <h2>AKARU</h2> -->
+    <!-- TABLE -->
+    <section class="container">
+      <h1 class="title">Managing Books</h1>
+      <table class="table" id="bookTable" style="border: 1px solid black;">
+        <thead class="thead__container">
+          <tr>
+            <th>ID</th>
+            <th>Book Name</th>
+            <th>Category</th>
+            <th>Author/s</th>
+            <th>Image</th>
+          </tr>
+        </thead>
+        <tbody data-book-container>
+          <template data-book-row>
+            <tr>
+              <td class="content" data-book-id>Product ID</td>
+              <td class="content" data-book-name>Product</td>
+              <td class="content" data-book-category>Product Category</td>
+              <td class="content" data-book-authors>Product Authors</td>
+              <td class="content__image"><img data-book-image src="something" alt=""></td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <div class="fix__bottom">
+    <!-- Add Functionality here to show Add/Update/Remove Books Section -->
+    <section class="button__container">
+      <button class="button" id="addBookFormBtn" type="button">Add Book</button>
+      <button class="button" id="updateBookFormBtn" type="button">Update Book</button>
+      <button class="button" id="removeBookFormBtn" type="button">Remove Book</button>
+    </section>
+    
+    <div id="formsContainer">
+      <!-- ADD -->
+      <form id="addBookForm" action="admin_book_page.html" class="hidden fixed">
+        <h3 class="second__title">Add Book</h3><hr>
+        <div class="hidden__container">
+          <div class="width">
+            <label class="label__name" for="prodName">Book Name</label>
+            <input class="input__value" type="text" name="prodName" placeholder="book name" required>
+          </div>
+          <div class="width">
+            <label class="label__name" for="prodCategory">Category</label>
+            <input class="input__value" type="text" name="prodCategory" placeholder="category1, category2..." required>
+          </div>
+          <div class="width">
+            <label class="label__name" for="prodAuthors">Authors</label>
+            <input class="input__value" type="text" name="prodAuthors" placeholder="author1, author2..." required>
+          </div>
+          <div class="width">
+            <label class="label__name" for="prodImage">Choose Image</label>
+            <input class="image__value" type="file" name="prodImage" accept="image/*" required>
+          </div>
+          <div>
+            <button class="button second__button" id="addBook" name="addBook" type="button">Add</button>
+          </div>
+        </div>
+      </form>
+      
+      <!-- UPDATE -->
+      <form id="updateBookForm" class="hidden fixed">
+        <h3 class="second__title">Update Book</h3><hr>
+        <div class="hidden__container">
+          <div class="width">
+            <label class="label__name" for="prodId">Book ID</label>
+            <input class="input__value" type="text" name="prodId" placeholder="book id" required>
+          </div>
+          <div class="width">
+            <label class="label__name" for="prodName">Book Name</label>
+            <input class="input__value" type="text" name="prodName" placeholder="book name" required>
+          </div>
+          <div class="width">
+            <label class="label__name" for="prodAuthors">Authors</label>
+            <input class="input__value" type="text" name="prodAuthors" placeholder="author1, author2..." required>
+          </div>
+          <div class="width">
+            <label class="label__name" for="prodCategory">Category</label>
+            <input class="input__value" type="text" name="prodCategory" placeholder="category1, category2..." required>
+          </div>
+          <div class="width">
+            <label class="label__name" for="prodImage">Choose Image</label>
+            <input class="image__value" type="file" name="prodImage" accept="image/*" required>
+          </div>
+          <div>
+            <button class="button second__button" id="updateBook" name="updateBook" type="button">Update</button>
+          </div>
+        </div>
+      </form>
+      
+      <!-- REMOVE -->
+      <form id="removeBookForm" class="hidden fixed">
+        <h3 class="second__title">Remove Book</h3><hr>
+        <div class="hidden__container">
+          <div class="width">
+            <label class="label__name" for="prodId">Book ID</label>
+            <input class="input__value" type="text" name="prodId" placeholder="book id" required>
+          </div>
+          <div class="width">
+            <label class="label__name" for="prodName">Book Name</label>
+            <input class="input__value" type="text" name="prodName" placeholder="book name">
+          </div>
+          <div>
+            <button class="button second__button" id="removeBook" name="removeBook" type="button">Delete</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <script type="module" src="bundled_files.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write;
+  	}
+
+    // Public directory rules
+    // match /users/{uid} {
+    //   // Allow all to read, but only write if uid is the same
+    //   allow read if request.query.limit <= 1; 
+    //   isAuthenticated(request, uid);
+    // }
+
+    // // Need to correct this rule
+    // match /books/{any} {
+    // // Allow CRUD if user is Admin
+    // allow read;
+    //     isAdmin(request);
+    }
+
+    // Admin directory rules
+    // match /{document=**} {
+      // Allow all operations (read, write, update, delete) for admin users
+      // allow read, write: if request.auth != null && request.auth.token.admin == true;
+    // }
+  }
+}
+
+// function isAuthenticated(request, uid) {
+//   allow write: if request.auth != null && request.auth.uid == uid;
+// }
+// 
+// function isAdmin(request) {
+//   allow write: if request.auth!= null && request.auth.token.admin == true;
+// }
