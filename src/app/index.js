@@ -98,7 +98,7 @@ const setUserState = async () => {
         const isAdmin = await getUserRole();
         userName.textContent = isUser.displayName;
         if (isAdmin === "Admin") {
-            isAdminElement.style.display = "block";
+            isAdminElement.style.display = "flex";
         }
         return 0;
     }
