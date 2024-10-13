@@ -7,14 +7,17 @@ import {
     updateDoc,
     getDoc
 } from "firebase/firestore";
-import { db, storage } from "./init.js"
+import { isUser, db, storage, checkAuthState } from "./init.js"
 import { ref, uploadBytesResumable, getDownloadURL, listAll, deleteObject } from "firebase/storage";
 
 
 let idArray = [];
 let authorsMap = [];
 
-
+// DOM VARIABLES
+const logOutBtn = document.querySelector("#logOutBtn");
+const userName = document.querySelector("#userName");
+const isAdminElement = document.querySelector("[data-is-admin]");
 const addBookForm = document.querySelector("#addBookForm");
 const updateBookForm = document.querySelector("#updateBookForm");
 const removeBookForm = document.querySelector("#removeBookForm");
@@ -24,6 +27,27 @@ const updateBookBtn = document.querySelector("#updateBook");
 const delBookBtn = document.querySelector("#removeBook");
 const bookContainer = document.querySelector("[data-book-container]");
 const rowTemplate = document.querySelector("[data-book-row]");
+
+// Uncomment after adding styles FRONTEND
+// const getUserRole = async () => {
+//     const userDocRef = doc(db, "users", isUser.uid);
+//     const userDoc = await getDoc(userDocRef);
+//     const userRole = userDoc.data().userRole;
+//     return userRole;
+// }
+
+// const isAdmin = () => {
+//     if (isUser !== false) {
+//         const userRole = getUserRole();
+//         if (userRole !== "Admin") {
+//             userName.textContent = isUser.displayName;
+//             isAdminElement.style.display = "block";
+//             return 0;
+//         }
+//     }
+//     window.location.href = "index1.html";
+//     return 1;
+// }
 
 // Start Get Books
 const getBooks = async () => {
@@ -85,7 +109,6 @@ const appendToContainer = async (productID, productName, productCategory, produc
 }
 
 
-window.onload = getBooks();
 
 const checkFileExists = async (fileName) => {
     const listRef = ref(storage, 'book_images/');
@@ -118,8 +141,8 @@ const addNewBook = async () => {
     // idArray.sort((a, b) => b - a);
     // Getting ID for books
     for (newId; newId <= idArray.length; newId++) {
-        if (idArray.includes(newId)) {}
-        else {break}
+        if (idArray.includes(newId)) { }
+        else { break }
     }
 
     try {
@@ -139,12 +162,10 @@ const addNewBook = async () => {
                     'state_changed',
                     null,
                     (error) => {
-                        // console.error("Image upload failed:", error);
                         reject(error);
                     },
                     async () => {
                         imagePath = await getDownloadURL(uploadTask.snapshot.ref);
-                        // console.log("Image uploaded successfully:", imagePath);
                         resolve();
                     }
                 );
@@ -223,7 +244,6 @@ const updateBook = async () => {
                     async () => {
                         const imagePath = await getDownloadURL(uploadTask.snapshot.ref);
                         updateData.imagePath = imagePath;
-                        // console.log("Image uploaded successfully:", imagePath);
                         resolve();
                     }
                 );
@@ -232,8 +252,6 @@ const updateBook = async () => {
 
         if (Object.keys(updateData).length > 0) {
             await updateDoc(doc(db, "book", prodId), updateData);
-        } else {
-            // console.log("No updates provided.");
         }
 
         await getBooks();
@@ -256,7 +274,7 @@ const deleteBook = async () => {
         const bookDoc = doc(db, "book", prodId);
         const bookSnapshot = await getDoc(bookDoc);
         const bookData = bookSnapshot.data();
-        
+
         if (!bookData) {
             throw new Error("No book found with the provided ID");
         }
@@ -266,13 +284,11 @@ const deleteBook = async () => {
         if (imagePath) {
             const imageRef = ref(storage, imagePath);
             await deleteObject(imageRef);
-            // console.log("Image deleted from storage:", imagePath);
         } else {
-            // console.log("No image to delete for this book.");
+            alert("No image deleted for this book");
         }
 
         await deleteDoc(bookDoc);
-        // console.log("Book document deleted from Firestore");
 
         await getBooks();
         removeBookForm.reset();
@@ -282,4 +298,7 @@ const deleteBook = async () => {
     }
 };
 
+// Uncomment after adding styles FRONTEND
+// window.onload = getBooks();
+// window.onload = isAdmin();
 delBookBtn.addEventListener("click", deleteBook);

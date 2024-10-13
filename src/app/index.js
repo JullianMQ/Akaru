@@ -5,6 +5,7 @@ import { signOut } from "firebase/auth";
 
 // DOM VARIABLES
 const logOutBtn = document.querySelector("#logOutBtn");
+const userName = document.querySelector("#userName");
 const searchInput = document.querySelector("#search-input");
 const bookContainer = document.querySelector("#book_section");
 const bookTemplate = document.querySelector("#book_template");
@@ -93,7 +94,6 @@ const getUserRole = async () => {
 
 // Set username
 const setUserState = async () => {
-    const userName = document.querySelector("#userName");
     if (isUser !== "false") {
         const isAdmin = await getUserRole();
         userName.textContent = isUser.displayName;
