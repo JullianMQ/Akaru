@@ -90,7 +90,11 @@ const addNewUser = async () => {
     const userEmail = userEmailInput.value.trim();
     const userRole = userRoleInput.value.trim();
     const userPass = "test123"; //default pass ginamit namen since nag eeror sya if walang defaultPassword and userPass sa line nato 
-    const objToSend = { displayName: userName, email: userEmail, password: userPass };
+    const objToSend = {
+        displayName: userName,
+        email: userEmail,
+        password: userPass,
+    };
     let userID;
 
     try {
@@ -151,7 +155,7 @@ const updateUser = async () => {
     }
 
     try {
-        await fetch(`api/users/change`, {
+        await fetch("api/users/change", {
             method: "PUT",
             headers: { "Content-Type": "application/json", },
             body: JSON.stringify({
