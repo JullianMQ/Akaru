@@ -390,6 +390,7 @@ main {
     text-overflow: ellipsis;
     text-wrap: nowrap;
     overflow: hidden;
+    letter-spacing: 0;
 }
 
 .borrow {
