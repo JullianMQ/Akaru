@@ -2,7 +2,8 @@ import {
     doc,
     getDoc
 } from "firebase/firestore";
-import { isUser, db } from "./init.js"
+import { signOut } from "firebase/auth";
+import { auth, isUser, db, checkAuthState } from "./init.js"
 
 const logOutBtn = document.querySelector("#logOutBtn");
 const userName = document.querySelector("#userName");
@@ -16,14 +17,18 @@ const getUserRole = async () => {
     return userRole;
 }
 
-const isAdmin = () => {
-    if (isUser !== false) {
-        const userRole = getUserRole();
-        if (userRole !== "Admin") {
-            userName.textContent = isUser.displayName;
-            isAdminElement.style.display = "flex";
-            return 0;
+const isAdmin = async () => {
+    if (isUser !== "false") {
+        const userRole = await getUserRole();
+
+        if (userRole === "User") {
+            window.location.href = "index1.html";
+            return 1;
         }
+
+        userName.textContent = isUser.displayName;
+        isAdminElement.style.display = "flex";
+        return 0;
     }
     window.location.href = "index1.html";
     return 1;

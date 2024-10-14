@@ -1,32 +1,212 @@
 [
-    {"bookName": "Good Omens", "bookCategory": ["Fantasy", "Humor", "Adventure"], "authors": {"Author1": "Neil Gaiman", "Author2": "Terry Pratchett"},"imagePath":"../public/images/Good_Omens.webp"},
-    {"bookName": "The Talisman", "bookCategory": ["Fantasy", "Horror", "Adventure"],"authors":{"Author1": "Stephen King", "Author2": "Peter Straub"},"imagePath":"../public/images/The_Talisman.webp"},
-    {"bookName": "The Divine Comedy","bookCategory": ["Classics", "Epic", "Poetry"], "authors": {"Author1": "Dante Alighieri","Author2": "John Ciardi"},"imagePath":"../public/images/The_Divine_Comedy.webp"},
-    {"bookName": "The Art of Happiness","bookCategory": ["Non-Fiction", "Philosophy", "Self-Help"],"authors": {"Author1": "Dalai Lama","Author2": "Howard Cutler"},"imagePath":"../public/images/The_Art_of_Happiness.webp"},
-    {"bookName": "The Cuckoos Calling", "bookCategory": ["Mystery", "Thriller", "Crime"], "authors": {"Author1": "Robert Galbraith","Author2": "J.K. Rowling"},"imagePath":"../public/images/The_Cuckoos_Calling.webp"},
-    {"bookName": "Good Economics for Hard Times","bookCategory": ["Non-Fiction", "Economics", "Politics"], "authors": {"Author1": "Abhijit Banerjee","Author2": "Esther Duflo"},"imagePath":"../public/images/Good_Economics_for_Hard_Times.webp"},
-    {"bookName": "The Fifth Season", "bookCategory": ["Science Fiction", "Fantasy", "Adventure"], "authors": {"Author1": "N.K. Jemisin" },"imagePath":"../public/images/The_Fifth_Season.webp"},
-    {"bookName": "Illuminae","bookCategory": ["Science Fiction", "Young Adult", "Adventure"],"authors": {"Author1": "Amie Kaufman","Author2": "Jay Kristoff" },"imagePath":"../public/images/Illuminae.webp"},
-    {"bookName": "The Rise and Fall of D.O.D.O.", "bookCategory": ["Science Fiction", "Fantasy", "Adventure"], "authors": {"Author1": "Neal Stephenson","Author2": "Nicole Galland"},"imagePath":"../public/images/The_Rise_and_Fall.webp"},
-    {"bookName": "The Left Hand of Darkness","bookCategory": ["Science Fiction", "Fantasy", "LGBTQ"],"authors": {"Author1": "Ursula K. Le Guin","Author2": "David Mitchell"} ,"imagePath":"../public/images/The_Left_Hand_of_Darkness.webp"},
-    {"bookName": "The Alchemist", "bookCategory": ["Fiction", "Philosophical", "Adventure"],"authors": {"Author1":"Paulo Coelho"  },"imagePath":"../public/images/The_Alchemist.webp"},
-    {"bookName": "Catch-22","bookCategory": ["Fiction", "Satire", "Classics"],"authors":{"Author1": "Joseph Heller" },"imagePath":"../public/images/Catch-22.webp"},
-    {"bookName": "Crime and Punishment","bookCategory": ["Fiction", "Classics", "Psychological"],"authors": {"Author1":"Fyodor Dostoevsky" },"imagePath":"../public/images/Crime_and_Punishment.webp"},
-    {"bookName": "The Odyssey","bookCategory": ["Classics", "Epic", "Mythology"],"authors": {"Author1":"Homer" },"imagePath":"../public/images/The_Odyssey.webp"},
-    {"bookName": "The Kite Runner","bookCategory": ["Fiction", "Historical", "Drama"],"authors":{"Author1":  "Khaled Hosseini" },"imagePath":"../public/images/The_Kite_Runner.webp"},
-    {"bookName": "The Book Thief","bookCategory": ["Historical", "Fiction", "Young Adult"],"authors": {"Author1": "Markus Zusak"},"imagePath":"../public/images/The_Book_Thief.webp"},
-    {"bookName": "Sapiens: A Brief History of Humankind","bookCategory": ["Non-Fiction", "History", "Science"],"authors":{"Author1":"Yuval Noah Harari" },"imagePath":"../public/images/Sapiens_A_Brief_History_of_Humankind.webp"},
-    {"bookName": "The Road","bookCategory": ["Dystopian", "Fiction", "Adventure"],"authors": {"Author1":"Cormac McCarthy" },"imagePath":"../public/images/The_road.webp"},
-    {"bookName": "Fahrenheit 451","bookCategory": ["Dystopian", "Science Fiction", "Classics"],"authors": {"Author1":"Ray Bradbury" },"imagePath":"../public/images/fahrenheit_451.webp"},
-    {"bookName": "The Handmaids Tale","bookCategory": ["Dystopian", "Fiction", "Feminist"],"authors": {"Author1":"Margaret Atwood" },"imagePath":"../public/images/The_handmaid_tale.webp"},
-    {"bookName": "The Girl on the Train","bookCategory": ["Thriller", "Mystery", "Fiction"],"authors":{"Author1": "Paula Hawkins" },"imagePath":"../public/images/The_Girl_on_the_Train.webp"},
-    {"bookName": "Gone Girl", "bookCategory": ["Thriller", "Mystery", "Psychological"],"authors": {"Author1":"Gillian Flynn" },"imagePath":"../public/images/Gone_Girl.webp"},
-    {"bookName": "The Da Vinci Code","bookCategory": ["Thriller", "Mystery", "Adventure"],"authors":{"Author1": "Dan Brown" },"imagePath":"../public/images/The_Da_Vinci_Code.webp"},
-    {"bookName": "A Game of Thrones", "bookCategory": ["Fantasy", "Adventure", "Epic"],"authors": {"Author1":"George R.R. Martin" },"imagePath":"../public/images/A_Game_of_Thrones.webp"},
-    {"bookName": "The Hunger Games","bookCategory": ["Dystopian", "Young Adult", "Adventure"],"authors": {"Author1":"Suzanne Collins" },"imagePath":"../public/images/The_Hunger_Games.webp"},
-    {"bookName": "The Maze Runner","bookCategory": ["Dystopian", "Young Adult", "Adventure"],"authors":{"Author1": "James Dashner" },"imagePath":"../public/images/The_Maze_Runner.webp"},
-    {"bookName": "Percy Jackson & the Olympians: The Lightning Thief","bookCategory": ["Fantasy", "Young Adult", "Adventure"],"authors":{"Author1":"Rick Riordan" },"imagePath":"../public/images/Percy_Jackson.webp"},
-    {"bookName": "The Fault in Our Stars", "bookCategory": ["Young Adult", "Romance", "Drama"],"authors":{"Author1": "John Green" },"imagePath":"../public/images/The_Fault_in_Our_Stars.webp"},
-    {"bookName": "The Shining", "bookCategory": ["Horror", "Thriller", "Psychological"], "authors": {"Autho1":"Stephen King" },"imagePath":"../public/images/The_Shining.webp"},
-    {"bookName": "Frankenstein", "bookCategory": ["Horror", "Classics", "Science Fiction"], "authors": {"Author1":"Mary Shelley" },"imagePath":"../public/images/Frankenstein.webp"}
+    {
+        "bookName": "Good Omens",
+        "bookCategory": ["Fantasy", "Humor", "Adventure"],
+        "authors": {"Author1": "Neil Gaiman", "Author2": "Terry Pratchett"},
+        "imagePath":"../public/images/Good_Omens.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Talisman",
+        "bookCategory": ["Fantasy", "Horror", "Adventure"],
+        "authors":{"Author1": "Stephen King", "Author2": "Peter Straub"},
+        "imagePath":"../public/images/The_Talisman.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Divine Comedy",
+        "bookCategory": ["Classics", "Epic", "Poetry"],
+        "authors": {"Author1": "Dante Alighieri","Author2": "John Ciardi"},
+        "imagePath":"../public/images/The_Divine_Comedy.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Art of Happiness",
+        "bookCategory": ["Non-Fiction", "Philosophy", "Self-Help"],
+        "authors": {"Author1": "Dalai Lama","Author2": "Howard Cutler"},
+        "imagePath":"../public/images/The_Art_of_Happiness.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Cuckoos Calling",
+        "bookCategory": ["Mystery", "Thriller", "Crime"],
+        "authors": {"Author1": "Robert Galbraith","Author2": "J.K. Rowling"},
+        "imagePath":"../public/images/The_Cuckoos_Calling.webp",
+        "userId": []
+    },
+    {
+        "bookName": "Good Economics for Hard Times",
+        "bookCategory": ["Non-Fiction", "Economics", "Politics"],
+        "authors": {"Author1": "Abhijit Banerjee","Author2": "Esther Duflo"},
+        "imagePath":"../public/images/Good_Economics_for_Hard_Times.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Fifth Season",
+        "bookCategory": ["Science Fiction", "Fantasy", "Adventure"],
+        "authors": {"Author1": "N.K. Jemisin" },
+        "imagePath":"../public/images/The_Fifth_Season.webp",
+        "userId": []
+    },
+    {
+        "bookName": "Illuminae",
+        "bookCategory": ["Science Fiction", "Young Adult", "Adventure"],
+        "authors": {"Author1": "Amie Kaufman","Author2": "Jay Kristoff" },
+        "imagePath":"../public/images/Illuminae.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Rise and Fall of D.O.D.O.",
+        "bookCategory": ["Science Fiction", "Fantasy", "Adventure"],
+        "authors": {"Author1": "Neal Stephenson","Author2": "Nicole Galland"},
+        "imagePath":"../public/images/The_Rise_and_Fall.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Left Hand of Darkness",
+        "bookCategory": ["Science Fiction", "Fantasy", "LGBTQ"],
+        "authors": {"Author1": "Ursula K. Le Guin","Author2": "David Mitchell"} ,
+        "imagePath":"../public/images/The_Left_Hand_of_Darkness.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Alchemist",
+        "bookCategory": ["Fiction", "Philosophical", "Adventure"],
+        "authors": {"Author1":"Paulo Coelho"  },
+        "imagePath":"../public/images/The_Alchemist.webp",
+        "userId": []
+    },
+    {
+        "bookName": "Catch-22",
+        "bookCategory": ["Fiction", "Satire", "Classics"],
+        "authors":{"Author1": "Joseph Heller" },
+        "imagePath":"../public/images/Catch-22.webp",
+        "userId": []
+    },
+    {
+        "bookName": "Crime and Punishment",
+        "bookCategory": ["Fiction", "Classics", "Psychological"],
+        "authors": {"Author1":"Fyodor Dostoevsky" },
+        "imagePath":"../public/images/Crime_and_Punishment.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Odyssey",
+        "bookCategory": ["Classics", "Epic", "Mythology"],
+        "authors": {"Author1":"Homer" },
+        "imagePath":"../public/images/The_Odyssey.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Kite Runner",
+        "bookCategory": ["Fiction", "Historical", "Drama"],
+        "authors":{"Author1":  "Khaled Hosseini" },
+        "imagePath":"../public/images/The_Kite_Runner.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Book Thief",
+        "bookCategory": ["Historical", "Fiction", "Young Adult"],
+        "authors": {"Author1": "Markus Zusak"},
+        "imagePath":"../public/images/The_Book_Thief.webp",
+        "userId": []
+    },
+    {
+        "bookName": "Sapiens: A Brief History of Humankind",
+        "bookCategory": ["Non-Fiction", "History", "Science"],
+        "authors":{"Author1":"Yuval Noah Harari" },
+        "imagePath":"../public/images/Sapiens_A_Brief_History_of_Humankind.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Road",
+        "bookCategory": ["Dystopian", "Fiction", "Adventure"],
+        "authors": {"Author1":"Cormac McCarthy" },
+        "imagePath":"../public/images/The_road.webp",
+        "userId": []
+    },
+    {
+        "bookName": "Fahrenheit 451",
+        "bookCategory": ["Dystopian", "Science Fiction", "Classics"],
+        "authors": {"Author1":"Ray Bradbury" },
+        "imagePath":"../public/images/fahrenheit_451.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Handmaids Tale",
+        "bookCategory": ["Dystopian", "Fiction", "Feminist"],
+        "authors": {"Author1":"Margaret Atwood" },
+        "imagePath":"../public/images/The_handmaid_tale.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Girl on the Train",
+        "bookCategory": ["Thriller", "Mystery", "Fiction"],
+        "authors":{"Author1": "Paula Hawkins" },
+        "imagePath":"../public/images/The_Girl_on_the_Train.webp",
+        "userId": []
+    },
+    {
+        "bookName": "Gone Girl",
+        "bookCategory": ["Thriller", "Mystery", "Psychological"],
+        "authors": {"Author1":"Gillian Flynn" },
+        "imagePath":"../public/images/Gone_Girl.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Da Vinci Code",
+        "bookCategory": ["Thriller", "Mystery", "Adventure"],
+        "authors":{"Author1": "Dan Brown" },
+        "imagePath":"../public/images/The_Da_Vinci_Code.webp",
+        "userId": []
+    },
+    {
+        "bookName": "A Game of Thrones",
+        "bookCategory": ["Fantasy", "Adventure", "Epic"],
+        "authors": {"Author1":"George R.R. Martin" },
+        "imagePath":"../public/images/A_Game_of_Thrones.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Hunger Games",
+        "bookCategory": ["Dystopian", "Young Adult", "Adventure"],
+        "authors": {"Author1":"Suzanne Collins" },
+        "imagePath":"../public/images/The_Hunger_Games.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Maze Runner",
+        "bookCategory": ["Dystopian", "Young Adult", "Adventure"],
+        "authors":{"Author1": "James Dashner" },
+        "imagePath":"../public/images/The_Maze_Runner.webp",
+        "userId": []
+    },
+    {
+        "bookName": "Percy Jackson & the Olympians: The Lightning Thief",
+        "bookCategory": ["Fantasy", "Young Adult", "Adventure"],
+        "authors":{"Author1":"Rick Riordan" },
+        "imagePath":"../public/images/Percy_Jackson.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Fault in Our Stars",
+        "bookCategory": ["Young Adult", "Romance", "Drama"],
+        "authors":{"Author1": "John Green" },
+        "imagePath":"../public/images/The_Fault_in_Our_Stars.webp",
+        "userId": []
+    },
+    {
+        "bookName": "The Shining",
+        "bookCategory": ["Horror", "Thriller", "Psychological"],
+        "authors": {"Autho1":"Stephen King" },
+        "imagePath":"../public/images/The_Shining.webp",
+        "userId": []
+    },
+    {
+        "bookName": "Frankenstein",
+        "bookCategory": ["Horror", "Classics", "Science Fiction"],
+        "authors": {"Author1":"Mary Shelley" },
+        "imagePath":"../public/images/Frankenstein.webp",
+        "userId": []
+    }
 ]  
