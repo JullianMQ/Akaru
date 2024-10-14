@@ -113,6 +113,161 @@ td {
     padding: 5px 0;
 }
 
+/* header */
+header nav{
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F0F2F1;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+.icon {
+    cursor: pointer;
+}
+.hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 3rem;
+    height: 3rem;
+    z-index: 3;
+    transition: ease 0.5s;
+}
+.hamburger div{
+    position: relative;
+    width: 2rem;
+    height: 1.75rem;
+}
+.hamburger span{
+    background-color: #1D1D1B;
+    width: 100%;
+    display: block;
+    position: absolute;
+    height: 0.4rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.5s, width 0.6s;
+}
+.hamburger .line-1{
+    transform: translate(-50%, -200%);
+}
+.hamburger .line-3{
+    transform: translate(-50%, 100%);
+}
+.open .line-1{
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.open .line-2{
+    width: 0;
+}
+.open .line-3{
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.open span{
+    background-color: #1D1D1B;
+    transition: transform 0.5s, width 0.6s;
+}
+body.menu-open {
+    overflow: hidden;
+}
+.menu * {
+    color: #1D1D1B;
+    font-weight: 600;
+}
+
+.menu {
+    position: fixed;
+    display: relative;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #F0F2F1;
+    z-index: 1;
+    right: -100%;
+    transition: ease-in-out 0.6s;
+    border-left: 1px solid #1D1D1B;
+}
+
+.menu .container {
+    height: 100%;
+    padding-top: 6rem;
+    display: grid;
+    grid-template-rows: 75% 25%;
+    justify-items: center;
+}
+
+.options,
+.account {
+    width: 70%;
+    height: fit-content;
+    display: grid;
+    justify-items: start;
+}
+
+.title a {
+    text-decoration: none;
+    color: #1D1D1B;
+}
+
+.menu ul {
+    list-style: none;
+}
+
+.menu li {
+    width: 100%;
+    border: 2px solid #7C7C7C;
+    border-width: 0 0 2px 0;
+    display: flex;
+    justify-content: start;
+}
+
+.menu a {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.menu .options a {
+    margin: 1rem 0 0.5rem;
+}
+
+.menu .account a {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    padding: 0.5rem 0 0.5rem;
+}
+
+.menu .account .username {
+    border: 2px solid #7C7C7C;
+    border-width: 0 0 2px 0;
+}
+
+.menu .account .password {
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.account button {
+    color: #F0F2F1;
+    background-color: #1D1D1B;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    border-radius: 12px;
+    border-width: 0;
+}
+
+.open .menu {
+    right: 0;
+    transition: ease-in-out 0.35s;
+}
+
+/* header up */
+
 .button {
     background-color: var(--tertiary-color);
     border: 1px solid var(--primary-color);
@@ -214,6 +369,14 @@ td {
         padding: 10px 0 5px 0;
     }
 
+    header nav{
+        padding: 1.25rem 2rem;
+    }
+
+    nav .title{
+        font-size: 22px;
+    }
+
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -251,6 +414,14 @@ td {
 
     .input__value, .image__value {
         padding: 10px 0 5px 0;
+    }
+
+    header nav{
+        padding: 1.5rem 3.25rem;
+    }
+
+    .menu {
+        width: 20.75rem;
     }
 }
 
@@ -292,6 +463,18 @@ td {
 
     .input__value {
         font-size: var(--small-font-size);
+    }
+
+    header nav{
+        padding: 1.3rem 5rem;
+    }
+
+    nav .title{
+        font-size: 29px;
+    }
+
+    .menu {
+        width: 30rem;
     }
 }
 

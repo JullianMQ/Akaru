@@ -8,8 +8,34 @@
   <link rel="stylesheet" type="text/css" href="styles/hidden.css">
   <link rel="stylesheet" type="text/css" href="styles/admin_user.css">
 </head>
-
 <body>
+  <header id="header">
+    <nav>
+      <h3 class="title"><a href="index1.html">Akaru</a></h3>
+      <div class="hamburger" id="hamburger">
+        <div class="icon">
+          <span class="line-1"></span>
+          <span class="line-2"></span>
+          <span class="line-3"></span>
+        </div>
+      </div>
+    </nav>
+
+    <section class="menu" id="menu">
+      <div class="container">
+        <ul class="options">
+          <li><a href="index1.html">Home</a></li>
+          <li><a href="borrowed_books.html">Books</a></li>
+          <li data-is-admin style="display:none;"><a href="admin_index.html">Admin</a></li>
+        </ul>
+        <div class="account">
+          <a id="userName" href="#" class="username">Guest</a>
+          <button id="logOutBtn" type="button" class="logout">Log Out</button>
+        </div>
+      </div>
+    </section>
+  </header>
+
   <main>
     <section class="container">
       <h1 class="title">Managing Users</h1>
