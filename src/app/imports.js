@@ -3,7 +3,7 @@ import './init.js';
 if (window.location.pathname.includes('entry_page.html')) {
     import('./user_entry.js').then(module => {});
 }
-if (window.location.pathname.includes('admin_book_page.html')) {
+if (window.location.pathname.includes('admin_book.html')) {
     import('./admin_book.js').then(module => {});
     import('./admin_book_page.js').then(module => {});
 }

@@ -1,5 +1,6 @@
 import { isUser, auth, db, checkAuthState, storage } from "./init.js"
 import { doc, collection, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
+import { signOut } from "firebase/auth";
 
 // Firestore variables
 const userId = isUser.uid;
@@ -12,37 +13,37 @@ const isAdminElement = document.querySelector("[data-is-admin]");
 const bookDataArr = [];
 
 // uncomment after adding sidebar FRONTEND
-// // Get userRole
-// const getUserRole = async () => {
-//     const docRef = doc(db, "users", isUser.uid);
-//     const getUserDoc = await getDoc(docRef);
-//     const userRole = getUserDoc.data().userRole;
-//     return userRole;
-// }
-// // End Get userRole
+// Get userRole
+const getUserRole = async () => {
+    const docRef = doc(db, "users", isUser.uid);
+    const getUserDoc = await getDoc(docRef);
+    const userRole = getUserDoc.data().userRole;
+    return userRole;
+}
+// End Get userRole
 
-// // Set username
-// const setUserState = async () => {
-//     const userName = document.querySelector("#userName");
-//     if (isUser !== "false") {
-//         const isAdmin = await getUserRole();
-//         userName.textContent = isUser.displayName;
-//         if (isAdmin === "Admin") {
-//             console.log(isAdminElement.style.display = "block");
-//         }
-//         return 0;
-//     }
-//     userName.textContent = "Guest";
-//     logOutBtn.innerHTML = "Log In";
-//     return 0;
-// }
-// // End Set username
+// Set username
+const setUserState = async () => {
+    if (isUser !== "false") {
+        const isAdmin = await getUserRole();
+        userName.textContent = isUser.displayName;
+        if (isAdmin === "Admin") {
+            isAdminElement.style.display = "flex";
+        }
+        return 0;
+    }
+    userName.textContent = "Guest";
+    logOutBtn.innerHTML = "Log In";
+    return 0;
+}
+// End Set username
 
 const isLoggedIn = () => {
     if (isUser === "false") {
         window.location.href = "entry_page.html";
         return 0;
     }
+    setUserState();
     return 0;
 }
 
@@ -171,18 +172,41 @@ const removeBookFromUserBorrowedBooks = async (userId, bookId) => {
     }
 }
 
-window.onload = getBooks();
-<<<<<<< HEAD
+const userLogOut = async () => {
+    if (isUser !== "false") {
+        try {
+            await signOut(auth);
+            alert("Signed Out!");
+            // full reload to not read from cache
+            window.location.reload(true);
+            return 0;
+        } catch (error) {
+            alert("Something went wrong: Please check the logs if you are an advanced user.");
+            console.log(error.message);
+            return 0;
+        }
+    }
+    window.location.href = "entry_page.html";
+    return 0;
+};
 
+logOutBtn.addEventListener("click", () => {
+    userLogOut();
+    checkAuthState();
+});
+// Log Out End
+
+
+// FrontEnd Stuff
 var hamburger = document.getElementById('hamburger');
 var trigger = document.getElementById('header');
-
 
 hamburger.onclick = function () {
     hamburger.classList.toggle('open');
     trigger.classList.toggle('open');
     document.body.classList.toggle('menu-open');
 }
-=======
+// End FrontEnd Stuff
+
+window.onload = getBooks();
 window.onload = isLoggedIn();
->>>>>>> 66932661f5822927cdc0f9d33f3c6003c6972563

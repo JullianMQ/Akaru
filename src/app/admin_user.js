@@ -38,7 +38,7 @@ const rowTemplate = document.querySelector("[data-user-row]");
 //         const userRole = getUserRole();
 //         if (userRole !== "Admin") {
 //             userName.textContent = isUser.displayName;
-//             isAdminElement.style.display = "block";
+//             isAdminElement.style.display = "flex";
 //             return 0;
 //         }
 //     }

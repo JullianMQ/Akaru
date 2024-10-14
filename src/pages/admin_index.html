@@ -7,6 +7,42 @@
     <!-- <link href="css/style.css" rel="stylesheet"> -->
   </head>
   <body>
+
+    <section class="header" id="header">
+      <nav>
+        <h3>Akaru</h3>
+        <div class="hamburger" id="hamburger">
+        <div class="icon">
+          <span class="line-1"></span>
+          <span class="line-2"></span>
+          <span class="line-3"></span>
+        </div>
+      </div>
+      </nav>
+      <section class="menu" id="menu">
+        <div class="container">
+          <ul class="options">
+            <li><a href="index1.html">Home</a></li>
+            <li data-book><a href="borrowed_books.html">Books</a></li>
+            <li data-is-admin style="display:none;"><a href="admin_index.html">Admin</a></li>
+
+            <!-- testing purposes only -->
+            <!-- <button id="addBook" type="button">Add Book</button> -->
+            <!-- admin -->
+            <!-- <li><a href="">Admin</a></li> -->
+          </ul>
+          <div class="account">
+            <a id="userName" href="#" class="username">Guest</a>
+            <button id="logOutBtn" type="button" class="logout">Log Out</button>
+          </div>
+        </div>
+      </section>
+
+    </section>
+
+    <a href="index1.html"></a>
+    <a href="admin_user.html">Managing Users</a>
+    <a href="admin_book.html">Managing Books</a>
   
     <script type="module" src="bundled_files.js"> </script>
   </body>
