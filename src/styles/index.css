@@ -101,6 +101,14 @@ header nav {
     align-items: center;
 }
 
+.icon, .logout, .borrow {
+    cursor: pointer;
+}
+
+.borrow:hover {
+    color: #f0f2f1;
+}
+
 .hidden {
     display: none;
 }
@@ -250,13 +258,13 @@ header .content h1 {
     font-family: 'ITC Avant Garde', sans-serif;
     font-weight: bold;
     line-height: 95%;
-    letter-spacing: -3px;
+    letter-spacing: -1px;
 
 }
 
 header .content p {
     font-weight: 400;
-    letter-spacing: -1px;
+    letter-spacing: 0;
 }
 
 main {
@@ -277,7 +285,7 @@ main {
 
 .search::placeholder {
     color: #D9D9D9;
-    letter-spacing: -1px;
+    letter-spacing: 0;
 }
 
 .search:focus {
@@ -341,6 +349,7 @@ main {
 .book_card .book_img img {
     object-fit: cover;
     border-radius: 15px;
+    cursor: crosshair;
 }
 
 .book_card .book_info {
@@ -355,6 +364,10 @@ main {
     color: #8F8B8B;
 }
 
+.main-title {
+    text-decoration: none;
+}
+
 .book_title {
     text-align: start;
     font-weight: bolder;
@@ -364,6 +377,7 @@ main {
     text-wrap: nowrap;
     overflow: hidden;
     width: 100%;
+    letter-spacing: 0;
 }
 
 .genre {
@@ -445,7 +459,7 @@ footer * {
     }
 
     header .content p {
-        width: 35rem;
+        width: 60%;
         padding: 0 2rem;
         font-size: 18px;
         margin-bottom: 3rem;
@@ -728,5 +742,16 @@ footer * {
     .hamburger .icon {
         height: 1.75rem;
         width: 1.75rem;
+    }
+}
+
+@media screen and (min-width: 1567px) {
+    header .content p {
+        width: 40%;
+    }
+
+    header .content h1 { 
+        width: 100%;
+        margin-top: 50px;
     }
 }
