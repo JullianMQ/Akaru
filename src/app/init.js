@@ -5,7 +5,6 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-<<<<<<< HEAD
     apiKey: "AIzaSyB0CO9PloCBIieVifCPi5ptBibNTRj4fZk",
     authDomain: "test-lms-addbase.firebaseapp.com",
     projectId: "test-lms-addbase",
@@ -13,16 +12,8 @@ const firebaseConfig = {
     messagingSenderId: "770512950395",
     appId: "1:770512950395:web:9ad0a7fe3caadb35c53ede",
     measurementId: "G-WC1HFBNBDH"
-=======
-  apiKey: "AIzaSyB0CO9PloCBIieVifCPi5ptBibNTRj4fZk",
-  authDomain: "test-lms-addbase.firebaseapp.com",
-  projectId: "test-lms-addbase",
-  storageBucket: "test-lms-addbase.appspot.com",
-  messagingSenderId: "770512950395",
-  appId: "1:770512950395:web:9ad0a7fe3caadb35c53ede",
-  measurementId: "G-WC1HFBNBDH"
->>>>>>> dd01c551c00035b710571192ffdf92513ea9ad37
-};
+  };
+  
 
 // Firebase stuff
 const app = initializeApp(firebaseConfig);
