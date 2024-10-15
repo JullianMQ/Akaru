@@ -1,28 +1,189 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-
+:root {
+    --title-font: 'ITC Avant Garde', sans-serif;
+    --body-font: 'Neue Montreal', sans-serif;
+    --h1-font-size: 3em;
+    --biggest-font-size: 2.4rem;
+    --big-font-size: 1.8rem;
+    --medium-font-size: 1.4rem;
+    --normal-font-size: 1rem;
+    --smaller-font-size: .8rem;
+}
 
 *{
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
     color: #1D1D1B;
+    box-sizing: content-box;
 }
 body{
     background: #F0F2F1;
+    height: 100vh;
+    overflow: hidden;
+}
+.content{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.icon {
+    cursor: pointer;
+}
+.hamburger {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100dvw;
-    height: 100dvh;
+    text-align: center;
+    width: 3rem;
+    height: 3rem;
+    z-index: 3;
+    transition: ease 0.5s;
 }
-.container{
+.hamburger div{
+    position: relative;
+    width: 2rem;
+    height: 1.75rem;
+}
+.hamburger span{
+    background-color: #1D1D1B;
+    width: 100%;
+    display: block;
+    position: absolute;
+    height: 0.4rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.5s, width 0.6s;
+}
+.hamburger .line-1{
+    transform: translate(-50%, -200%);
+}
+.hamburger .line-3{
+    transform: translate(-50%, 100%);
+}
+.open .line-1{
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.open .line-2{
+    width: 0;
+}
+.open .line-3{
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.open span{
+    background-color: #1D1D1B;
+    transition: transform 0.5s, width 0.6s;
+}
+nav .title{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+header nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F0F2F1;
+    box-shadow: 0 4px 2px -2px gray;
+}
+body.menu-open {
+    overflow: hidden;
+}
+.menu * {
+    color: #1D1D1B;
+    font-weight: 600;
+}
+
+.menu {
+    position: fixed;
+    display: relative;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #F0F2F1;
+    z-index: 1;
+    right: -100%;
+    transition: ease-in-out 0.6s;
+    border-left: 1px solid #1D1D1B;
+}
+
+.menu .container {
+    height: 100%;
+    padding-top: 6rem;
+    display: grid;
+    grid-template-rows: 75% 25%;
+    justify-items: center;
+}
+
+.options,
+.account {
+    width: 70%;
+    height: fit-content;
+    display: grid;
+    justify-items: start;
+}
+
+.title a {
+    text-decoration: none;
+    color: #1D1D1B;
+}
+
+.menu ul {
+    list-style: none;
+}
+
+.menu li {
+    width: 100%;
+    border: 2px solid #7C7C7C;
+    border-width: 0 0 2px 0;
+    display: flex;
+    justify-content: start;
+}
+
+.menu a {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.menu .options a {
+    margin: 1rem 0 0.5rem;
+}
+
+.menu .account a {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    padding: 0.5rem 0 0.5rem;
+}
+
+.menu .account .username {
+    border: 2px solid #7C7C7C;
+    border-width: 0 0 2px 0;
+}
+
+.account button {
+    color: #F0F2F1;
+    background-color: #1D1D1B;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    border-radius: 12px;
+    border-width: 0;
+}
+
+.open .menu {
+    right: 0;
+    transition: ease-in-out 0.35s;
+}
+.content .container{
     background-color: transparent;
     position: relative;
 }
 .container span{
     font-size: 12px;
 }
-.container, button, h5, label{
+.content .container, button, h5, label{
     letter-spacing: -1px;
 }
 .container button{
@@ -35,41 +196,41 @@ body{
     margin: 1.4rem 0.375rem 0.3em 0;
     cursor: pointer;
 }
-.container button.active{
+.content .container button.active{
     background-color: #1D1D1B;
     font-weight: normal;
     color: #F0F2F1;
 }
-.container button.signUpForm{
+.content .container button.signUpForm{
     border-color: #D9D9D9;
 }
 .button-area{
     display: flex;
     flex-direction: row;
 }
-.container form{
+.content .container form{
     background-color: transparent;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
 }
-.container form h1{
+.content .container form h1{
     font-size: 64px;    
     line-height: 95%;
     margin-bottom: 0.5rem;
     letter-spacing: -3px;
 }
-.container form h5{
+.content .container form h5{
     margin-bottom: 2rem;
     font-size: 28px;
     font-weight: 100;
     width: 35rem;
 }
-.container form label{
+.content .container form label{
     font-size: 28px;
 }
-.container input{
+.content .container input{
     color: #7C7C7C;
     background-color: transparent;
     border-color: #1D1D1B;
@@ -85,27 +246,27 @@ body{
     position: absolute;
     transition: all 0.5s ease-in-out;
 }
-.container .form-card{
+.content .container .form-card{
     display: grid;
 }
 .logInForm{
-    height: fit-content;
+    height: 0;
     opacity: 0;
 }
-.container.active .logInForm{
+.content .container.active .logInForm{
     opacity: 1;
 }
 .signUpForm{
     height: fit-content;
     opacity: 1;
 }
-.container.active .signUpForm{
+.content .container.active .signUpForm{
+    height: 0;
     opacity: 0;
 }
 .toggle-container{
     position: absolute;
-    overflow: hidden;
-    z-index: 1000;
+    z-index: 0;
 }
 .toggle{
     background: #D9D9D9;
@@ -126,7 +287,209 @@ body{
     from{top: var(--end)}
     to{top: var(--start)}
 }
+@media screen and (max-width: 768px){
+    :root{
+        --start:1.5rem;
+        --end:23em;
+    }
+
+    body {
+        font-size: var(--smaller-font-size);
+    }
+
+    .title {
+        font-size: var(--big-font-size);
+    }
+
+    .button {
+        font-size: var(--smaller-font-size);
+    }
+
+    .second__title {
+        font-size: var(--medium-font-size);
+    }
+
+    .content{
+        align-items: flex-start;
+    }
+
+    nav .title{
+        font-size: 22px;
+    }
+    header nav{
+        padding: 1.25rem 0.5rem;
+    }
+    .menu {
+        width: 100%;
+    }
+
+    .menu .options a {
+        font-size: 0.8rem;
+    }
+
+    .menu .account .username {
+        font-size: 12px;
+    }
+
+    .hamburger span{
+        height: 0.3rem;
+    }
+
+    .hamburger div{
+        width: 1.75rem;
+        height: 1.5rem;
+    }
+    body{
+        overflow-y: auto;
+    }
+    .content .container{ 
+        width: 95vw;
+    }
+    .toggle-container{
+        height: 12rem;
+        width: 100%;
+        top: 1.5rem;
+    }
+    .toggle{
+        height: 12rem;
+        bottom: 0;
+    }
+    .content .container .signUpForm{
+        top: 15rem;
+    } 
+    .content .container .logInForm{  
+        transition: ease-out 0.5s;
+        top: 2rem; 
+    }
+    .content .container.active .toggle-container{
+        animation: slideD 0.8s forwards;
+    }
+    .content .container .toggle-container{
+        animation: slideU 0.8s forwards;
+    }
+    .content .container.active .signUpForm{
+        transition: ease 0.7s;
+        left:-50rem;
+        opacity: 0;
+    }
+    .content .container.active .logInForm{
+        top: 2rem;
+    }
+    .content .container .form-card{
+        grid-template-columns: 100%;
+    }   
+    .content .container form h1{
+        font-size: 32px;
+    }
+    .content .container form h5{
+        font-size: 14px;
+        width: 80%;
+        margin-bottom: 1rem;
+    }
+    .content .container button{
+        margin-top: 0;
+    }
+    .content .container form label{
+        font-size: 24px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    :root{
+        --start:3.75rem;
+        --end:30em;
+    }
+
+    body {
+        font-size: var(--normal-font-size);
+    }
+
+    .button {
+        font-size: var(--smaller-font-size);
+    }
+
+    .second__button {
+        font-size: var(--normal-font-size);
+    }
+
+    header nav{
+        padding: 1.5rem 3.25rem;
+    }
+
+    .menu {
+        width: 20.75rem;
+    }
+
+    .menu .options a {
+        font-size: 22px;
+    }
+
+    .menu .account .username {
+        font-size: 12px;
+    }
+
+    body{
+        flex-direction: row;
+        overflow: hidden;
+    }
+    .content .container{ 
+        height: 100%;
+        width: 42rem;
+    }
+    .toggle-container{
+        height: 25rem;
+        width: 100%;
+        top: 3.75rem;
+    }
+    .toggle{
+        height: 22.35rem;
+    }
+    .content .container .signUpForm{
+        top: 30rem;
+    } 
+    .content .container .logInForm{
+        top: 3.75rem;
+    }
+    .content .container.active .toggle-container{
+        animation: slideD 0.7s forwards;
+    }
+    .content .container .toggle-container{
+        animation: slideU 0.7s forwards;
+    }
+    .content .container.active .logInForm{
+    }
+    .content .container .form-card{
+        grid-template-columns: 18rem 18rem;
+        column-gap: 3rem;
+    }
+    .content .container form h1{
+        font-size: 36px;
+    }
+    .content .container form h5{
+        font-size: 16px;
+        width: 70%;
+        margin-bottom: 2.3rem;
+    }
+}
 @media screen and (min-width: 1025px) {
+    body {
+        font-size: var(--medium-font-size);
+    }
+    .button {
+        font-size: var(--normal-font-size);
+    }
+
+    .second__title {
+        font-size: var(--big-font-size);
+    }
+
+    .label__name {
+        font-size: var(--big-font-size);
+    }
+
+    .input__value {
+        font-size: var(--small-font-size);
+    }
     /* horizontal slide */
     @keyframes slideR{
         from{right: 50%;}
@@ -136,10 +499,32 @@ body{
         from{right: 0;}
         to{right: 50%;}
     }
+    nav .title{
+        font-size: 29px;
+    }
+    header nav{
+        padding: 1.3rem 5rem;
+    }
+    .menu {
+        width: 30rem;
+    }
+
+    .menu .options a {
+        font-size: 20px;
+    }
+
+    .menu .account .username {
+        font-size: 14px;
+    }
+
+    .account button {
+        font-size: 14px;
+    }
+    
    body{
         flex-direction: column;
    }
-   .container{
+   .content .container{
         width: 77rem;
         height: 29.5rem;
         min-height: 480px;
@@ -150,7 +535,7 @@ body{
         height: 100%;
         animation: slideR 0.7s forwards;
    }
-   .container.active .toggle-container{
+   .content .container.active .toggle-container{
         animation: slideL 0.7s forwards;
     }
     .toggle{
@@ -159,127 +544,23 @@ body{
     .logInForm{
         width:38.5rem;
         left: 50%;
-        padding-left: 2rem;
+        padding-left: 2rem; 
     }
     .signUpForm{
         width:38.5rem;
         right: 50%;
     }
-   .container .form-card{
+    .signUpForm > *{
+        padding-right: 2rem;
+    }
+    .content .container .form-card{
         grid-template-columns: 15rem 15rem;
         column-gap: 2.5rem;
     }
-    .container input{
+    .content .container input{
         max-width: 18rem;
     }
 }
-@media screen and (max-width: 1024px){
-    :root{
-        --start:3.75rem;
-        --end:32em;
-    }
-    body{
-        flex-direction: row;
-    }
-    .container{ 
-        overflow: hidden;
-        height: 100%;
-        width: 42rem;
-       }
-    .toggle-container{
-        height: 25rem;
-        width: 100%;
-        top: 3.75rem;
-    }
-    .toggle{
-        height: 22.35rem;
-    }
-    .container .signUpForm{
-        top: 30rem;
-    } 
-    .container .logInForm{
-        top: 3.75rem;
-    }
-    .container.active .toggle-container{
-        animation: slideD 0.7s forwards;
-    }
-    .container .toggle-container{
-        animation: slideU 0.7s forwards;
-    }
-    .container.active .logInForm{
-        transform: translateY(0%);
-    }
-    .container .form-card{
-        grid-template-columns: 18rem 18rem;
-        column-gap: 3rem;
-    }
-    .container form h1{
-        font-size: 36px;
-    }
-    .container form h5{
-        font-size: 16px;
-        width: 70%;
-        margin-bottom: 2.3rem;
-    }
-}
-@media screen and (max-width: 767px){
-    
-    :root{
-        --start:1.5rem;
-        --end:23em;
-    }
-    body{
-        overflow: hidden;
-    }
-    .container{ 
-        width: 22.25rem;
-    }
-    .toggle-container{
-        height: 12rem;
-        width: 100%;
-        top: 1.5rem;
-    }
-    .toggle{
-        height: 8rem;
-        bottom: 0;
-    }
-    .container .signUpForm{
-        top: 11rem;
-    } 
-    .container .logInForm{   
-        scale: 1 0.7;
-        top:auto;
-        transform: translateY(-50%);
-    }
-    .container.active .toggle-container{
-        animation: slideD 0.5s forwards;
-    }
-    .container .toggle-container{
-        animation: slideU 0.5s forwards;
-    }
-    .container.active .signUpForm{
-        transform: translateY(-30%);
-        scale: 1 0.1;
-    }
-    .container.active .logInForm{
-        top: 2rem;
-        scale: 1 1;
-    }
-    .container .form-card{
-        grid-template-columns: 100%;
-    }   
-    .container form h1{
-        font-size: 32px;
-    }
-    .container form h5{
-        font-size: 14px;
-        width: 90%;
-        margin-bottom: 1.75rem;
-    }
-    .container button{
-        margin-top: 0;
-    }
-    .container form label{
-        font-size: 24px;
-    }
+@media screen and (min-width: 1567px) {
+
 }

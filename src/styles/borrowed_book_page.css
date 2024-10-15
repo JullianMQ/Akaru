@@ -1,8 +1,24 @@
 @font-face {
+    font-family: 'ITC Avant Garde';
+    src: url('../public/fonts/ITC\ Avant\ Garde\ Gothic\ LT\ Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
     font-family: 'Neue Montreal';
     src: url('../public/fonts/NeueMontreal-Regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
+}
+:root {
+    --title-font: 'ITC Avant Garde', sans-serif;
+    --body-font: 'Neue Montreal', sans-serif;
+    --h1-font-size: 3em;
+    --biggest-font-size: 2.4rem;
+    --big-font-size: 1.8rem;
+    --medium-font-size: 1.4rem;
+    --normal-font-size: 1rem;
+    --smaller-font-size: .8rem;
 }
 * {
     margin: 0;
@@ -277,6 +293,26 @@ footer * {
 }
 
 @media screen and (min-width: 1025px){
+    body {
+        font-size: var(--medium-font-size);
+    }
+
+    .button {
+        font-size: var(--normal-font-size);
+    }
+
+    .second__title {
+        font-size: var(--big-font-size);
+    }
+
+    .label__name {
+        font-size: var(--big-font-size);
+    }
+
+    .input__value {
+        font-size: var(--small-font-size);
+    }
+
     nav .title{
         font-size: 29px;
     }
@@ -352,6 +388,22 @@ footer * {
 
 }
 @media screen and (max-width: 1024px){
+    body {
+        font-size: var(--normal-font-size);
+    }
+
+    .button {
+        font-size: var(--smaller-font-size);
+    }
+
+    .second__button {
+        font-size: var(--normal-font-size);
+    }
+
+    .label__name {
+        font-size: var(--medium-font-size);
+    }
+
     h1{
         font-size: 38px;
         margin-bottom: 2.5rem;
@@ -410,6 +462,26 @@ footer * {
 
 }
 @media screen and (max-width: 767px){
+    body {
+        font-size: var(--smaller-font-size);
+    }
+
+    .title {
+        font-size: var(--big-font-size);
+    }
+
+    .button {
+        font-size: var(--smaller-font-size);
+    }
+
+    .second__title {
+        font-size: var(--medium-font-size);
+    }
+
+    .label__name {
+        font-size: var(--normal-font-size);
+    }
+
     .content{
         width: 95vw;
     }

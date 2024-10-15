@@ -11,6 +11,16 @@
     font-weight: normal;
     font-style: normal;
 }
+:root {
+    --title-font: 'ITC Avant Garde', sans-serif;
+    --body-font: 'Neue Montreal', sans-serif;
+    --h1-font-size: 3em;
+    --biggest-font-size: 2.4rem;
+    --big-font-size: 1.8rem;
+    --medium-font-size: 1.4rem;
+    --normal-font-size: 1rem;
+    --smaller-font-size: .8rem;
+}
 * {
     margin: 0;
     padding: 0;
@@ -445,6 +455,25 @@ footer * {
 } */
 
 @media screen and (min-width: 1025px) {
+    body {
+        font-size: var(--medium-font-size);
+    }
+    .button {
+        font-size: var(--normal-font-size);
+    }
+
+    .second__title {
+        font-size: var(--big-font-size);
+    }
+
+    .label__name {
+        font-size: var(--big-font-size);
+    }
+
+    .input__value {
+        font-size: var(--small-font-size);
+    }
+    
     header .background::after {
         background: linear-gradient(rgba(0, 0, 0, 0.1), #222220 95%);
     }
@@ -546,10 +575,6 @@ footer * {
         width: 30rem;
     }
 
-    .menu .options a {
-        font-size: 20px;
-    }
-
     .menu .account .username {
         font-size: 14px;
     }
@@ -560,6 +585,18 @@ footer * {
 }
 
 @media screen and (max-width: 1024px) {
+    body {
+        font-size: var(--normal-font-size);
+    }
+
+    .button {
+        font-size: var(--smaller-font-size);
+    }
+
+    .second__button {
+        font-size: var(--normal-font-size);
+    }
+
     .page-content{
         width: 90vw;
     }
@@ -662,7 +699,7 @@ footer * {
     }
 
     .menu .options a {
-        font-size: 18px;
+        font-size: 1rem;
     }
 
     .menu .account .username {
@@ -681,6 +718,22 @@ footer * {
 }
 
 @media screen and (max-width: 767px) {
+    body {
+        font-size: var(--smaller-font-size);
+    }
+
+    .title {
+        font-size: var(--big-font-size);
+    }
+
+    .button {
+        font-size: var(--smaller-font-size);
+    }
+
+    .second__title {
+        font-size: var(--medium-font-size);
+    }
+
     header .background::after {
         background: linear-gradient(rgba(0, 0, 0, 0.08), #222220 75%);
     }
@@ -747,7 +800,7 @@ footer * {
     }
 
     .menu .options a {
-        font-size: 22px;
+        font-size: 0.8rem;
     }
 
     .menu .account .username {
@@ -765,6 +818,21 @@ footer * {
 }
 
 @media screen and (min-width: 1567px) {
+    .content {
+        font-size: var(--normal-font-size);
+    }
+
+    .title {
+        font-size: var(--h1-font-size);
+    }
+
+    .second__title {
+        font-size: var(--biggest-font-size);
+    }
+
+    .label__name {
+        font-size: var(--medium-font-size);
+    }
     header .content p {
         width: 55%;
     }
@@ -776,6 +844,9 @@ footer * {
 
     .hamburger .icon {
         width: 2em;
+    }
+    .menu .options a{
+        font-size: 1.4rem;
     }
 }
 
