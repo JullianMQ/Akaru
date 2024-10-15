@@ -557,6 +557,7 @@ footer * {
 
     .category-list ul {
         left: 0;
+        padding-right: 5rem;
     }
 
     .category-list ul li a {
@@ -666,6 +667,10 @@ footer * {
 @media screen and (max-width: 767px) {
     header .background::after {
         background: linear-gradient(rgba(0, 0, 0, 0.08), #222220 75%);
+    }
+
+    .category-list ul {
+        padding-right: 3rem;
     }
 
     .category-list ul li a {

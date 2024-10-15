@@ -35,14 +35,18 @@ const getUserRole = async () => {
     return userRole;
 }
 
-const isAdmin = () => {
-    if (isUser !== false) {
-        const userRole = getUserRole();
-        if (userRole !== "Admin") {
-            userName.textContent = isUser.displayName;
-            isAdminElement.style.display = "flex";
-            return 0;
+const isAdmin = async () => {
+    if (isUser !== "false") {
+        const userRole = await getUserRole();
+
+        if (userRole === "User") {
+            window.location.href = "index1.html";
+            return 1;
         }
+
+        userName.textContent = isUser.displayName;
+        isAdminElement.style.display = "flex";
+        return 0;
     }
     window.location.href = "index1.html";
     return 1;
@@ -299,5 +303,5 @@ const deleteBook = async () => {
 
 // Uncomment after adding styles FRONTEND
 window.onload = getBooks();
-// window.onload = isAdmin();
+window.onload = isAdmin();
 delBookBtn.addEventListener("click", deleteBook);

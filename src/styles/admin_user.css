@@ -94,6 +94,16 @@ button {
     color: var(--primary-color);
 }
 
+#userTable {
+    width: 100%;
+}
+
+.userTable {
+    overflow-x: auto;
+    display: flex;
+    text-align: center;
+}
+
 .thead__container {
     background-color: var(--primary-color);
 }
