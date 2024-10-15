@@ -28,26 +28,25 @@ const delBookBtn = document.querySelector("#removeBook");
 const bookContainer = document.querySelector("[data-book-container]");
 const rowTemplate = document.querySelector("[data-book-row]");
 
-// Uncomment after adding styles FRONTEND
-// const getUserRole = async () => {
-//     const userDocRef = doc(db, "users", isUser.uid);
-//     const userDoc = await getDoc(userDocRef);
-//     const userRole = userDoc.data().userRole;
-//     return userRole;
-// }
+const getUserRole = async () => {
+    const userDocRef = doc(db, "users", isUser.uid);
+    const userDoc = await getDoc(userDocRef);
+    const userRole = userDoc.data().userRole;
+    return userRole;
+}
 
-// const isAdmin = () => {
-//     if (isUser !== false) {
-//         const userRole = getUserRole();
-//         if (userRole !== "Admin") {
-//             userName.textContent = isUser.displayName;
-//             isAdminElement.style.display = "flex";
-//             return 0;
-//         }
-//     }
-//     window.location.href = "index1.html";
-//     return 1;
-// }
+const isAdmin = () => {
+    if (isUser !== false) {
+        const userRole = getUserRole();
+        if (userRole !== "Admin") {
+            userName.textContent = isUser.displayName;
+            isAdminElement.style.display = "flex";
+            return 0;
+        }
+    }
+    window.location.href = "index1.html";
+    return 1;
+}
 
 // Start Get Books
 const getBooks = async () => {
