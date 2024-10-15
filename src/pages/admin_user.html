@@ -39,26 +39,28 @@
   <main>
     <section class="container">
       <h1 class="title">Managing Users</h1>
-      <table class="table" id="userTable" style="border: 1px solid black;">
-        <thead class="thead__container">
-          <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Role</th>
-          </tr>
-        </thead>
-        <tbody data-user-container>
-          <template data-user-row>
-            <tr>
-              <td class="content" data-user-id>User ID</td>
-              <td class="content" data-user-username>Username</td>
-              <td class="content" data-user-email>Email</td>
-              <td class="content" data-user-role>Role</td>
-            </tr>
-          </template>
-        </tbody>
-      </table>
+        <div class="userTable">
+          <table class="table" id="userTable" style="border: 1px solid black;">
+            <thead class="thead__container">
+              <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody data-user-container>
+              <template data-user-row>
+                <tr>
+                  <td class="content" data-user-id>User ID</td>
+                  <td class="content" data-user-username>Username</td>
+                  <td class="content" data-user-email>Email</td>
+                  <td class="content" data-user-role>Role</td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
     </section>
   </main>
 
