@@ -7,8 +7,9 @@ import {
     updateDoc,
     getDoc
 } from "firebase/firestore";
-import { isUser, db, storage, checkAuthState } from "./init.js"
+import { auth, isUser, db, storage, checkAuthState } from "./init.js"
 import { ref, uploadBytesResumable, getDownloadURL, listAll, deleteObject } from "firebase/storage";
+import { signOut } from "firebase/auth";
 
 
 let idArray = [];
@@ -300,6 +301,29 @@ const deleteBook = async () => {
         alert("Error deleting book: Check logs in dev tools");
     }
 };
+// Log Out Start
+const userLogOut = async () => {
+    if (isUser !== "false") {
+        try {
+            await signOut(auth);
+            alert("Signed Out!");
+            // full reload to not read from cache
+            window.location.reload(true);
+            return 0;
+        } catch (error) {
+            alert("Something went wrong: Please check the logs if you are an advanced user.");
+            console.log(error.message);
+            return 0;
+        }
+    }
+    window.location.href = "entry_page.html";
+    return 0;
+};
+logOutBtn.addEventListener("click", () => {
+    userLogOut();
+    checkAuthState();
+});
+// Log Out End
 
 // Uncomment after adding styles FRONTEND
 window.onload = getBooks();

@@ -7,7 +7,8 @@ import {
     updateDoc,
     deleteDoc,
 } from "firebase/firestore";
-import { isUser, db } from "./init.js";
+import { auth, isUser, db, checkAuthState } from "./init.js"
+import { signOut } from "firebase/auth";
 
 //variables na ginamit for the id
 let userIDs = [];  // Storing the id or like array to
@@ -208,6 +209,31 @@ const removeUser = async () => {
     }
 };
 delUserBtn.addEventListener("click", removeUser);
+
+
+// Log Out Start
+const userLogOut = async () => {
+    if (isUser !== "false") {
+        try {
+            await signOut(auth);
+            alert("Signed Out!");
+            // full reload to not read from cache
+            window.location.reload(true);
+            return 0;
+        } catch (error) {
+            alert("Something went wrong: Please check the logs if you are an advanced user.");
+            console.log(error.message);
+            return 0;
+        }
+    }
+    window.location.href = "entry_page.html";
+    return 0;
+};
+logOutBtn.addEventListener("click", () => {
+    userLogOut();
+    checkAuthState();
+});
+// Log Out End
 
 // Uncomment after adding styles FRONTEND
 window.onload = isAdmin();
