@@ -229,11 +229,6 @@ body.menu-open {
     border-width: 0 0 2px 0;
 }
 
-.menu .account .password {
-    font-weight: 400;
-    margin-bottom: 1rem;
-}
-
 .account button {
     color: #F0F2F1;
     background-color: #1D1D1B;
@@ -534,10 +529,6 @@ footer * {
         font-size: 14px;
     }
 
-    .menu .account .password {
-        font-size: 14px;
-    }
-
     .account button {
         font-size: 14px;
     }
@@ -649,10 +640,6 @@ footer * {
     }
 
     .menu .account .username {
-        font-size: 12px;
-    }
-
-    .menu .account .password {
         font-size: 12px;
     }
 
