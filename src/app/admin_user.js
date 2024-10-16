@@ -39,7 +39,7 @@ const isAdmin = async () => {
         const userRole = await getUserRole();
 
         if (userRole === "User") {
-            window.location.href = "index1.html";
+            window.location.href = "index.html";
             return 1;
         }
 
@@ -47,7 +47,7 @@ const isAdmin = async () => {
         isAdminElement.style.display = "flex";
         return 0;
     }
-    window.location.href = "index1.html";
+    window.location.href = "index.html";
     return 1;
 }
 
@@ -87,14 +87,15 @@ window.onload = getUsers();
 //add new user
 const addNewUser = async () => {
     const userNameInput = addUserForm.querySelector("[name=username]");
+    const userPassInput = addUserForm.querySelector("[name=passwd]");
     const userEmailInput = addUserForm.querySelector("[name=email]");
     const userRoleInput = addUserForm.querySelector("[name=role]");
     await getUsers();
 
     const userName = userNameInput.value.trim();
+    const userPass = userPassInput.value.trim();
     const userEmail = userEmailInput.value.trim();
     const userRole = userRoleInput.value.trim();
-    const userPass = "test123"; //default pass ginamit namen since nag eeror sya if walang defaultPassword and userPass sa line nato 
     const objToSend = {
         displayName: userName,
         email: userEmail,
@@ -138,12 +139,14 @@ addUserBtn.addEventListener("click", addNewUser);
 const updateUser = async () => {
     const userIdInput = updateUserForm.querySelector("[name=userId]");
     const userNameInput = updateUserForm.querySelector("[name=username]");
+    const userPasswdInput = updateUserForm.querySelector("[name=passwd]");
     const userEmailInput = updateUserForm.querySelector("[name=email]");
     const userRoleInput = updateUserForm.querySelector("[name=role]");
 
     const userID = userIdInput.value.trim();
     const userName = userNameInput.value.trim();
-    const email = userEmailInput.value.trim();
+    const userPass = userPasswdInput.value.trim();
+    const userEmail = userEmailInput.value.trim();
     const userRole = userRoleInput.value.trim();
     const updateData = {};
 
@@ -151,11 +154,11 @@ const updateUser = async () => {
         updateData.userName = userName;
     }
 
-    if (email !== "") {
-        updateData.email = email;
+    if (userEmail !== "") {
+        updateData.email = userEmail;
     }
 
-    if (userRole !== "") {
+    if (userRole !== "" && userRole != "Select a role") {
         updateData.userRole = userRole;
     }
 
@@ -166,10 +169,8 @@ const updateUser = async () => {
             body: JSON.stringify({
                 uid: userID,
                 displayName: userName,
-                email: email
-                // add password
-                // password:
-
+                email: userEmail,
+                password: userPass
             })
         })
             .then(res => res.json())
@@ -235,5 +236,4 @@ logOutBtn.addEventListener("click", () => {
 });
 // Log Out End
 
-// Uncomment after adding styles FRONTEND
 window.onload = isAdmin();

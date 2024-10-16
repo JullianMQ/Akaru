@@ -41,7 +41,7 @@ const isAdmin = async () => {
         const userRole = await getUserRole();
 
         if (userRole === "User") {
-            window.location.href = "index1.html";
+            window.location.href = "index.html";
             return 1;
         }
 
@@ -49,7 +49,7 @@ const isAdmin = async () => {
         isAdminElement.style.display = "flex";
         return 0;
     }
-    window.location.href = "index1.html";
+    window.location.href = "index.html";
     return 1;
 }
 
@@ -325,7 +325,6 @@ logOutBtn.addEventListener("click", () => {
 });
 // Log Out End
 
-// Uncomment after adding styles FRONTEND
 window.onload = getBooks();
 window.onload = isAdmin();
 delBookBtn.addEventListener("click", deleteBook);

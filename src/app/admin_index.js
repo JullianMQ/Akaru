@@ -9,7 +9,6 @@ const logOutBtn = document.querySelector("#logOutBtn");
 const userName = document.querySelector("#userName");
 const isAdminElement = document.querySelector("[data-is-admin]");
 
-// Uncomment after adding styles FRONTEND
 const getUserRole = async () => {
     const userDocRef = doc(db, "users", isUser.uid);
     const userDoc = await getDoc(userDocRef);
@@ -22,7 +21,7 @@ const isAdmin = async () => {
         const userRole = await getUserRole();
 
         if (userRole === "User") {
-            window.location.href = "index1.html";
+            window.location.href = "index.html";
             return 1;
         }
 
@@ -30,7 +29,7 @@ const isAdmin = async () => {
         isAdminElement.style.display = "flex";
         return 0;
     }
-    window.location.href = "index1.html";
+    window.location.href = "index.html";
     return 1;
 }
 
@@ -68,6 +67,4 @@ hamburger.onclick = function () {
     document.body.classList.toggle('menu-open');
 }
 // End FrontEnd Stuff
-
-// Uncomment after adding styles FRONTEND
 window.onload = isAdmin();

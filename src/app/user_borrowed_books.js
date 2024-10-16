@@ -12,7 +12,6 @@ const bookTemplate = document.querySelector("#book_template");
 const isAdminElement = document.querySelector("[data-is-admin]");
 const bookDataArr = [];
 
-// uncomment after adding sidebar FRONTEND
 // Get userRole
 const getUserRole = async () => {
     const docRef = doc(db, "users", isUser.uid);
@@ -124,6 +123,7 @@ const returnBook = async function (){
         const userId = isUser.uid;
         await removeUserFromBookUsers(userId, bookId);
         await removeBookFromUserBorrowedBooks(userId, bookId);
+        window.location.reload();
         alert("You have successfully returned the book!");
     }else{
         alert("Unable to return book.");

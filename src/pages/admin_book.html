@@ -9,7 +9,7 @@
 <body>
   <header id="header">
     <nav>
-      <h3 class="title"><a href="index1.html">Akaru</a></h3>
+      <h3 class="title"><a href="index.html">Akaru</a></h3>
       <div class="hamburger" id="hamburger">
         <div class="icon">
           <span class="line-1"></span>
@@ -22,7 +22,7 @@
     <section class="menu" id="menu">
       <div class="container">
         <ul class="options">
-          <li><a href="index1.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="borrowed_books.html">Books</a></li>
           <li data-is-admin style="display:none;"><a href="admin_index.html">Admin</a></li>
         </ul>
@@ -111,12 +111,12 @@
             <input class="input__value" type="text" name="prodName" placeholder="book name" required>
           </div>
           <div class="width">
-            <label class="label__name" for="prodAuthors">Authors</label>
-            <input class="input__value" type="text" name="prodAuthors" placeholder="author1, author2..." required>
-          </div>
-          <div class="width">
             <label class="label__name" for="prodCategory">Category</label>
             <input class="input__value" type="text" name="prodCategory" placeholder="category1, category2..." required>
+          </div>
+          <div class="width">
+            <label class="label__name" for="prodAuthors">Authors</label>
+            <input class="input__value" type="text" name="prodAuthors" placeholder="author1, author2..." required>
           </div>
           <div class="width">
             <label class="label__name" for="prodImage">Choose Image</label>
@@ -135,10 +135,6 @@
           <div class="width">
             <label class="label__name" for="prodId">Book ID</label>
             <input class="input__value" type="text" name="prodId" placeholder="book id" required>
-          </div>
-          <div class="width">
-            <label class="label__name" for="prodName">Book Name</label>
-            <input class="input__value" type="text" name="prodName" placeholder="book name">
           </div>
           <div>
             <button class="button second__button" id="removeBook" name="removeBook" type="button">Delete</button>
