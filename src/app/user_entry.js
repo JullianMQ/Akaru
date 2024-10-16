@@ -11,7 +11,7 @@ import { isUser, auth, db, checkAuthState } from "./init.js";
 
 // Query from HTML
 // Sign Up
-const userName = document.querySelector("#userName");
+const userName = document.querySelector("#userNameInput");
 const userPhone = document.querySelector("#userPhone");
 const userEmail = document.querySelector("#userEmail");
 const userPass = document.querySelector("#userPass");
@@ -49,6 +49,7 @@ const signUp = async (auth, userEmail, userPass) => {
 // Get Personal Details Firestore Firebase
 const addToUserCollection = async (uid, username, phone, email) => {
     try {
+        console.log(uid);
         const docRef = doc(db, "users", uid);
         await setDoc(docRef, {
             userName: username,

@@ -80,9 +80,6 @@ const appendUserToContainer = async (usersID, userName, userEmail, userRole) => 
     userContainer.append(row);
 };
 
-//load all users on window load
-window.onload = getUsers();
-
 //toggle add user form
 //add new user
 const addNewUser = async () => {
@@ -96,6 +93,8 @@ const addNewUser = async () => {
     const userPass = userPassInput.value.trim();
     const userEmail = userEmailInput.value.trim();
     const userRole = userRoleInput.value.trim();
+
+
     const objToSend = {
         displayName: userName,
         email: userEmail,
@@ -236,4 +235,6 @@ logOutBtn.addEventListener("click", () => {
 });
 // Log Out End
 
+//load all users on window load
+window.onload = getUsers();
 window.onload = isAdmin();
