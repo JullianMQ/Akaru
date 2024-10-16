@@ -7,8 +7,9 @@ import {
     updateDoc,
     getDoc
 } from "firebase/firestore";
-import { isUser, db, storage, checkAuthState } from "./init.js"
+import { auth, isUser, db, storage, checkAuthState } from "./init.js"
 import { ref, uploadBytesResumable, getDownloadURL, listAll, deleteObject } from "firebase/storage";
+import { signOut } from "firebase/auth";
 
 
 let idArray = [];
@@ -28,26 +29,29 @@ const delBookBtn = document.querySelector("#removeBook");
 const bookContainer = document.querySelector("[data-book-container]");
 const rowTemplate = document.querySelector("[data-book-row]");
 
-// Uncomment after adding styles FRONTEND
-// const getUserRole = async () => {
-//     const userDocRef = doc(db, "users", isUser.uid);
-//     const userDoc = await getDoc(userDocRef);
-//     const userRole = userDoc.data().userRole;
-//     return userRole;
-// }
+const getUserRole = async () => {
+    const userDocRef = doc(db, "users", isUser.uid);
+    const userDoc = await getDoc(userDocRef);
+    const userRole = userDoc.data().userRole;
+    return userRole;
+}
 
-// const isAdmin = () => {
-//     if (isUser !== false) {
-//         const userRole = getUserRole();
-//         if (userRole !== "Admin") {
-//             userName.textContent = isUser.displayName;
-//             isAdminElement.style.display = "block";
-//             return 0;
-//         }
-//     }
-//     window.location.href = "index1.html";
-//     return 1;
-// }
+const isAdmin = async () => {
+    if (isUser !== "false") {
+        const userRole = await getUserRole();
+
+        if (userRole === "User") {
+            window.location.href = "index.html";
+            return 1;
+        }
+
+        userName.textContent = isUser.displayName;
+        isAdminElement.style.display = "flex";
+        return 0;
+    }
+    window.location.href = "index.html";
+    return 1;
+}
 
 // Start Get Books
 const getBooks = async () => {
@@ -297,8 +301,30 @@ const deleteBook = async () => {
         alert("Error deleting book: Check logs in dev tools");
     }
 };
+// Log Out Start
+const userLogOut = async () => {
+    if (isUser !== "false") {
+        try {
+            await signOut(auth);
+            alert("Signed Out!");
+            // full reload to not read from cache
+            window.location.reload(true);
+            return 0;
+        } catch (error) {
+            alert("Something went wrong: Please check the logs if you are an advanced user.");
+            console.log(error.message);
+            return 0;
+        }
+    }
+    window.location.href = "entry_page.html";
+    return 0;
+};
+logOutBtn.addEventListener("click", () => {
+    userLogOut();
+    checkAuthState();
+});
+// Log Out End
 
-// Uncomment after adding styles FRONTEND
 window.onload = getBooks();
-// window.onload = isAdmin();
+window.onload = isAdmin();
 delBookBtn.addEventListener("click", deleteBook);

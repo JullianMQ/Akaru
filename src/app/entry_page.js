@@ -9,3 +9,12 @@ loginBtn.addEventListener('click', () => {
 registerBtn.addEventListener('click', () => {
     container.classList.remove("active");
 });
+
+var hamburger = document.getElementById('hamburger');
+var trigger = document.getElementById('header');
+
+hamburger.onclick = function () {
+    hamburger.classList.toggle('open');
+    trigger.classList.toggle('open');
+    document.body.classList.toggle('menu-open');
+}

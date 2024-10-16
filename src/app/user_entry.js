@@ -37,7 +37,7 @@ const signUp = async (auth, userEmail, userPass) => {
 
         // userEmail/Pass is already set in the parent function so no need to use .value
         // This will return into undefined if you do
-        await addToUserCollection(user.uid, userName.value, userPhone.value, userEmail, userPass);
+        await addToUserCollection(user.uid, userName.value, userPhone.value, userEmail);
         alert("Successfully signed up. Please log in now.")
 
     } catch (error) {
@@ -47,14 +47,13 @@ const signUp = async (auth, userEmail, userPass) => {
 };
 
 // Get Personal Details Firestore Firebase
-const addToUserCollection = async (uid, username, phone, email, password) => {
+const addToUserCollection = async (uid, username, phone, email) => {
     try {
         const docRef = doc(db, "users", uid);
         await setDoc(docRef, {
             userName: username,
             phone: phone,
             email: email,
-            password: password,
             userRole: "User",
         });
         // console.log(`Added to document with ID: ${docRef.id}!`);
@@ -78,7 +77,7 @@ const logIn = async (auth, email, password) => {
         // redirect back to index page
         checkAuthState();
         alert("You have signed in!");
-        window.location.href = "index1.html";
+        window.location.href = "index.html";
     } catch (error) {
         if (error.code === "auth/invalid-credential") {
             alert("No user with that account or wrong password");
@@ -97,7 +96,7 @@ logInBtn.addEventListener("click", () => {
 window.onload = checkAuthState();
 
 if (isUser !== "false") {
-    window.location.href = "index1.html";
+    window.location.href = "index.html";
 } else {
     console.log("Not logged in");
 }

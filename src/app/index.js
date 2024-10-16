@@ -98,7 +98,7 @@ const setUserState = async () => {
         const isAdmin = await getUserRole();
         userName.textContent = isUser.displayName;
         if (isAdmin === "Admin") {
-            isAdminElement.style.display = "block";
+            isAdminElement.style.display = "flex";
         }
         return 0;
     }
@@ -296,12 +296,11 @@ const userLogOut = async () => {
     window.location.href = "entry_page.html";
     return 0;
 };
-
-window.onload = getBooks();
-window.onload = setUserState();
-
 logOutBtn.addEventListener("click", () => {
     userLogOut();
     checkAuthState();
 });
 // Log Out End
+window.onload = getBooks();
+window.onload = setUserState();
+

@@ -62,6 +62,7 @@
 body {
     font-family: var(--body-font);
     background-color: var(--secondary-color);
+    height: 100vh;
 }
 
 a {
@@ -71,6 +72,7 @@ a {
 img {
     max-width: 100%;
     height: auto;
+    object-fit: cover;
 }
 
 button {
@@ -111,6 +113,42 @@ tbody {
 
 td {
     padding: 5px 0;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: row;
+    padding: 2em;
+    gap: 20px;
+}
+
+.manage {
+    position: relative; 
+    text-align: center; 
+}
+
+.button-container {
+  position: absolute; 
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #f0f2f1;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #1D1D1B;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+.button:hover {
+    color: #f0f2f1;
+    background-color: #1D1D1B;
 }
 
 /* header */
@@ -247,6 +285,11 @@ body.menu-open {
     border-width: 0 0 2px 0;
 }
 
+.menu .account .password {
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
 .account button {
     color: #F0F2F1;
     background-color: #1D1D1B;
@@ -263,107 +306,7 @@ body.menu-open {
 
 /* header up */
 
-.button {
-    background-color: var(--tertiary-color);
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    font-family: var(--body-font);
-    border-radius: 10px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.button__container {
-    display: flex;
-    justify-content: center;
-    gap: 3px;
-    margin-bottom: var(--mb-4);
-
-}
-
-.hidden__container {
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-}
-
-.content__image {
-    width: 50px;
-    height: auto;
-}
-
-.fixed-bottom {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.hidden {
-    display: none;
-}
-
-#formsContainer {
-    display: none;
-}
-
-.input__value {
-    border-bottom: 2px solid #1D1D1D;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    background-color: #F0F2F1;
-}
-
-.second__button {
-    margin-top: 15px;
-}
-
-.width {
-    display: flex;
-
-}
-
 @media screen and (max-width: 768px) {
-    body {
-        font-size: var(--smaller-font-size);
-    }
-
-    .container {
-        width: 99%;
-    }
-
-    .title {
-        font-size: var(--big-font-size);
-    }
-
-    .button {
-        font-size: var(--smaller-font-size);
-        padding: 10px 18px;
-    }
-
-    .second__title {
-        font-size: var(--medium-font-size);
-    }
-
-    .hidden__container {
-        flex-direction: column;
-        padding: 30px;
-    }
-
-    .width {
-        flex-direction: column;
-        margin-bottom: 30px;
-    }
-
-    .label__name {
-        font-size: var(--normal-font-size);
-    }
-
-    .input__value, .image__value {
-        padding: 10px 0 5px 0;
-    }
-
     header nav{
         padding: 1.25rem 2rem;
     }
@@ -372,47 +315,28 @@ body.menu-open {
         font-size: 22px;
     }
 
+    .container2 {
+        flex-direction: column;
+    }
+
+    .manage > img {
+        height: 350px;
+    }
+
+    
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-    body {
-        font-size: var(--normal-font-size);
-    }
-
-    .container {
-        width: 97%;
-    }
-
-    .button {
-        font-size: var(--smaller-font-size);
-        padding: 10px 30px;
-    }
-
-    .second__button {
-        padding: 5px 25px;
-        font-size: var(--normal-font-size);
-    }
-
-    .hidden__container {
-        flex-direction: column;
-        padding: 30px;
-    }
-
-    .width {
-        flex-direction: column;
-        margin-bottom: 30px;
-    }
-
-    .label__name {
-        font-size: var(--medium-font-size);
-    }
-
-    .input__value, .image__value {
-        padding: 10px 0 5px 0;
-    }
-
     header nav{
         padding: 1.5rem 3.25rem;
+    }
+
+    .container2 {
+        flex-direction: column;
+    }
+
+    .manage > img {
+        height: 450px;
     }
 
     .menu {
@@ -421,45 +345,6 @@ body.menu-open {
 }
 
 @media screen and (min-width: 1024px) {
-    body {
-        font-size: var(--medium-font-size);
-    }
-
-    .container {
-        width: 95%;
-    }
-
-    .button {
-        font-size: var(--normal-font-size);
-        padding: 15px 35px;
-    }
-
-    .hidden__container {
-        flex-direction: column;
-        padding: 30px;
-    }
-
-    .second__title {
-        font-size: var(--big-font-size);
-    }
-
-    .width {
-        flex-direction: column;
-        margin-bottom: 30px;
-    }
-
-    .label__name {
-        font-size: var(--big-font-size);
-    }
-
-    .input__value, .image__value {
-        padding: 10px 0 5px 0;
-    }
-
-    .input__value {
-        font-size: var(--small-font-size);
-    }
-
     header nav{
         padding: 1.3rem 5rem;
     }
@@ -468,43 +353,26 @@ body.menu-open {
         font-size: 29px;
     }
 
+    .container2 {
+        flex-direction: column;
+    }
+
+    .manage > img {
+        height: 550px;
+    }
+
     .menu {
         width: 30rem;
     }
-}
+}   
 
 @media screen and (min-width: 1567px) {
-    .container {
-        width: 80%;
-    }
-
-    .hidden__container {
+    .container2 {
         flex-direction: row;
-        padding: 30px;
-        width: 80%;
     }
 
-    .content {
-        font-size: var(--normal-font-size);
-    }
-
-    .title {
-        font-size: var(--h1-font-size);
-    }
-
-    .second__title {
-        font-size: var(--biggest-font-size);
-    }
-
-    .label__name {
-        font-size: var(--medium-font-size);
-    }
-
-    .width {
-        width: 150px;
-    }
-
-    .input__value {
-        font-size: var(--smaller-font-size);
+    .manage > img {
+        width: 100%;
+        height: 100%;
     }
 }

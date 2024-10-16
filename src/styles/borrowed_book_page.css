@@ -1,0 +1,545 @@
+@font-face {
+    font-family: 'ITC Avant Garde';
+    src: url('../public/fonts/ITC\ Avant\ Garde\ Gothic\ LT\ Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Neue Montreal';
+    src: url('../public/fonts/NeueMontreal-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+:root {
+    --title-font: 'ITC Avant Garde', sans-serif;
+    --body-font: 'Neue Montreal', sans-serif;
+    --h1-font-size: 3em;
+    --biggest-font-size: 2.4rem;
+    --big-font-size: 1.8rem;
+    --medium-font-size: 1.4rem;
+    --normal-font-size: 1rem;
+    --smaller-font-size: .8rem;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* overflow-x: hidden; */
+}
+body {
+    font-family: 'Neue Montreal', sans-serif;
+    background-color: #F0F2F1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* min-height: 100vw; */
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 2rem 0 0.5rem;
+    overflow-x: hidden;
+}
+nav .title{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+h1{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+h1, .book_title{
+    color: #1D1D1B;
+    font-weight: bold;
+    margin-top: 30px;
+}
+.read {
+    display: flex;
+    color: #F0F2F1;
+    background-color: #1D1D1B;
+    padding: 10px 5px;
+    border-radius: .5em;
+    text-transform: uppercase;
+    width: 100%;
+    border-style: none;
+    justify-content: space-between;
+}
+
+.read, .return{
+    justify-content: center;
+    cursor: pointer;
+}
+
+.return {
+    border: none;
+    padding-left: 25px;
+    font-weight: bold;
+    color: #1D1D1B;
+    text-transform: uppercase;
+}
+
+.book_section {
+    display: grid;
+    width: 100%;
+    justify-content: space-between;
+}
+.book_card{
+    height: 100%;
+    margin-bottom: 1rem;
+}
+.book_title{
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+    grid-column: 1 / span 2;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    overflow: hidden;
+    width: 100%;
+}
+.book_img img {
+    object-fit: cover;
+    width: 100%;
+    /* height: 100%; */
+    border-radius: .5em;
+}
+.book_card .book_info{
+    display: grid;
+    justify-items: start;
+    letter-spacing: -1px;
+    margin: 0.25rem 0 0.5rem;
+    width: 100%;
+    grid-template-columns: repeat(2, 49%);
+}
+header nav{
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F0F2F1;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+.icon {
+    cursor: pointer;
+}
+.hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 3rem;
+    height: 3rem;
+    z-index: 3;
+    transition: ease 0.5s;
+}
+.hamburger div{
+    position: relative;
+    width: 2rem;
+    height: 1.75rem;
+}
+.hamburger span{
+    background-color: #1D1D1B;
+    width: 100%;
+    display: block;
+    position: absolute;
+    height: 0.4rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.5s, width 0.6s;
+}
+.hamburger .line-1{
+    transform: translate(-50%, -200%);
+}
+.hamburger .line-3{
+    transform: translate(-50%, 100%);
+}
+.open .line-1{
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.open .line-2{
+    width: 0;
+}
+.open .line-3{
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.open span{
+    background-color: #1D1D1B;
+    transition: transform 0.5s, width 0.6s;
+}
+body.menu-open {
+    overflow: hidden;
+}
+.menu * {
+    color: #1D1D1B;
+    font-weight: 600;
+}
+
+.menu {
+    position: fixed;
+    display: relative;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #F0F2F1;
+    z-index: 1;
+    right: -100%;
+    transition: ease-in-out 0.6s;
+    border-left: 1px solid #1D1D1B;
+}
+
+.menu .container {
+    height: 100%;
+    padding-top: 6rem;
+    display: grid;
+    grid-template-rows: 75% 25%;
+    justify-items: center;
+}
+
+.options,
+.account {
+    width: 70%;
+    height: fit-content;
+    display: grid;
+    justify-items: start;
+}
+
+.title a {
+    text-decoration: none;
+    color: #1D1D1B;
+}
+
+.menu ul {
+    list-style: none;
+}
+
+.menu li {
+    width: 100%;
+    border: 2px solid #7C7C7C;
+    border-width: 0 0 2px 0;
+    display: flex;
+    justify-content: start;
+}
+
+.menu a {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.menu .options a {
+    margin: 1rem 0 0.5rem;
+}
+
+.menu .account a {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    padding: 0.5rem 0 0.5rem;
+}
+
+.menu .account .username {
+    border: 2px solid #7C7C7C;
+    border-width: 0 0 2px 0;
+}
+
+.account button {
+    color: #F0F2F1;
+    background-color: #1D1D1B;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    border-radius: 12px;
+    border-width: 0;
+}
+
+.open .menu {
+    right: 0;
+    transition: ease-in-out 0.35s;
+}
+footer {
+    width: 100%;
+    justify-content: center;
+    display: grid;
+    position: inherit;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+hr {
+    width: 100%;
+    margin: 1.5rem 0 0.75rem;
+    border: 1px solid #8F8B8B;
+    max-width: 100%;
+}
+
+footer .c2 {
+    align-items: flex-end;
+}
+
+footer * {
+    text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    color: #1D1D1B;
+}
+.content{
+    width: 80%;
+    max-width: 75rem;
+}
+
+@media screen and (min-width: 1025px){
+    body {
+        font-size: var(--medium-font-size);
+    }
+
+    .button {
+        font-size: var(--normal-font-size);
+    }
+
+    .second__title {
+        font-size: var(--big-font-size);
+    }
+
+    .label__name {
+        font-size: var(--big-font-size);
+    }
+
+    .input__value {
+        font-size: var(--small-font-size);
+    }
+
+    nav .title{
+        font-size: 29px;
+    }
+
+    h1{
+        font-size: 50px;
+        margin-bottom: 3.125rem;
+    }
+
+    .book_title{
+        font-size: 22px;
+    }
+
+    .read, .return{
+        font-size: 16px;
+    }
+    .book_section {
+        grid-template-columns: repeat(5, 13rem);
+        row-gap: 1rem;
+    }
+
+    .book_img img{
+        height: 300px;
+    }
+
+    .book_template, .book_card{
+        max-width: 13rem;
+    }
+
+    header nav{
+        padding: 1.3rem 5rem;
+    }
+
+    .menu {
+        width: 30rem;
+    }
+
+    .menu .options a {
+        font-size: 20px;
+    }
+
+    .menu .account .username {
+        font-size: 14px;
+    }
+
+    .account button {
+        font-size: 14px;
+    }
+
+    footer {
+        grid-template-columns: repeat(4, 25%);
+        /* margin: 5rem auto 2rem; */
+    }
+
+    footer * {
+        font-size: 16px;
+    }
+
+    .pc {
+        display: none;
+    }
+
+    footer .r1 {
+        align-items: flex-start;
+    }
+
+    footer .r2 {
+        align-items: flex-end;
+    }
+    hr {
+        grid-column: 1 / 5;
+    }
+
+}
+@media screen and (max-width: 1024px){
+    body {
+        font-size: var(--normal-font-size);
+    }
+
+    .button {
+        font-size: var(--smaller-font-size);
+    }
+
+    .second__button {
+        font-size: var(--normal-font-size);
+    }
+
+    .label__name {
+        font-size: var(--medium-font-size);
+    }
+
+    h1{
+        font-size: 38px;
+        margin-bottom: 2.5rem;
+    }
+
+    .book_title{
+        font-size: 20px;
+    }
+
+    .book_section {
+        grid-template-columns: repeat(3, 30%);
+        row-gap: 1rem;
+    }
+    .book_card{
+        width:100%;
+    }
+    .book_img img{
+        height: 300px;
+    }
+
+    header nav{
+        padding: 1.5rem 3.25rem;
+    }
+
+    footer {
+        grid-template-columns: repeat(2, 50%);
+        /* margin-top: 1.5rem; */
+    }
+
+    footer * {
+        font-size: 14px;
+    }
+
+    .pc {
+        display: block;
+    }
+
+    footer .c2 {
+        align-items: flex-end;
+    }
+
+    hr {
+        grid-column: 1 / 3;
+    }
+    .menu {
+        width: 20.75rem;
+    }
+
+    .menu .options a {
+        font-size: 22px;
+    }
+
+    .menu .account .username {
+        font-size: 12px;
+    }
+
+}
+@media screen and (max-width: 767px){
+    body {
+        font-size: var(--smaller-font-size);
+    }
+
+    .title {
+        font-size: var(--big-font-size);
+    }
+
+    .button {
+        font-size: var(--smaller-font-size);
+    }
+
+    .second__title {
+        font-size: var(--medium-font-size);
+    }
+
+    .label__name {
+        font-size: var(--normal-font-size);
+    }
+
+    .content{
+        width: 95vw;
+    }
+    nav .title{
+        font-size: 22px;
+    }
+    h1{
+        font-size: 33px;
+        margin-bottom: 1.75rem;
+    }
+    .book_title{
+        font-size: 18px;
+    }
+    .read, .return{
+        font-size: 14px;
+    }
+    .book_section {
+        grid-template-columns: repeat(2, 48%);
+        row-gap: 1rem;
+    }
+    .book_img img{
+        width: 100%;
+        height: 300px;
+    }
+    header nav{
+        padding: 1.25rem 2rem;
+    }
+    .menu {
+        width: 100%;
+    }
+
+    .menu .options a {
+        font-size: 22px;
+    }
+
+    .menu .account .username {
+        font-size: 12px;
+    }
+
+    .hamburger span{
+        height: 0.3rem;
+    }
+
+    .hamburger div{
+        width: 1.75rem;
+        height: 1.5rem;
+    }
+
+    footer {
+        width: 100%;
+    }
+
+    footer * {
+        font-size: 12px;
+    }
+
+    footer .r1, .r2 {
+        padding: 0 .25rem;
+    }
+
+}

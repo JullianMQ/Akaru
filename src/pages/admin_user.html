@@ -8,31 +8,59 @@
   <link rel="stylesheet" type="text/css" href="styles/hidden.css">
   <link rel="stylesheet" type="text/css" href="styles/admin_user.css">
 </head>
-
 <body>
+  <header id="header">
+    <nav>
+      <h3 class="title"><a href="index.html">Akaru</a></h3>
+      <div class="hamburger" id="hamburger">
+        <div class="icon">
+          <span class="line-1"></span>
+          <span class="line-2"></span>
+          <span class="line-3"></span>
+        </div>
+      </div>
+    </nav>
+
+    <section class="menu" id="menu">
+      <div class="container">
+        <ul class="options">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="borrowed_books.html">Books</a></li>
+          <li data-is-admin style="display:none;"><a href="admin_index.html">Admin</a></li>
+        </ul>
+        <div class="account">
+          <a id="userName" href="#" class="username">Guest</a>
+          <button id="logOutBtn" type="button" class="logout">Log Out</button>
+        </div>
+      </div>
+    </section>
+  </header>
+
   <main>
     <section class="container">
       <h1 class="title">Managing Users</h1>
-      <table class="table" id="userTable" style="border: 1px solid black;">
-        <thead class="thead__container">
-          <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Role</th>
-          </tr>
-        </thead>
-        <tbody data-user-container>
-          <template data-user-row>
-            <tr>
-              <td class="content" data-user-id>User ID</td>
-              <td class="content" data-user-username>Username</td>
-              <td class="content" data-user-email>Email</td>
-              <td class="content" data-user-role>Role</td>
-            </tr>
-          </template>
-        </tbody>
-      </table>
+        <div class="userTable">
+          <table class="table" id="userTable" style="border: 1px solid black;">
+            <thead class="thead__container">
+              <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody data-user-container>
+              <template data-user-row>
+                <tr>
+                  <td class="content" data-user-id>User ID</td>
+                  <td class="content" data-user-username>Username</td>
+                  <td class="content" data-user-email>Email</td>
+                  <td class="content" data-user-role>Role</td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
     </section>
   </main>
 
@@ -52,6 +80,10 @@
           <div class="width">
             <label class="label__name" for="username">Username</label>
             <input class="input__value"  type="text" name="username" placeholder="username" required>
+          </div>
+          <div class="width">
+            <label class="label__name"  for="passwd">Password</label>
+            <input class="input__value" type="email" name="passwd" placeholder="password" required>
           </div>
           <div class="width">
             <label class="label__name"  for="email">Email</label>
@@ -85,6 +117,10 @@
             <input class="input__value" type="text" name="username" placeholder="username">
           </div>
           <div class="width">
+            <label class="label__name"  for="passwd">Password</label>
+            <input class="input__value" type="email" name="passwd" placeholder="password" required>
+          </div>
+          <div class="width">
             <label class="label__name" for="email">Email</label>
             <input class="input__value" type="email" name="email" placeholder="email">
           </div>
@@ -110,9 +146,6 @@
           <div class="width">
             <label class="label__name" for="userId">User ID</label>
             <input class="input__value" type="text" name="userId" placeholder="user id" required>
-
-            <label class="label__name" for="userEmail">User Email</label>
-            <input class="input__value" type="text" name="userEmail" placeholder="email@example.com" required>
           </div>
           <div>
             <button class="button second__button"  id="removeUser" name="removeUser" type="button">Delete</button>

@@ -2,11 +2,13 @@ import {
     doc,
     collection,
     setDoc,
+    getDoc,
     getDocs,
     updateDoc,
     deleteDoc,
 } from "firebase/firestore";
-import { db } from "./init.js";
+import { auth, isUser, db, checkAuthState } from "./init.js"
+import { signOut } from "firebase/auth";
 
 //variables na ginamit for the id
 let userIDs = [];  // Storing the id or like array to
@@ -25,26 +27,29 @@ const delUserBtn = document.querySelector("#removeUser");
 const userContainer = document.querySelector("[data-user-container]");
 const rowTemplate = document.querySelector("[data-user-row]");
 
-// Uncomment after adding styles FRONTEND
-// const getUserRole = async () => {
-//     const userDocRef = doc(db, "users", isUser.uid);
-//     const userDoc = await getDoc(userDocRef);
-//     const userRole = userDoc.data().userRole;
-//     return userRole;
-// }
+const getUserRole = async () => {
+    const userDocRef = doc(db, "users", isUser.uid);
+    const userDoc = await getDoc(userDocRef);
+    const userRole = userDoc.data().userRole;
+    return userRole;
+}
 
-// const isAdmin = () => {
-//     if (isUser !== false) {
-//         const userRole = getUserRole();
-//         if (userRole !== "Admin") {
-//             userName.textContent = isUser.displayName;
-//             isAdminElement.style.display = "block";
-//             return 0;
-//         }
-//     }
-//     window.location.href = "index1.html";
-//     return 1;
-// }
+const isAdmin = async () => {
+    if (isUser !== "false") {
+        const userRole = await getUserRole();
+
+        if (userRole === "User") {
+            window.location.href = "index.html";
+            return 1;
+        }
+
+        userName.textContent = isUser.displayName;
+        isAdminElement.style.display = "flex";
+        return 0;
+    }
+    window.location.href = "index.html";
+    return 1;
+}
 
 //get the users
 const getUsers = async () => {
@@ -82,15 +87,20 @@ window.onload = getUsers();
 //add new user
 const addNewUser = async () => {
     const userNameInput = addUserForm.querySelector("[name=username]");
+    const userPassInput = addUserForm.querySelector("[name=passwd]");
     const userEmailInput = addUserForm.querySelector("[name=email]");
     const userRoleInput = addUserForm.querySelector("[name=role]");
     await getUsers();
 
     const userName = userNameInput.value.trim();
+    const userPass = userPassInput.value.trim();
     const userEmail = userEmailInput.value.trim();
     const userRole = userRoleInput.value.trim();
-    const userPass = "test123"; //default pass ginamit namen since nag eeror sya if walang defaultPassword and userPass sa line nato 
-    const objToSend = { displayName: userName, email: userEmail, password: userPass };
+    const objToSend = {
+        displayName: userName,
+        email: userEmail,
+        password: userPass,
+    };
     let userID;
 
     try {
@@ -129,12 +139,14 @@ addUserBtn.addEventListener("click", addNewUser);
 const updateUser = async () => {
     const userIdInput = updateUserForm.querySelector("[name=userId]");
     const userNameInput = updateUserForm.querySelector("[name=username]");
+    const userPasswdInput = updateUserForm.querySelector("[name=passwd]");
     const userEmailInput = updateUserForm.querySelector("[name=email]");
     const userRoleInput = updateUserForm.querySelector("[name=role]");
 
     const userID = userIdInput.value.trim();
     const userName = userNameInput.value.trim();
-    const email = userEmailInput.value.trim();
+    const userPass = userPasswdInput.value.trim();
+    const userEmail = userEmailInput.value.trim();
     const userRole = userRoleInput.value.trim();
     const updateData = {};
 
@@ -142,25 +154,23 @@ const updateUser = async () => {
         updateData.userName = userName;
     }
 
-    if (email !== "") {
-        updateData.email = email;
+    if (userEmail !== "") {
+        updateData.email = userEmail;
     }
 
-    if (userRole !== "") {
+    if (userRole !== "" && userRole != "Select a role") {
         updateData.userRole = userRole;
     }
 
     try {
-        await fetch(`api/users/change`, {
+        await fetch("api/users/change", {
             method: "PUT",
             headers: { "Content-Type": "application/json", },
             body: JSON.stringify({
                 uid: userID,
                 displayName: userName,
-                email: email
-                // add password
-                // password:
-
+                email: userEmail,
+                password: userPass
             })
         })
             .then(res => res.json())
@@ -201,5 +211,29 @@ const removeUser = async () => {
 };
 delUserBtn.addEventListener("click", removeUser);
 
-// Uncomment after adding styles FRONTEND
-// window.onload = isAdmin();
+
+// Log Out Start
+const userLogOut = async () => {
+    if (isUser !== "false") {
+        try {
+            await signOut(auth);
+            alert("Signed Out!");
+            // full reload to not read from cache
+            window.location.reload(true);
+            return 0;
+        } catch (error) {
+            alert("Something went wrong: Please check the logs if you are an advanced user.");
+            console.log(error.message);
+            return 0;
+        }
+    }
+    window.location.href = "entry_page.html";
+    return 0;
+};
+logOutBtn.addEventListener("click", () => {
+    userLogOut();
+    checkAuthState();
+});
+// Log Out End
+
+window.onload = isAdmin();

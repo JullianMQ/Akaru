@@ -5,8 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Akaru | Admin Control Panel</title>
     <!-- <link href="css/style.css" rel="stylesheet"> -->
+     <link rel="stylesheet" href="../styles/admin_index.css">
   </head>
   <body>
+    <header id="header">
+      <nav>
+        <h3 class="title"><a href="index.html">Akaru</a></h3>
+        <div class="hamburger" id="hamburger">
+          <div class="icon">
+            <span class="line-1"></span>
+            <span class="line-2"></span>
+            <span class="line-3"></span>
+          </div>
+        </div>
+      </nav>
+  
+      <section class="menu" id="menu">
+        <div class="container">
+          <ul class="options">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="borrowed_books.html">Books</a></li>
+            <li data-is-admin style="display:none;"><a href="admin_index.html">Admin</a></li>
+          </ul>
+          <div class="account">
+            <a id="userName" href="#" class="username">Guest</a>
+            <button id="logOutBtn" type="button" class="logout">Log Out</button>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <div class="container2">
+        <div class="manage">
+          <img src="../../public/images/manager_book.png" alt="">
+          <div class="button-container">
+            <a class="button" href="admin_book.html">Manage Books</a>
+          </div>
+        </div>
+        <div class="manage">
+          <img src="../../public/images/manager_user.png" alt="">
+          <div class="button-container">
+            <a class="button" href="admin_user.html">Users/Admin</a>
+          </div>
+        </div>
+      </div>
+    </main>
   
     <script type="module" src="bundled_files.js"> </script>
   </body>

@@ -7,6 +7,32 @@
   <link rel="stylesheet" type="text/css" href="styles/admin_book_page.css">
 </head>
 <body>
+  <header id="header">
+    <nav>
+      <h3 class="title"><a href="index.html">Akaru</a></h3>
+      <div class="hamburger" id="hamburger">
+        <div class="icon">
+          <span class="line-1"></span>
+          <span class="line-2"></span>
+          <span class="line-3"></span>
+        </div>
+      </div>
+    </nav>
+
+    <section class="menu" id="menu">
+      <div class="container">
+        <ul class="options">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="borrowed_books.html">Books</a></li>
+          <li data-is-admin style="display:none;"><a href="admin_index.html">Admin</a></li>
+        </ul>
+        <div class="account">
+          <a id="userName" href="#" class="username">Guest</a>
+          <button id="logOutBtn" type="button" class="logout">Log Out</button>
+        </div>
+      </div>
+    </section>
+  </header>
   <main>
     <!-- <h2>AKARU</h2> -->
     <!-- TABLE -->
@@ -47,7 +73,7 @@
     
     <div id="formsContainer">
       <!-- ADD -->
-      <form id="addBookForm" action="admin_book_page.html" class="hidden fixed">
+      <form id="addBookForm" action="admin_book.html" class="hidden fixed">
         <h3 class="second__title">Add Book</h3><hr>
         <div class="hidden__container">
           <div class="width">
@@ -85,12 +111,12 @@
             <input class="input__value" type="text" name="prodName" placeholder="book name" required>
           </div>
           <div class="width">
-            <label class="label__name" for="prodAuthors">Authors</label>
-            <input class="input__value" type="text" name="prodAuthors" placeholder="author1, author2..." required>
-          </div>
-          <div class="width">
             <label class="label__name" for="prodCategory">Category</label>
             <input class="input__value" type="text" name="prodCategory" placeholder="category1, category2..." required>
+          </div>
+          <div class="width">
+            <label class="label__name" for="prodAuthors">Authors</label>
+            <input class="input__value" type="text" name="prodAuthors" placeholder="author1, author2..." required>
           </div>
           <div class="width">
             <label class="label__name" for="prodImage">Choose Image</label>
@@ -109,10 +135,6 @@
           <div class="width">
             <label class="label__name" for="prodId">Book ID</label>
             <input class="input__value" type="text" name="prodId" placeholder="book id" required>
-          </div>
-          <div class="width">
-            <label class="label__name" for="prodName">Book Name</label>
-            <input class="input__value" type="text" name="prodName" placeholder="book name">
           </div>
           <div>
             <button class="button second__button" id="removeBook" name="removeBook" type="button">Delete</button>
