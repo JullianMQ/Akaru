@@ -155,6 +155,8 @@ const appendToContainer = (bookId, bookName, bookCategory, bookAuthors, bookImag
 };
 // End Get books
 
+
+// TODO: Filter through genre
 // Search Function || Search Filter
 const addSearchFilter = () => {
     searchInput.addEventListener("input", queryInput => {
@@ -163,7 +165,8 @@ const addSearchFilter = () => {
             // If name or author in search query
             const isBookName = book.name.toLowerCase().includes(query);
             const isAuthorName = book.authors.some(author => author.includes(query));
-            const isVisible = isBookName || isAuthorName;
+            const isGenre = book.category.some(genre => genre.toLowerCase().includes(query))
+            const isVisible = isBookName || isAuthorName || isGenre;
             book.card.classList.toggle("hidden", !isVisible);
         })
         window.location.hash = "";
