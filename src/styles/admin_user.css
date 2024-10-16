@@ -321,6 +321,9 @@ body.menu-open {
 
 #formsContainer {
     display: none;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
 }
 
 .input__value {
