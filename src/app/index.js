@@ -139,7 +139,9 @@ const appendToContainer = (bookId, bookName, bookCategory, bookAuthors, bookImag
     id.setAttribute("data-book-id", bookId);
     img.src = bookImage;
     name.textContent = bookName;
+    name.title = bookName;
     category.innerHTML = bookCategory.join(", ");
+    category.title = bookCategory.join(", ");
     authors.innerHTML = authorsList.join(", ");
 
     bookContainer.append(bookTemp);

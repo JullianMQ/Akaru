@@ -376,6 +376,7 @@ main {
 .book_title {
     text-align: start;
     font-weight: bolder;
+    text-decoration: none;
     text-transform: uppercase;
     font-size: 24px;
     text-overflow: ellipsis;
