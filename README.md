@@ -11,7 +11,8 @@ Website Features:
 - Adding new books, while being able to manipulate existing ones
 - Admin manipulation of user accounts, like updating, adding and deleting those who request to delete their accounts
 
-https://github.com/user-attachments/assets/0190a5a8-93b7-40e1-98eb-c095483a208f
+https://github.com/user-attachments/assets/c43ee046-7762-46cf-a21d-8beadfef4ef9
+
 
 # Pages
 ## Index Page
