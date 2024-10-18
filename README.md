@@ -10,8 +10,7 @@ Website Features:
 - Searching a book through it's title, author, or even genre
 - Adding new books, while being able to manipulate existing ones
 - Admin manipulation of user accounts, like updating, adding and deleting those who request to delete their accounts
-
-https://github.com/user-attachments/assets/c43ee046-7762-46cf-a21d-8beadfef4ef9
+[![Akaru App Demo](./page_preview/index.png)](https://youtu.be/35kZdYWqXRQ)
 
 
 # Pages
