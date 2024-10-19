@@ -30,6 +30,8 @@ test.json
 # Images (to be deleted)
 # public/images
 public/Goods
+public/styles
+src/public
 # public/json
 command list-panes: too many arguments (need at most 0)
 # lock files

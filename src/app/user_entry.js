@@ -26,18 +26,53 @@ const logInPass = document.querySelector("#logInPass");
 
 // Sign Up Start
 // Get Credentials Auth Firebase
-const signUp = async (auth, userEmail, userPass) => {
+const signUpValidator = () => {
+    const isEmail = validateEmail(userEmail.value);
+    const isPassword = validatePassword(userPass.value);
+    const isPhone = validatePhoneNum(userPhone.value);
+    if (!isEmail) {
+        console.log(userEmail.value);
+        alert("Please correct your email");
+        return false;
+    }
+    if (!isPassword) {
+        alert("Password should at least be 6 characters long");
+        return false;
+    }
+    if (!isPhone) {
+        alert("Phone number should be 11 numbers");
+        return false;
+    }
+    return true;
+}
+
+function validateEmail(email) {
+    const checkEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return checkEmail.test(email);
+}
+
+function validatePassword(pass) {
+    const checkPass = /^[A-Za-z0-9]{6,}$/;
+    return checkPass.test(pass);
+}
+
+function validatePhoneNum(phone) {
+    const checkPhone = /^[0-9]{11}$/;
+    return checkPhone.test(phone);
+}
+
+const signUp = async (auth, userName, userPhone, userEmail, userPass) => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, userEmail, userPass);
         const user = userCredential.user;
 
         await updateProfile(auth.currentUser, {
-            displayName: userName.value,
+            displayName: userName,
         });
 
         // userEmail/Pass is already set in the parent function so no need to use .value
         // This will return into undefined if you do
-        await addToUserCollection(user.uid, userName.value, userPhone.value, userEmail);
+        await addToUserCollection(user.uid, userName, userPhone, userEmail);
         alert("Successfully signed up. Please log in now.")
 
     } catch (error) {
@@ -49,7 +84,6 @@ const signUp = async (auth, userEmail, userPass) => {
 // Get Personal Details Firestore Firebase
 const addToUserCollection = async (uid, username, phone, email) => {
     try {
-        console.log(uid);
         const docRef = doc(db, "users", uid);
         await setDoc(docRef, {
             userName: username,
@@ -65,7 +99,13 @@ const addToUserCollection = async (uid, username, phone, email) => {
 };
 
 signUpBtn.addEventListener("click", () => {
-    signUp(auth, userEmail.value, userPass.value);
+    const isValidate = signUpValidator();
+    if (isValidate) {
+        signUp(auth, userName.value, userPhone.value, userEmail.value, userPass.value);
+        document.querySelector("#signUpForm").reset();
+        return;
+    }
+    return;
 });
 // Sign Up End
 
