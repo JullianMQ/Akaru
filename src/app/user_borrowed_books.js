@@ -131,6 +131,7 @@ const returnBook = async function (){
     }
 }
 
+// Remove Book Start
 // Remove user from book's userId(array)
 const removeUserFromBookUsers = async (userId, bookId) =>{
     const bookDocRef = doc(db, "book", bookId);
@@ -172,6 +173,7 @@ const removeBookFromUserBorrowedBooks = async (userId, bookId) => {
         console.error("Error on updating user's borrowed books:", error);
     }
 }
+// Remove Book End
 
 const userLogOut = async () => {
     if (isUser !== "false") {
