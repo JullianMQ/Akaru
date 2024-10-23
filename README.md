@@ -10,20 +10,7 @@ Website Features:
 - Searching a book through it's title, author, or even genre
 - Adding new books, while being able to manipulate existing ones
 - Admin manipulation of user accounts, like updating, adding and deleting those who request to delete their accounts
-[![Akaru App Demo](./page_preview/index.png)](https://youtu.be/35kZdYWqXRQ)
-
-
-# Pages
-## Index Page
-![index](./page_preview/index.png) 
-## Sign Up
-![Sign up](./page_preview/sign_up.png) 
-## Log In
-![Log in](./page_preview/log_in.png) 
-## Managing Users
-![Managing users](./page_preview/managing_users.png) 
-## Managing Books
-![Managing Books](./page_preview/managing_books.png) 
+[![Akaru App Demo](/public/images/AkaruIndex.png)](https://youtu.be/35kZdYWqXRQ)
 
 # Deployment
 **NOTE:** Akaru is easy to deploy, however it should be noted that you can't add users as this is only limited to code owners/admins
@@ -35,9 +22,9 @@ Website Features:
 # Contributors 
 | Roles | Names |Links |
 |-|-|-|
-|Project Manager/Designer/Frontend Lead| Bryan Santiago | [@bancantcode](https://github.com/Bancantcode) |
+|Project Lead / Designer / Frontend Lead| Bryan Santiago | [@bancantcode](https://github.com/Bancantcode) |
 |Frontend Dev | Frances Luis Tumampos | [@cess2c](https://github.com/cess2c) |
-|Backend Lead/Database Lead | Jullian Quiambao | [@jullianmq](https://github.com/JullianMQ) |
+|Backend Lead / Database Lead | Jullian Quiambao | [@jullianmq](https://github.com/JullianMQ) |
 |Backend Dev | Carl Paldeng | [@kyurazy](https://github.com/Kyurazy) |
 |Database Dev | Mark Quiambao | [@kentxstuuki](https://github.com/KentxStuuki) |
 |Backend Associate | Jose Reyes | [@saeechy](https://github.com/saeechy) |
