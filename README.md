@@ -10,7 +10,7 @@ Website Features:
 - Searching a book through it's title, author, or even genre
 - Adding new books, while being able to manipulate existing ones
 - Admin manipulation of user accounts, like updating, adding and deleting those who request to delete their accounts
-[![Akaru App Demo](../page_preview/Akaru_Index.png)](https://youtu.be/35kZdYWqXRQ)
+[![Akaru App Demo](/page_preview/Akaru_Index.png)](https://youtu.be/35kZdYWqXRQ)
 
 # Deployment
 **NOTE:** Akaru is easy to deploy, however it should be noted that you can't add users as this is only limited to code owners/admins
