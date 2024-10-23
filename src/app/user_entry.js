@@ -114,7 +114,7 @@ signUpBtn.addEventListener("click", () => {
 
 const logIn = async (auth, email, password) => {
     try {
-        const loggedInCredential = await signInWithEmailAndPassword(auth, email, password);
+        await signInWithEmailAndPassword(auth, email, password);
         // redirect back to index page
         checkAuthState();
         alert("You have signed in!");

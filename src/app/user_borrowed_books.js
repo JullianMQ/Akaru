@@ -113,10 +113,10 @@ const addReturnFunction = () => {
 
 // TODO: Add read function
 const readBook = () => {
+    // Despite the option not being implemented, we have no way to add this feature for legal reasons
     alert("Feature not yet implemented");
 }
 
-// TODO: Add return function
 const returnBook = async function (){
     const bookId = this.parentElement.querySelector("[data-book-id]").getAttribute("data-book-id");
 
@@ -131,7 +131,7 @@ const returnBook = async function (){
     }
 }
 
-//Remove user from book's userId(array)
+// Remove user from book's userId(array)
 const removeUserFromBookUsers = async (userId, bookId) =>{
     const bookDocRef = doc(db, "book", bookId);
     const bookDoc = await getDoc(bookDocRef);

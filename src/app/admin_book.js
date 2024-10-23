@@ -141,8 +141,6 @@ const addNewBook = async () => {
         authorsMap[author] = prodAuthors[i];
     }
 
-    // idArray.sort((a, b) => a - b);
-    // idArray.sort((a, b) => b - a);
     // Getting ID for books
     for (newId; newId <= idArray.length; newId++) {
         if (idArray.includes(newId)) { }

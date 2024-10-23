@@ -158,13 +158,12 @@ const appendToContainer = (bookId, bookName, bookCategory, bookAuthors, bookImag
 // End Get books
 
 
-// TODO: Filter through genre
 // Search Function || Search Filter
 const addSearchFilter = () => {
     searchInput.addEventListener("input", queryInput => {
         let query = queryInput.target.value.toLowerCase();
         bookDataArr.forEach(book => {
-            // If name or author in search query
+            // If name, author, or genre in search query
             const isBookName = book.name.toLowerCase().includes(query);
             const isAuthorName = book.authors.some(author => author.includes(query));
             const isGenre = book.category.some(genre => genre.toLowerCase().includes(query))

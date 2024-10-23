@@ -34,13 +34,12 @@ removeBookFormBtn.addEventListener('click', function () {
 });
 
 
-// TODO: Uncomment after finishing development
-// document.addEventListener('click', function (event) {
-//     if (formsContainer && !formsContainer.contains(event.target) && !event.target.matches('.button')) {
-// console.log('Clicking outside, hiding forms');
-// formsContainer.style.display = 'none';
-//     }
-// });
+document.addEventListener('click', function (event) {
+    if (formsContainer && !formsContainer.contains(event.target) && !event.target.matches('.button')) {
+        console.log('Clicking outside, hiding forms');
+        formsContainer.style.display = 'none';
+    }
+});
 var hamburger = document.getElementById('hamburger');
 var trigger = document.getElementById('header');
 
